@@ -109,7 +109,7 @@ img ,table{
     max-width: 455px;
     max-height: 455px;
 }
-#panel_fichas{
+#panel_fichas,#panel_situacion{
     overflow: auto;
     max-height: 455px;
     display: flex;
