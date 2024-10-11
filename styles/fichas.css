@@ -157,5 +157,5 @@ option{
     border: outset 3px !important;
 }
 #dado_valor{
-    width:50px;
+    width:50px !important;
 }
