@@ -89,7 +89,7 @@ function crea_mapa() {
 
         panel_mapa += "</div>"
 
-        panel_mapa += "<button class='btn btn-primary btn-sm border' onclick='mueve_ficha(" + (mapa_casillas[i].valorx) + "," + (mapa_casillas[i].valory) + ")'>Mueve</button>"
+        panel_mapa += "<button id='" + i +" ' class='btn btn-primary btn-sm border' onclick='mueve_ficha(" + (i+1) + "," + (mapa_casillas[i].valorx) + "," + (mapa_casillas[i].valory) + ")'>Mueve</button>"
         panel_mapa += "</div>"
 
     }
@@ -101,7 +101,7 @@ function crea_mapa() {
 
 
 }
-function mueve_ficha(val2, val3) {
+function mueve_ficha(val1 ,val2, val3) {
 
     try {
 
@@ -117,6 +117,8 @@ function mueve_ficha(val2, val3) {
         var valor_y = val3 + "px"
         var valor_style = "margin-left:" + valor_x + ";" + "margin-top:" + valor_y
         document.getElementById(valor_id).style = valor_style
+        var id_sit= valor_id + "_sit"
+        document.getElementById(id_sit).innerHTML = ficha_seleccionada + ": " + "<div class='btn btn-secondary disabled border'>" + val1 + "</div>"
 
     } catch (error) {
         alert(error + "\n Seleccione color y ficha")
