@@ -36,7 +36,7 @@ function construir_fichas() {
 
     for (i = 0; i < colores.length; i++) {
 
-        fichero += "<div class='caja_fichas border p-2 w-auto fichas_";
+        fichero += "<div class='caja_fichas border-0 p-2 w-auto fichas_";
         fichero += colores[i];
 
         fichero += " '>";
