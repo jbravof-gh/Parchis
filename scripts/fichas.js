@@ -165,3 +165,12 @@ function ubicacion_inicial() {
     document.getElementById("verdes_3").style = "margin-left:25px;margin-top:470px"
     document.getElementById("verdes_4").style = "margin-left:130px;margin-top:470px"
 }
+
+function tira_dadoold() {
+    var valor_dado = Math.floor(Math.random() * 6) + 1;
+    valor_dado = Math.floor(Math.random() * 6) + 1;
+    valor_dado = Math.floor(Math.random() * 6) + 1;
+    var dado_field = document.getElementById("dado_valor");
+    dado_field.value = valor_dado;
+
+}

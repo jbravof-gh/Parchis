@@ -117,7 +117,7 @@ img ,table{
     justify-content: space-evenly;
     flex-wrap: wrap;
     /* font-size: x-small !important; */
-    width: 50%;
+    /* width: 50%; */
 }
 .casilla{
     margin: 4px;
@@ -155,4 +155,7 @@ option{
     border-radius: 10px !important;
     /* background-color: #c39999; */
     border: outset 3px !important;
+}
+#dado_valor{
+    width:50px;
 }
