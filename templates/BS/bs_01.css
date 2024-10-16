@@ -1,0 +1,17 @@
+body{
+    height: 100vh;
+}
+
+main{
+    height: 100%;
+    /* border:  inset; */
+   width: 100%;
+}
+main > div, main > div>div{
+    width:  -webkit-fill-available; 
+    height:  -webkit-fill-available; 
+    /* margin: 0.5px; */
+    text-align: center;
+    vertical-align: middle;
+
+}

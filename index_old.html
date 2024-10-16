@@ -9,7 +9,7 @@
     <!-- BootStrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -25,12 +25,8 @@
     <div class="container-fluid border ">
         <div class="row d-flex border p-2">
             <div>
-                  <a class="btn border" href="./page01.html">↻ page01</a>
-                <a class="btn border" href="./templates/template_01.html">↻ template 01</a>
-                    <a class="btn border" href="./templates/template_02.html">↻ template 02</a>
-                    <a class="btn border" href="./templates/template_03.html">↻ template 03</a>
-                  <a class="btn border" href="./templates/rejilla.html">rejilla</a>
                 <a class="btn border" href="./">↻ Refresh</a>
+                <a class="btn border" href="./examples/objeto.html">↻ Objeto</a>
                 <button onclick="carga_especial()" class="btn border disabled">◉ Carga Fichas</button>
                 <!-- <button onclick="ubicacion_inicial_amarillas()" class="btn border">◎ Ubicacion inicial</button> -->
 
@@ -68,22 +64,12 @@
                         <option>3</option>
                         <option>4</option>
                     </select>
-                    <hr>
-                    <button onclick="update_ficha()">update</button>
                 </div>
-                      
             </div>
-            <div  class="col-3 mb-0 border bg-grey p-2 d-flex">
+            <div  class="col-5 mb-0 border bg-grey p-2 d-flex">
 
 <div style="display: none;" id="panel_fichas"></div>
-
-
-
-            </div>
-            
-             <div  class="col-2 border bg-grey p-2 d-flex ">
-                 
-                 <div  style="display: none;" id="panel_situacion">
+<div  style="display: none;" id="panel_situacion">
     <div id="amarillas_1_sit" class="btn btn-warning border w-auto">1</div>
     <div id="amarillas_2_sit"  class="btn  btn-warning border">amarillas_2</div>
     <div  id="amarillas_3_sit"   class="btn btn-warning  border">amarillas_3</div>
@@ -95,7 +81,9 @@
     <div  id="rojas_4_sit"   class="btn  btn-danger border">rojas_4</div>
 </div>
 
-             </div>
+
+
+            </div>
       
         </div>
 

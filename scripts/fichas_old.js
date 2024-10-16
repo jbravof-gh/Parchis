@@ -80,18 +80,16 @@ function crea_mapa() {
     var contador_casillas_mapa = mapa_casillas.length
     for (let i = 0; i < contador_casillas_mapa; i++) {
         //panel_fichas
-        panel_mapa += "<div class='casilla border text-center p-2 pb-0'>"
-      //  panel_mapa += "<p class='p_cell  border'> cell: " + (i + 1) + "</p>"
-//        panel_mapa += "<div class='border p-2 pb-0 mb-2 mt-0'>"
+        panel_mapa += "<div class='casilla border text-center p-2'>"
+        panel_mapa += "<p class='p_cell  border'> cell: " + (i + 1) + "</p>"
+        panel_mapa += "<div class='border p-2 pb-0 mb-2 mt-0'>"
 
-    //    panel_mapa += "<code> x: " + (mapa_casillas[i].valorx) + "</code>"
-  //      panel_mapa += "<code><p> y: " + (mapa_casillas[i].valory) + "</p></code>"
+        panel_mapa += "<code> x: " + (mapa_casillas[i].valorx) + "</code>"
+        panel_mapa += "<code><p> y: " + (mapa_casillas[i].valory) + "</p></code>"
 
-   //     panel_mapa += "</div>"
+        panel_mapa += "</div>"
 
-        panel_mapa += "<button id='" + i + " ' class='btn  btn-sm border' onclick='mueve_ficha(" + (i + 1) + "," + (mapa_casillas[i].valorx) + "," + (mapa_casillas[i].valory) + ")'>"
-        panel_mapa += "<p class='p_cell  border p-2'> cell: " + (i + 1) + "</p>"
-panel_mapa +="</button>"
+        panel_mapa += "<button id='" + i + " ' class='btn btn-primary btn-sm border' onclick='mueve_ficha(" + (i + 1) + "," + (mapa_casillas[i].valorx) + "," + (mapa_casillas[i].valory) + ")'>Mueve</button>"
         panel_mapa += "</div>"
 
     }
@@ -120,7 +118,7 @@ function mueve_ficha(val1, val2, val3) {
         var valor_style = "margin-left:" + valor_x + ";" + "margin-top:" + valor_y
         document.getElementById(valor_id).style = valor_style
         var id_sit = valor_id + "_sit"
-        document.getElementById(id_sit).innerHTML = "<div style='width:100px;display:flex;align-items: baseline; justify-content: space-between;'> <div style='border:solid;width:30px;height:30px; border-radius:50%'>" + ficha_seleccionada + "</div>" + "<div>>></div> " + "<div name='val_sel' class='  btn btn-secondary  border'>" + val1 + "</div></div>"
+        document.getElementById(id_sit).innerHTML = "<div style='width:100px;display:flex;align-items: baseline; justify-content: space-between;'> <div style='border:solid;width:30px;height:30px; border-radius:50%'>" + ficha_seleccionada + "</div>" + "<div>>></div> " + "<div class='btn btn-secondary disabled border'>" + val1 + "</div></div>"
 
     } catch (error) {
         alert(error + "\n Seleccione color y ficha")
@@ -177,15 +175,4 @@ function tira_dadoold() {
     var dado_field = document.getElementById("dado_valor");
     dado_field.value = valor_dado;
 
-}
-function update_ficha(){
-    alert(  document.getElementById("dado_valor").value)
-    var color_seleccionado = document.getElementById("selector_color").options[document.getElementById("selector_color").selectedIndex].value;
-        var ficha_seleccionada = document.getElementById("selector_numero").options[document.getElementById("selector_numero").selectedIndex].value;
-    var passid=color_seleccionado +"_" + ficha_seleccionada + "_sit"
-   alert(document.getElementById(passid).outerHTML)
-       var pass_inner = (document.getElementById(passid).getElementsByTagName("DIV")[3].innerHTML)
- // alert( document.getElementById("1").Id) //.Click()
-    mueve_ficha( parseInt(pass_inner ) + parseInt(document.getElementById("dado_valor").value ) + 1, (mapa_casillas[ parseInt(  pass_inner )  ].valorx) , (mapa_casillas[parseInt(  pass_inner ) ].valory) )
- //   passid
 }
