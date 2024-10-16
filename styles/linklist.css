@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+ul {
+/* element.style { */
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    padding: 10px;
+    border-radius: 10px;
+/* }
+ul#files { */
+    width: 50%;
+    height: 50%;
+    /* overflow: hidden; */
+/* } */
+
+
+/* user agent stylesheet */
+
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+ul li {
+    float: left;
+    /* width: 30%; */
+    line-height: 25px;
+    margin: 1px;
+    border: solid 0.5px;
+    padding: 5px;
+    border-radius: 10px;
+
+    list-style: none;
+}
