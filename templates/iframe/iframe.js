@@ -10,6 +10,6 @@
 
 setTimeout(() => {
    // alert("Hello after 2 seconds");
-    window.location.href=("http://127.0.0.1:8981/Parchis/templates/")
+    window.location.href=("/Parchis/templates/")
     }, 2000);
 //alert(this.document.head.innerHTML)

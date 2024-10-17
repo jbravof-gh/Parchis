@@ -16,7 +16,7 @@ var dom, win, doc, where, iframe;
     iframe.onload = function() { 
        alert(this.contentDocument.head.outerHTML);
 
-       this.contentDocument.head.innerHTML+= '<link href="http://127.0.0.1:8981/Parchis/styles/linklist.css" rel="stylesheet"></link>\n<base target="ifr02"/>'
+       this.contentDocument.head.innerHTML+= '<link href="/Parchis/styles/linklist.css" rel="stylesheet"></link>\n<base target="ifr02"/>'
     };
        where = document.body 
     where.appendChild(iframe);
