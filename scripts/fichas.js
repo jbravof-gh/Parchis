@@ -179,13 +179,14 @@ function tira_dadoold() {
 
 }
 function update_ficha(){
-    alert(  document.getElementById("dado_valor").value)
+  
     var color_seleccionado = document.getElementById("selector_color").options[document.getElementById("selector_color").selectedIndex].value;
         var ficha_seleccionada = document.getElementById("selector_numero").options[document.getElementById("selector_numero").selectedIndex].value;
     var passid=color_seleccionado +"_" + ficha_seleccionada + "_sit"
+    alert("Dado Valor" +  document.getElementById("dado_valor").value + "\n Color Seleccionado:" +color_seleccionado + "\n Ficha Seleecionada: " +ficha_seleccionada )
    alert(document.getElementById(passid).outerHTML)
        var pass_inner = (document.getElementById(passid).getElementsByTagName("DIV")[3].innerHTML)
- // alert( document.getElementById("1").Id) //.Click()
+  alert( pass_inner) //.Click()
     mueve_ficha( parseInt(pass_inner ) + parseInt(document.getElementById("dado_valor").value ) + 1, (mapa_casillas[ parseInt(  pass_inner )  ].valorx) , (mapa_casillas[parseInt(  pass_inner ) ].valory) )
  //   passid
 }

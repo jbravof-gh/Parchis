@@ -53,8 +53,8 @@
                 <img id="imagen_parchis" src="./imagenes/parchis-512.png">
 
             </div>
-                <div class="col-2 p-0 border m-0 mt-0   ">
-                    <div id="panel_nav" class="text-center p-2">
+                <div class="col-2 p-0 border-0 m-0 mt-0   ">
+                    <div id="panel_nav" class="text-center border m-2 p-2">
                         <p class="btn btn-success disabled border">Color</p>
                         <select id='selector_color' size="4" class="btn btn-warning ">
                             <option>amarillas</option>
@@ -77,9 +77,9 @@
                     </div>
           
                 </div>
-            <div  class="col-3 m-0 border bg-grey p-0 ">
+            <div  class="col-3 m-0 border-0 bg-grey p-0 ">
 
-<div style="display: none;" id="panel_fichas"></div>
+<div class="border m-2" style="display: none;" id="panel_fichas"></div>
 
 
 
@@ -88,10 +88,18 @@
              <div  class="col-2 border bg-grey p-2 m-0 flex-grow-1  ">
                  
                  <div  style="display: none;" id="panel_situacion">
-    <div id="amarillas_1_sit" class="btn btn-warning border w-auto">1</div>
-    <div id="amarillas_2_sit"  class="btn  btn-warning border">amarillas_2</div>
-    <div  id="amarillas_3_sit"   class="btn btn-warning  border">amarillas_3</div>
-    <div  id="amarillas_4_sit"   class="btn  btn-warning border">amarillas_4</div>
+    <div id="amarillas_1_sit" class="btn btn-warning border w-auto">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">1</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+    </div>
+    <div id="amarillas_2_sit"  class="btn  btn-warning border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">2</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+    </div>
+    <div  id="amarillas_3_sit"   class="btn btn-warning  border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">3</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+    </div>
+    <div  id="amarillas_4_sit"   class="btn  btn-warning border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">4</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+    </div>
 
     <div id="rojas_1_sit" class="btn  btn-danger border">rojas_1</div>
     <div id="rojas_2_sit"  class="btn btn-danger  border">rojas_2</div>
