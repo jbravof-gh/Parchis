@@ -17,14 +17,16 @@
     <!-- Local Resources -->
     <script src="./scripts/fichas.js"></script>
     <link href="./styles/fichas.css" rel="stylesheet">
-
+<style>
+   .row div a,  .row div button {font-size: x-small !important;}
+</style>
 </head>
 
 <body>
 
     <div class="container-fluid border ">
-        <div class="row d-flex border p-2">
-            <div>
+        <div class="row d-flex border p-0">
+            <div  >
                 <a class="btn border" href="./templates/">↻ templates</a>
                   <a class="btn border" href="./page01.html">↻ page01</a>
                 <a class="btn border" href="./templates/template_01.html">↻ template 01</a>
@@ -46,35 +48,36 @@
 
             <div class="border-0" id="pantalla1"></div>
         </div>
-        <div class="row border p-2">
-            <div id="panel_parchis" class="text-center col-5 border m-2 mt-0 p-2">
+        <div class="row border p-0">
+            <div id="panel_parchis" class="text-center col-5 border m-0 mt-0 p-0">
                 <img id="imagen_parchis" src="./imagenes/parchis-512.png">
 
             </div>
-                  <div class="col-2 border m-2 mt-0 w-auto d-flex ">
-                <div id="panel_nav" class="text-center p-2">
-                    <p class="btn btn-success disabled border">Color</p>
-                    <select id='selector_color' size="4" class="btn btn-warning ">
-                        <option>amarillas</option>
-                        <option>verdes</option>
-                        <option>rojas</option>
-                        <option>azules</option>
-                    </select>
-                    <hr>
-                    <p class="btn btn-danger border disabled">Ficha</p>
-                    <select id='selector_numero' size="4" class="btn btn-warning ">
-
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                    <hr>
-                    <button onclick="update_ficha()">update</button>
+                <div class="col-2 p-0 border m-0 mt-0   ">
+                    <div id="panel_nav" class="text-center p-2">
+                        <p class="btn btn-success disabled border">Color</p>
+                        <select id='selector_color' size="4" class="btn btn-warning ">
+                            <option>amarillas</option>
+                            <option>verdes</option>
+                            <option>rojas</option>
+                            <option>azules</option>
+                        </select>
+                        <hr>
+                        <p class="btn btn-danger border disabled">Ficha</p>
+                        <select id='selector_numero' size="4" class="btn btn-warning ">
+                
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                        <hr>
+                        <!-- <p class="btn btn-danger border disabled">Update</p> -->
+                        <button class="btn border" onclick="update_ficha()">update</button>      
+                    </div>
+          
                 </div>
-                      
-            </div>
-            <div  class="col-3 mb-0 border bg-grey p-2 d-flex">
+            <div  class="col-3 m-0 border bg-grey p-0 ">
 
 <div style="display: none;" id="panel_fichas"></div>
 
@@ -82,7 +85,7 @@
 
             </div>
             
-             <div  class="col-2 border bg-grey p-2 d-flex ">
+             <div  class="col-2 border bg-grey p-2 m-0 flex-grow-1  ">
                  
                  <div  style="display: none;" id="panel_situacion">
     <div id="amarillas_1_sit" class="btn btn-warning border w-auto">1</div>

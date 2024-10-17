@@ -110,14 +110,16 @@ img ,table{
     max-height: 455px;
 }
 #panel_fichas,#panel_situacion{
+    height: 100%;
     overflow: auto;
     max-height: 455px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
     /* font-size: x-small !important; */
     /* width: 50%; */
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 .casilla{
     margin: 4px;
@@ -125,6 +127,7 @@ img ,table{
     border: outset !important;
     /* font-size: xx-small !important; */
     border-radius: 10px !important;
+    
 }
 #panel_nav{
     overflow: auto;
@@ -132,7 +135,7 @@ img ,table{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     /* width: -webkit-fill-available;
     height: -webkit-fill-available; */
 }
@@ -147,7 +150,7 @@ select{
 option{
     border-radius: 10px !important;
     margin: 1px;
-    padding: 5px;
+    padding: 3px;
 
 }
 .p_cell{

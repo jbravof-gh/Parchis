@@ -89,7 +89,7 @@ function crea_mapa() {
 
    //     panel_mapa += "</div>"
 
-        panel_mapa += "<button id='" + i + " ' class='btn  btn-sm border' onclick='mueve_ficha(" + (i + 1) + "," + (mapa_casillas[i].valorx) + "," + (mapa_casillas[i].valory) + ")'>"
+        panel_mapa += "<button id='" + i + " ' class='btn  btn-sm border-0' onclick='mueve_ficha(" + (i + 1) + "," + (mapa_casillas[i].valorx) + "," + (mapa_casillas[i].valory) + ")'>"
         panel_mapa += "<p class='p_cell  border p-2'> cell: " + (i + 1) + "</p>"
 panel_mapa +="</button>"
         panel_mapa += "</div>"
