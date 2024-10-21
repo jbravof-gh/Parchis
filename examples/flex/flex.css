@@ -1,0 +1,82 @@
+.carta{
+        border:solid;
+display: flex;
+    justify-content: space-around;
+}
+.carta div{
+    border:solid;
+    
+}
+.centro{
+    /* border: outset 4px !important ; */
+    background-image: url(../../imagenes/centro.png);  background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+}
+.celdas{
+    border: outset 2px !important ;
+}
+.celda{
+    /* position: relative; */
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    border: outset 0.5px !important ;
+    /* border-top: none; */
+    /* background-color: white; */
+    font-size: xx-small;
+  
+}
+.celda-casa{
+    background-color: white; 
+    border: outset 2px !important ;
+}
+.casa{
+    border: outset 8px !important ;
+}
+.casillas{
+    border: outset 2px !important ;
+}
+.tablero{
+    /* border: outset 8px !important; */
+}
+.ficha_control{
+    font-size: xx-small;
+    border: solid 0.2px gray;
+    padding: 1px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: whitesmoke;
+    display: block;
+    
+    left:80%;
+    top:0px;
+}
+.ficha_control > *,.ficha_control > * > *{
+    /* padding: 10px; */
+    margin: 2px;
+    border: solid 0.2px gray;
+    border-radius: 10px;
+    text-align: center;
+    font-size: xx-small !important;
+   padding: 10px;
+
+}
+.casa_row>div{
+border-radius: 50%;
+ }
+.mapa{
+    /* width: 250px;
+    height: 250px; */
+}
+/* .ficha{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: solid 0.2px gray;
+    border-radius: 50%;
+    text-align: center;
+    font-size: xx-small;
+    background-color: #c8c818;
+} */

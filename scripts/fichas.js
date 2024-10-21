@@ -36,26 +36,32 @@ function construir_fichas() {
 
     for (i = 0; i < colores.length; i++) {
 
-        fichero += "<div class='caja_fichas border-0 p-2 w-auto fichas_";
-        fichero += colores[i];
+        // fichero += "<div class='caja_fichas border-0 p-2 w-auto fichas_";
+        // fichero += colores[i];
 
-        fichero += " '>";
+        // fichero += " '>";
 
         for (j = 0; j < 4; j++) {
 
             // fichero += "<nav onclick='selected_ficha_id=(this.id)'  class='ficha ui-widget-content' id='";
-            fichero += "<nav onclick='selected_ficha_id=(this.id)'  class='ficha ' id='";
+            fichero += "<nav posicion='' onclick='console.log(this.id);ficha_select.value=this.id'  class='ficha fichas_"
+            fichero += colores[i];
+            fichero += "' id='";
 
             fichero += colores[i] + "_" + (4 - j);
-            fichero += "' >";
+            ficha_select.innerHTML+="<option>"+ colores[i] + "_" + (4 - j) + "</option>";
 
-            fichero += "<p class='orden' >" + (4 - j) + "</p>";
-            fichero += "<p class='situacion' >0</p>";
+            fichero += "' "
+            fichero += 'data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"'
+            fichero +=" >";
 
+            // fichero += "<p class='orden' >" + (4 - j) + "</p>";
+            // fichero += "<p class='situacion' >0</p>";
+            fichero +=(4 - j)
             fichero += "</nav>";
         }
 
-        fichero += "</div > ";
+        // fichero += "</div > ";
     }
 
     //   fichero += "</div>";

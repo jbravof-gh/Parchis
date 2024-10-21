@@ -31,7 +31,7 @@
                   <a class="btn border" href="./page01.html">↻ page01</a>
                 <a class="btn border" href="./templates/template_01.html">↻ template 01</a>
                     <a class="btn border" href="./templates/template_02.html">↻ template 02</a>
-                    <a class="btn border" href="./templates/template_03.html">↻ template 03</a>
+                    <a class="btn border" href="./examples/parchis_flex/parchis_flex.html">↻ Flex</a>
                   <a class="btn border" href="./templates/rejilla.html">rejilla</a>
                 <a class="btn border" href="./">↻ Refresh</a>
                 <button onclick="carga_especial()" class="btn border disabled">◉ Carga Fichas</button>
@@ -48,10 +48,10 @@
 
             <div class="border-0" id="pantalla1"></div>
         </div>
-        <div class="row border-0 p-0">
-            <div id="panel_parchis" class="text-center col-6 border-0 m-0 mt-0 p-2">
-                <img id="imagen_parchis" src="./imagenes/parchis-512.png">
-
+        <div class="row h-100 border p-0">
+            <div id="panel_parchis" class="text-center col-5 border-0 m-0 mt-0 p-2">
+                <!-- <img id="imagen_parchis" src="./imagenes/parchis-512.png"> -->
+<div id="panel_parchis_show"></div>
             </div>
                 <div class="col-2 p-0 border-0 m-0 mt-0   ">
                     <div id="panel_nav" class="text-center border m-2 p-2">
@@ -77,7 +77,7 @@
                     </div>
           
                 </div>
-            <div  class="col-2 h-100 m-0 border-0 bg-grey p-0 flex-grow-1">
+            <div  class="col-3 h-75 m-0 border-0 bg-grey p-0 flex-grow-1">
 
 <div class="border m-2 p-2" style="display: none;" id="panel_fichas"></div>
 
@@ -101,16 +101,40 @@
         <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">4</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
     </div>
 
-    <div id="rojas_1_sit" class="btn  btn-danger border">rojas_1</div>
-    <div id="rojas_2_sit"  class="btn btn-danger  border">rojas_2</div>
-    <div  id="rojas_3_sit"   class="btn  btn-danger border">rojas_3</div>
-    <div  id="rojas_4_sit"   class="btn  btn-danger border">rojas_4</div>
+    <div id="rojas_1_sit" class="btn  btn-danger border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">1</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+
+    </div>
+    <div id="rojas_2_sit"  class="btn btn-danger  border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">2</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+
+    </div>
+    <div  id="rojas_3_sit"   class="btn  btn-danger border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">3</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+
+    </div>
+    <div  id="rojas_4_sit"   class="btn  btn-danger border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">4</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+
+    </div>
 
     
-    <div id="verdes_1_sit" class="btn  btn-danger border">rojas_1</div>
-    <div id="verdes_2_sit"  class="btn btn-danger  border">rojas_2</div>
-    <div  id="verdes_3_sit"   class="btn  btn-danger border">rojas_3</div>
-    <div  id="verdes_4_sit"   class="btn  btn-danger border">rojas_4</div>
+    <div id="verdes_1_sit" class="btn  btn-success border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">1</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+
+    </div>
+    <div id="verdes_2_sit"  class="btn btn-success  border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">2</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+
+    </div>
+    <div  id="verdes_3_sit"   class="btn  btn-success border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">3</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+
+    </div>
+    <div  id="verdes_4_sit"   class="btn  btn-success border">
+        <div style="width:100px;display:flex;align-items: baseline; justify-content: space-between;"> <div style="border:solid;width:30px;height:30px; border-radius:50%">4</div><div>&gt;&gt;</div> <div name="val_sel" class="  btn btn-secondary  border">x</div></div>
+
+    </div>
 </div>
 
              </div>

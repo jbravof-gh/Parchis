@@ -43,7 +43,8 @@ img ,table{
     margin-top: 356px;  */
     display: flex;
     top:0;
-    left:0
+    left:0;
+    background-color: yellow;
    
 }
 
@@ -52,7 +53,8 @@ img ,table{
     display: flex;
     position: absolute;
     top:0;
-    left:0
+    left:0;
+    background-color: blue;
 }
 
 .fichas_rojas {
@@ -60,7 +62,8 @@ img ,table{
     display: flex;
     position: absolute;
     top:0;
-    left:0
+    left:0;
+    background-color: red;
    
 }
 
@@ -69,14 +72,15 @@ img ,table{
     display: flex;
     position: absolute;
     top:0;
-    left:0
+    left:0;
+    background-color: green;
    
 }
 .ficha {
     border: 1px solid black;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     /* float: left; */
     box-shadow: rgb(2 0 0 / 15%) 8.05px 4.95px 4.6px;
     background-image: linear-gradient(33deg, #c39999, #6e702700);
@@ -86,7 +90,9 @@ img ,table{
     z-index: 20;
     text-align: center;
     vertical-align: middle;
-    font-size: small;
+    font-size: xx-small;
+    padding-left: 4px;
+    color: black;
 }
 .ficha .orden {
     width: 30px;
@@ -101,16 +107,36 @@ img ,table{
 }
 
 .caja_fichas{
+   position: absolute;
     display: inline-flex;
+    border: solid ! IMPORTANT;
+    width: 88px ! IMPORTANT;
+    height: 42px ! IMPORTANT;
+}
+.caja_fichas > nav{
+    /* margin: 10px; */
 }
 #panel_parchis{
-    min-width: 455px;
+    padding: 10px;
+
+    /* min-width: 455px;
     min-height: 455px;
     max-width: 455px;
-    max-height: 455px;
-    background-image: url("../imagenes/parchis-512.png");
-    background-repeat: no-repeat;
+
+   
+    */
+    /* background-image: url("../imagenes/parchis-512.png");
+    background-repeat: no-repeat; */
 }
+#panel_parchis_show{
+    min-width: 455px;
+    min-height: 515px;
+    /* max-width: 455px; */
+    /* max-height: 455px; */
+    background-image: url(../imagenes/parchis-512.png);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    /* margin: 10px;
 #panel_fichas,#panel_situacion{
     height: 445px;
     overflow: auto;
@@ -163,4 +189,8 @@ option{
 }
 #dado_valor{
     width:50px !important;
+}
+#panel_fichas , #panel_situacion{
+    max-height: 55vh; 
+    overflow: scroll;
 }
