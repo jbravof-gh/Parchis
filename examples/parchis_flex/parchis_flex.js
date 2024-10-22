@@ -12,7 +12,7 @@ function construir_fichas() {
 
         for (j = 0; j < 4; j++) {
 
-            fichero += "<nav posicion='' onclick='console.log(this.id);input_select.value=this.id;input_select2.value=this.posicion'  class='ficha fichas_"
+            fichero += "<nav posicion='' onclick='run_ficha(this.id)'  class='ficha fichas_"
             fichero += colores[i];
             fichero += "' id='";
 
@@ -45,8 +45,12 @@ function vete_casilla() {
     document.getElementById(text_origen).style.top = texto_pass_y + "px"
     document.getElementById(text_origen).setAttribute("Posicion", input_select2.value)
     document.getElementById(text_origen).setAttribute("Title", ("ficha: " + text_origen + " Posicion: " + input_select2.value))
+    document.getElementById (text_origen + "_log").innerHTML=input_select2.value
+    document.getElementById("radio_"+text_origen).click()
+var texto_pass=document.getElementById(input_select.value).innerHTML
+    log_move(input_select2.value + " - " + text_origen )
 
-}      
+}       
 
 function mueve_ficha(ficha_id,celda_id){
     var celda_x = document.getElementById(celda_id).offsetLeft
@@ -57,11 +61,24 @@ function mueve_ficha(ficha_id,celda_id){
     document.getElementById(ficha_origen).style.top = celda_y + "px"
     document.getElementById(ficha_origen).setAttribute("Posicion", celda_id)
     document.getElementById(ficha_origen).setAttribute("Title", ("ficha: " + ficha_origen + " Posicion: " + celda_id))
+   // verdes_4_log.innerHTML=celda_id
+ document.getElementById (ficha_id + "_log").innerHTML=celda_id
+  document.getElementById("radio_"+ficha_id).click()
+
 
 
 }
+function recalcula_casilla(){
+
+    for (j = 0; j < 16; j++) {
+
+var ficha_sel=document.getElementsByClassName("ficha")[j]
+var pos_sel=ficha_sel.getAttribute("Posicion")
+     mueve_ficha(ficha_sel.id,pos_sel)
+    }
+}
 //alert(document.getElementsByTagName("template")[0].innerHTML)
-document.getElementById("div_tablero").innerHTML=document.getElementsByTagName("template")[1].innerHTML
+document.getElementById("div_tablero").innerHTML=document.getElementsByTagName("template")[4].innerHTML
 //document.getElementById("div_tools").innerHTML+=document.getElementsByTagName("template")[2].innerHTML
 
 construir_fichas();
@@ -81,9 +98,15 @@ jQuery(".celda").click(function (event) {
     try { 
         // document.getElementById("input_1").value = "Celda: " + valor_pass + " - Pos_x: " + X + " - Pos_y: " + Y + " offset-left: " + this.offsetLeft + " offset-top: " + this.offsetTop 
         input_select2.value=valor_pass
+
+      //  try{alert(mueve_auto.checked)}
+            try{ if (mueve_auto.checked==true) {document.getElementById("boton_mueve").click()} }
+            catch{}
+
     }
 
     catch { alert(this); }
+    
 
 });
 jQuery(".form-check-input").click(function (event) {
@@ -104,5 +127,7 @@ jQuery(".form-check-input").click(function (event) {
     catch { alert(this); }
 
 });
+
+//recalcula_casilla()
 
 //
