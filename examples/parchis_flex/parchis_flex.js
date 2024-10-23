@@ -49,6 +49,8 @@ function vete_casilla() {
     document.getElementById("radio_"+text_origen).click()
 var texto_pass=document.getElementById(input_select.value).innerHTML
     log_move(input_select2.value + " - " + text_origen )
+    badge_fichas.innerHTML=input_select.value
+    badge_seleccion.innerHTML= input_select2.value
 
 }       
 
@@ -65,7 +67,8 @@ function mueve_ficha(ficha_id,celda_id){
  document.getElementById (ficha_id + "_log").innerHTML=celda_id
   document.getElementById("radio_"+ficha_id).click()
 
-
+  badge_fichas.innerHTML=ficha_id
+  badge_seleccion.innerHTML= celda_id // document.getElementById(id_pass).getAttribute("Posicion")
 
 }
 function recalcula_casilla(){
@@ -87,6 +90,17 @@ $(".ficha").draggable();
 $(".caja_fichas").draggable();
 ubica_fichas()
 $(".ficha_control").draggable();
+$("#panel_log").draggable();
+$("#panel_log").resizable();
+
+$("#panel_fi_se").resizable();
+$("#panel_fi_se").draggable();
+
+
+
+
+
+
 
 jQuery(".celda").click(function (event) {
     //$(this.href).show();

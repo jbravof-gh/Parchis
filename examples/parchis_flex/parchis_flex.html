@@ -11,6 +11,8 @@
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+
     <!-- Local Resources   -->
        <script src="./pf_ubica_fichas.js" defer></script>
     <script src="./parchis_flex.js" defer></script>
@@ -776,7 +778,7 @@
         </div>
     </template>
     <template>
-        <div id="pantalla1" class="tablero" style="height:134%;width:134%;">
+        <div id="pantalla1" class="tablero" style="">
             <div class=" h-25 d-flex flex-row  items-stretch">
                 <div class="p-0 casa border-0 w-25 bg-danger bg-gradient d-flex flex-column  items-stretch">
     
@@ -803,7 +805,7 @@
     
     
                 </div>
-                <div class="casillas border-0 w-25 d-flex flex-row  items-stretch">
+                <div class="casillas border-0 w-25  d-flex flex-row  items-stretch">
                     <div
                         class="celdas border-0 p-0 w-50 d-flex flex-column justify-content-between items-stretch overflow-auto">
                         <div class="border"></div>
@@ -998,7 +1000,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="casillas border-0 w-25 d-flex flex-row  items-stretch">
+                <div class="casillas border-0 w-25 d-flex flex-row   items-stretch">
                     <div
                         class="celdas border-0 p-0 w-50 d-flex flex-column justify-content-between items-stretch overflow-auto ">
                         <div id="61" class="  celda border  ">61</div>
@@ -1063,19 +1065,19 @@
     <div class="container-fluid border-0 h-100 w-100 p-0 m-0">
         <div class="border-0 row w-100 h-100 m-0 p-0">
             
-            <div id="div_tablero" class="border col-6 h-100 p-0  m-0">
+            <div id="div_tablero" class="border col-6 h-100 p-0  m-0 ui-widget-content">
                 
             </div>
             <div id="div_tools" class="border-0 col-6  h-100 p-0  m-0">
                 <div class="border-0 row m-0 h-auto">
-                    <div class="border-0 h-100 col-6 ">
+                    <div id="panel_fi_se" class="border-0 h-100 col-6 ">
                         <div
-                            class="border rounded border-outset h-75 gap-1   flex-grow-1 overflow-auto text-center p-2 d-flex flex-column justify-content-evenly">
+                            class="border rounded border-outset h-75 gap-1   flex-grow-1 overflow-auto text-center p-2 d-flex flex-column justify-content-between">
                             <!-- <a href="./parchis_flex.html" class="btn border">↺ Refresh</a>
                                         <a href="./parchis_flex.html" class="btn border">↺ Refresh</a> -->
-                            <h6 class="text-white">Fichas</h6>
+                            <h6 onclick="$('#panel_fichas').toggle();"  class="text-white bg-danger bg-gradient border border-outset rounded p-2">Fichas <span id="badge_fichas" class="badge bg-success ms-3 p-2 w-auto">x</span></h6>
                             <!-- <hr class="text-white"> -->
-                            <div class="bg-dark rounded border border-5 border-outset text-white p-1">
+                            <div id="panel_fichas" style="display: none !important;"  class="bg-dark rounded border border-5 border-outset text-white p-1">
                                 <div class=" border border-5 border-warning h-auto p-0 m-1 d-flex justify-content-evenly">
                                     <div class="form-check border-0  m-0 ">
             
@@ -1169,37 +1171,39 @@
                                     </div>
                                 </div>
                             </div>
-                            <h6 class="text-white mt-2">Seleccion</h6>
+                            <h6 onclick="$('#panel_seleccion').toggle();" class="text-white bg-danger bg-gradient border rounded p-2 mt-2">Seleccion <span id="badge_seleccion" class="badge bg-success ms-3 p-2 w-auto">0</span></h6>
                             <!-- <hr class="text-white"> -->
             
             
-                            <div class="border-0 w-100 p-0 d-flex gap-1 flex-column">
+                            <div id="panel_seleccion" style="display: none !important;" class="border-0 w-100 ps-1 pe-1 gap-1 flex-column">
                                 <div class="border-0 w-100 d-flex gap-1 flex-row justify-content-evenly">
-                                    <div class="border border-3 border-primary  btn w-75 bg-light bg-gradient">Ficha</div> <input
+                                    <div class="border border-3   btn w-75 bg-light bg-gradient">Ficha</div> <input
                                         id="input_select" type="text" class="border border-inset border-3 btn w-75 bg-info bg-gradient">
                                 </div>
                                 <div class="border-0 w-100 d-flex gap-1 flex-row justify-content-evenly mt-1">
-                                    <div class="border border-3 border-primary btn w-75  bg-light bg-gradient"> Posicion</div> <input id="input_select2"
+                                    <div class="border border-3  btn w-75  bg-light bg-gradient"> Posicion</div> <input id="input_select2"
                                         type="text" class="border btn w-75 bg-info bg-gradient border-inset border-3 ">
                                 </div>
-                            </div>
-                            <!-- <hr class="text-white"> -->
-                            <div class="border rounded d-flex flex-row justify-content-between p-2 mt-1">
+                            <!-- <hr class="text-white border border-2 border-white m-2 border-color-white "> -->
+                            <div class="border rounded d-flex flex-row justify-content-between p-2 mt-2">
                                 <button id="boton_mueve" class="btn border btn-success bg-gradient text-white"
-                                    onclick="vete_casilla()">Mueve</button>
-                                    <input class="btn border" id="mueve_auto" type="checkbox" checked>
+                                    onclick="vete_casilla()">Mueve    <input class="btn border text-danger ms-2" id="mueve_auto" type="checkbox" checked></button>
+                                    <!-- <input class="btn border" id="mueve_auto" type="checkbox" checked> -->
                                 <button class="btn border btn-warning bg-gradient mt-1 text-black"
                                     onclick="recalcula_casilla()">Recalcula</button>
             
                             </div>
+
+                            </div>
+
             
                         </div>
                         <!-- <button class="btn broder btn-success" onclick="vete_casilla()">Go</button> -->
             
                     </div>         
-                    <div class="border h-100 col-6 p-2 d-flex flex-column  items-stretch ">
-                                                    <button class="btn border text-danger" onclick="$('#select_log').toggle();">Log</button>
-                        <div class="border rounded w-100 h-auto mt-2 p-0 text-small "   id="select_log" >
+                    <div id="panel_log" class="border h-100 col-6 p-2 d-flex flex-column  items-stretch ">
+                                                    <button class="btn btn-primary bg-gradient border text-black" onclick="$('#select_log').toggle();">Log <span id="badge_log" class="badge border border-outset border-4 border-danger bg-success ms-5 p-2 w-25">0</span></button>
+                        <div style="display: none !important;"  class="border rounded w-100 h-auto mt-2 p-0 text-small "   id="select_log" >
           
                         </div>
                     </div>

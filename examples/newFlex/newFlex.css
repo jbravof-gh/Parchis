@@ -2,7 +2,7 @@ body{
     height: 100vh;
     /* width: 100vw; */
     padding: 10px;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: black ;
     margin: 0px;
 }
@@ -110,7 +110,7 @@ border-radius: 50%;
 }
 
 .fichas_amarillas {
-    z-index: 120;
+    /* z-index: 120; */
     position: absolute;
     /* margin-left: 295px;
     margin-top: 356px;  */
@@ -123,7 +123,7 @@ border-radius: 50%;
 }
 
 .fichas_azules {
-    z-index: 20;
+    /* z-index: 20; */
     display: flex;
     position: absolute;
     top:0;
@@ -134,7 +134,7 @@ border-radius: 50%;
 }
 
 .fichas_rojas {
-    z-index: 90;
+    /* z-index: 90; */
     display: flex;
     position: absolute;
     top:0;
@@ -146,7 +146,7 @@ border-radius: 50%;
 }
 
 .fichas_verdes {
-    z-index: 20;
+    /* z-index: 20; */
     display: flex;
     position: absolute;
     top:0;
