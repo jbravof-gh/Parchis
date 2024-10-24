@@ -1,3 +1,6 @@
+
+/* Main */
+
 body{
     height: 100vh;
     /* width: 100vw; */
@@ -6,183 +9,14 @@ body{
     background-color: black ;
     margin: 0px;
 }
-#pantalla1{
-    height: 133%;
-    width: 133%;
-}
-.carta{
-    border:solid;
-display: flex;
-justify-content: space-around;
-}
-.carta div{
-border:solid;
 
-}
-.centro{
-/* border: outset 4px !important ; */
-background-image: url(../../imagenes/centro.png);  background-position: center; /* Center the image */
-background-repeat: no-repeat; /* Do not repeat the image */
-background-size: cover; 
+/* Tablero */
 
-}
-.celdas{
-border: outset 2px !important ;
-background-color: black;
-color: white;
-}
-.celda{
-/* position: relative; */
-margin: 0px;    
-padding: 2px;
-padding-left: 5px;
-height: 100%;
-width: 100%;
-border: outset 0.5px !important ;
-/* border-top: none; */
-/* background-color: white; */
-font-size: x-small;
-
-}
-.celda-casa{
-background-color: black; 
-border: outset 2px !important ;
-}
-.casa{
-border: outset 6px !important ;
-/* border-color: black !important; */
-/* border-radius: 8px; */
-}
-.casillas{
-border: outset 2px !important ;
-/* border-color: black !important; */
-}
-.tablero{
-/* border: outset 8px !important; */
-}
-.ficha_control{
-font-size: xx-small;
-border: solid 0.2px gray;
-padding: 1px;
-border-radius: 10px;
-position: absolute;
-background-color: whitesmoke;
-display: block;
-
-left:80%;
-top:0px;
-}
-.ficha_control > *,.ficha_control > * > *{
-/* padding: 10px; */
-margin: 2px;
-border: solid 0.2px gray;
-border-radius: 10px;
-text-align: center;
-font-size: xx-small !important;
-padding: 10px;
-
-}
-.casa_row>div{
-border-radius: 50%;
-}
-
-.fichas_rojas nav {
-    background-color: red;
-    color: white;
-
-}
-
-.fichas_verdes nav {
-    background-color: green;
-    color: white;
-
-}
-
-.fichas_amarillas nav {
-    background-color: yellow;
-    color: black;
-
-}
-
-.fichas_azules nav {
-    background-color: blue;
-    color: white;
-}
-
-.fichas_amarillas {
-    /* z-index: 120; */
-    position: absolute;
-    /* margin-left: 295px;
-    margin-top: 356px;  */
-    display: flex;
-    top:0;
-    left:0;
-    background-color: rgb(239, 239, 81);
-    border-color: yellow !important;
-   
-}
-
-.fichas_azules {
-    /* z-index: 20; */
-    display: flex;
-    position: absolute;
-    top:0;
-    left:0;
-    background-color: blue;
-    color: white !important;
-    border-color: blue !important;
-}
-
-.fichas_rojas {
-    /* z-index: 90; */
-    display: flex;
-    position: absolute;
-    top:0;
-    left:0;
-    background-color: red;
-    border-color: red !important;
-    color: white !important;
-   
-}
-
-.fichas_verdes {
-    /* z-index: 20; */
-    display: flex;
-    position: absolute;
-    top:0;
-    left:0;
-    background-color: green;
-    border-color: black !important;
-    color: white !important;
-
-}
-.ficha {
-    border: outset 2px !important;
-        border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    /* float: left; */
-    box-shadow: rgb(242 233 233 / 71%) 4px 2px 4.6px;
-        /* background-image: linear-gradient(33deg, #c39999, #6e702700); */
-
-    cursor: pointer;
-    position: absolute; 
-    /* z-index: 20; */
-    text-align: center;
-    vertical-align: middle;
-    font-size: x-small;
-    padding-left: 10px;
-    padding-top: 5px;
-    color: black;
-}
 .casa_row >div{
     border-color: black !important;
     border: inset 2px !important;
-    /* border: none !important; */
-    /* padding: 14px !important; */
     background-color: rgba(0, 0, 0, 0.333);
-    
-
+    border-radius: 50%;
 }
 .casa_row >div>div{
     border-color: white !important;
@@ -196,12 +30,226 @@ border-radius: 50%;
     color: white;
     font-size: x-small;
 }
-.bg-dark >div{
+.centro{
+    background-image: url(../../imagenes/centro.png);  background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+    
+}
+#pantalla1{
+    height: 133%;
+    width: 133%;
+}
+        /* celdas */
+
+            .celdas{
+            border: outset 2px !important ;
+            background-color: black;
+            color: white;
+            }
+            .celda{
+            margin: 0px;    
+            padding: 2px;
+            padding-left: 5px;
+            height: 100%;
+            width: 100%;
+            border: outset 0.5px !important ;
+            font-size: x-small;
+            
+            }
+            .celda-casa{
+            background-color: black; 
+            border: outset 2px !important ;
+            }
+            .casa{
+            border: outset 6px !important ;
+
+            }
+            .casillas{
+            border: outset 2px !important ;
+            }
+
+/* Fichas */
+
+.ficha {
+
+    position: absolute; 
+    cursor: pointer;
+
+    border: outset 2px !important;
+    border-radius: 50%;
+
+    color: black;   
+
+    width: 30px;
+    height: 30px;
+
+    padding-left: 10px;
+    padding-top: 5px;    
+
+    text-align: center;
+    vertical-align: middle;
+    font-size: x-small;
+
+    box-shadow: rgb(242 233 233 / 71%) 4px 2px 4.6px;
+    /* background-image: linear-gradient(33deg, #c39999, #6e702700); */
+
+}
+
+    .fichas_amarillas {
+        position: absolute;
+        display: flex;
+
+        top:0;
+        left:0;
+
+        background-color: rgb(239, 239, 81);
+        border-color: yellow !important;
+    
+    }
+    .fichas_azules {
+        position: absolute;
+        display: flex;
+
+        top:0;
+        left:0;
+        
+        background-color: blue;
+        border-color: blue !important;
+
+        color: white !important;
+
+    }
+    .fichas_rojas {
+        position: absolute;
+        display: flex;
+
+        top:0;
+        left:0;
+        
+        background-color: red;
+        border-color: red !important;
+
+        color: white !important;
+    
+    }
+    .fichas_verdes {
+        position: absolute;
+        display: flex;
+
+        top:0;
+        left:0;
+        
+        background-color: green;
+        border-color: black !important;
+        
+        color: white !important;
+
+    }
+    
+    .fichas_rojas nav {
+        background-color: red;
+        color: white;
+    
+    }
+    .fichas_verdes nav {
+        background-color: green;
+        color: white;
+    
+    }
+    .fichas_amarillas nav {
+        background-color: yellow;
+        color: black;
+    
+    }   
+    .fichas_azules nav {
+        background-color: blue;
+        color: white;
+    }
+
+/* Paneles */
+.panel-div{
+    border: outset;
     border-radius: 10px;
-    margin: 10px !important;
-    padding: 5px !important;
+    position: absolute;
+    min-width: fit-content;
+    min-height: fit-content;
+   background-color: white;
 }
-#select_log{
-    max-height: 70vh !important;
-    overflow: auto !important;
+.panel-div h2 , .panel-div h4{
+    border: outset;
+    border-radius: 10px;
+    padding: 5px;
+    min-width: fit-content;
+    min-height: fit-content;
+    text-align: center;
 }
+.panel-div header{
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    min-width: fit-content;
+    min-height: fit-content;
+    text-align: center;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+    margin: 3px;
+
+}
+.panel-div-body{
+    max-height: 100%;
+    overflow: hidden;
+    height: 100%;
+    border: inset;
+    border-radius: 10px;
+    border-top-left-radius: 0%;
+    border-top-right-radius: 0%;
+    margin: 3px;
+    padding: 5px;
+}
+
+        /* Tablero */
+
+        #panel_tablero {
+            left: 1%;
+            top:2%;
+            width: 50%;
+            height: 95%;
+           
+        }
+        #panel_tablero >header{
+        display: none !important;
+           
+        }
+
+        /* Tools */
+        #panel_tools{ 
+            right: 1%;
+            bottom:2%;
+            width: 45%;
+        }
+        .bg-dark >div{
+            border-radius: 10px;
+            margin: 10px !important;
+            padding: 5px !important;
+        }
+
+        /* Log */
+
+        #panel_log_top{
+        right: 1%;width: 45%;
+        top:2%;
+        max-width: 45%;
+        overflow: hidden;
+        max-height: 60%;
+
+        }
+        #select_log{
+            max-height: 70vh !important;
+            overflow: auto !important;
+        }
+
+/******   *******/
+
+
+
