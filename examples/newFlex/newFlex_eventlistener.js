@@ -50,6 +50,7 @@ function adding_listeners() {
             //  try{alert(mueve_auto.checked)}
             try { if (mueve_auto.checked == true) { 
                  mueve_ficha(input_select.value, input_select2.value) 
+                 mueve_auto.checked=false
                 // document.getElementById("boton_mueve").click() 
             } }
             catch { }

@@ -14,5 +14,11 @@ $("#panel_tools").draggable();
 $("#panel_tablero").resizable();
 $("#panel_tablero").draggable();
 
+$("#panel_conf").resizable();
+$("#panel_conf").draggable();
+
+$(".panel-div").draggable();
+
 $(".ficha").draggable();
 
+carga_paneles_div()
