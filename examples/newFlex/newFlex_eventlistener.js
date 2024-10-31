@@ -86,3 +86,22 @@ function adding_listeners() {
         // $( "#log" ).append( "<div>Handler for `resize` called.</div>" );
       } );    
 }
+
+function add_listeners_boton_clase(){
+    jQuery(".boton_clase").click(function (event) {
+alert(this.getAttribute("name"))
+        const valor_origen=document.getElementById(this.getAttribute("name"))
+        var valor_w=valor_origen.offsetWidth
+        var valor_h=valor_origen.offsetHeight
+
+        //const valor_destino=
+          //  alert(this.getAttribute("name"))
+          alert("medida-x: " + valor_w + "\nl" + "medida-y: " + valor_h)
+
+          
+         const  valor_pregunta=prompt("height","width:200px !important;height:200px !important")
+         alert(valor_pregunta)
+          valor_origen.setAttribute("style",valor_pregunta)
+    });
+
+}

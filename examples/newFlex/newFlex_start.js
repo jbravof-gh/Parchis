@@ -21,4 +21,5 @@ $(".panel-div").draggable();
 
 $(".ficha").draggable();
 
+// setTimeout(carga_paneles_div,5000)
 carga_paneles_div()

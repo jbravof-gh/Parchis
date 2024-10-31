@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/png" href="../../imagenes/icono.png">
+    <!-- BootStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Local Resources 
+      
+    <script src="../../scripts/fichas.js" defer></script>
+
+
+    <link href="./flex.css" rel="stylesheet">
+    <link href="../../styles/fichas.css" rel="stylesheet">
+     -->
+    
+    
+       <!-- <script src="../flex/flex.js" defer></script> -->
+      <link href="../newFlex/newFlex.css" rel="stylesheet">
+   
+     <script src="../newFlex/newFlex_main.js" ></script>
+     <script src="../newFlex/newFlex_eventlistener.js" ></script>
+
+     <script src="./layout-2.js" defer></script>
+     <script src="./test.js" defer></script> 
+    
+
+
+    <style>
+        html {
+            height: 100vh;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: black;
+            margin: 0;
+            border: outset 2px;
+            height: -webkit-fill-available;
+            padding: 1px;
+            /* padding-bottom: 10px; */
+            overflow: hidden;
+        }
+        h4 p{
+            color: white;
+        }
+        .panel-principal-div {
+        padding: 5px;
+        overflow: hidden !important;
+        border: outset 2px;
+        border-radius: 10px;
+
+        }
+        .div_top_panel{
+            border: solid;
+            border-color: rgb(107, 76, 177) !important;
+            overflow: hidden !important;
+            height: 20% !important;
+        }
+        .div_mid_panel{
+        border: solid;
+
+        border-color: brown !important;
+        height: -webkit-fill-available !important;
+    
+
+        }
+
+
+
+ .panel-principal-div div {
+    /* border: outset 2px; */
+ }
+
+
+    </style>
+</head>
+    <!-- Plantilla 5 : ** Pantalla1 , Tablero  *** -->
+    <template>
+        <div id="pantalla1" class="tablero" style="">
+            <div class=" h-25 d-flex flex-row  items-stretch">
+                <div class="p-0 casa border-0 w-25 bg-danger bg-gradient d-flex flex-column  items-stretch">
+    
+                    <div class="casa_row row border-0 m-0 p-0 h-50 w-100 d-flex flex-column  items-stretch">
+                        <div id="101" class="border w-50 h-100 m-0 p-3 text-center">
+                            <div class="border" id="rojas_1_log">x</div>
+    
+                        </div>
+                        <div id="102" class="border w-50 h-100 p-3 text-center">
+                            <div class="border" id="rojas_2_log">x</div>
+    
+                        </div>
+                    </div>
+                    <div class="casa_row row border-0 m-0 p-0 h-50 w-100 d-flex flex-column  items-stretch">
+                        <div id="103" class="border w-50 h-100 m-0 p-3 text-center">
+                            <div class="border" id="rojas_3_log">x</div>
+    
+                        </div>
+                        <div id="104" class="border w-50 h-100 p-3 text-center">
+                            <div class="border" id="rojas_4_log">x</div>
+    
+                        </div>
+                    </div>
+    
+    
+                </div>
+                <div class="casillas border-0 w-25  d-flex flex-row  items-stretch">
+                    <div
+                        class="celdas border-0 p-0 w-50 d-flex flex-column justify-content-between items-stretch overflow-auto">
+
+                        <div id="35"  class="celda border">35</div>
+                        <div id="36"  class="celda border">36</div>
+                        <div  id="37" class="celda border">37</div>
+                        <div  id="38" class="celda border">38</div>
+                        <div  id="39" class="celda border">39</div>
+                        <div id="40" class="celda border">40</div>
+                        <div id="41"  class="celda border">41</div>
+                    </div>
+                    <div
+                        class="celdas border bg-danger  p-0 w-50 d-flex flex-column justify-content-between items-stretch overflow-auto">
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                    </div>
+                    <div
+                        class="celdas border p-0 w-50 d-flex flex-column justify-content-between items-stretch overflow-auto">
+                        <div  id="33" class="celda border">33</div>
+                        <div  id="32" class="celda border">32</div>
+                        <div id="31" class="celda border">31</div>
+                        <div id="30"  class="celda border">30</div>
+                        <div id="29"  class="celda border">29</div>
+                        <div id="28"  class="celda border">28</div>
+                        <div  id="27" class="celda border">27</div>
+
+                    </div>
+                </div>
+                <div class="casa border-0 w-25 bg-primary bg-gradient">
+                    <div class="casa_row row border-0 m-0 p-0 h-50 w-100 d-flex flex-column  items-stretch">
+                        <div id="201" class="border w-50 h-100 m-0 p-3 text-center">
+                            <div class="border" id="azules_1_log">x</div>
+    
+                        </div>
+                        <div id="202" class="border w-50 h-100 p-3 text-center">
+                            <div class="border" id="azules_2_log">x</div>
+    
+                        </div>
+                    </div>
+                    <div class="casa_row row border-0 m-0 p-0 h-50 w-100 d-flex flex-column  items-stretch">
+                        <div id="203" class="border w-50 h-100 m-0 p-3 text-center">
+                            <div class="border" id="azules_3_log">x</div>
+    
+                        </div>
+                        <div id="204" class="border w-50 h-100 p-3 text-center">
+                            <div class="border" id="azules_4_log">x</div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" h-25 d-flex flex-row  items-stretch">
+                <div class="casillas border-0 w-25 d-flex flex-column  items-stretch">
+                    <div class="celdas border-0 w-100 h-50 d-flex flex-row justify-content-between   items-stretch">
+                        <div id="50" class="celda border">50</div>
+                        <div id="49"  class="celda border">49</div>
+                        <div id="48"  class="celda border">48</div>
+                        <div id="47"  class="celda border">47</div>
+                        <div  id="46" class="celda border">46</div>
+                        <div  id="45" class="celda border">45</div>
+                        <div  id="44" class="celda border">44</div>
+                    </div>
+                    <div
+                        class="celdas border bg-success w-100 h-50 d-flex flex-row justify-content-between   items-stretch">
+                        <div id="51" class="celda-casa border">51</div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                    </div>
+            
+                    <div style="font-size: xx-small;  writing-mode: vertical-lr;
+            text-orientation: inherit ;"
+                        class="celdas border w-100 h-50 d-flex flex-column justify-content-evenly   items-stretch">
+                        <div id="52" class=" celda border ">52</div>
+                        <div id="53" class=" celda border ">53</div>
+                        <div id="54" class=" celda border ">54</div>
+                        <div id="55" class=" celda border ">55</div>
+                        <div id="56" class=" celda border ">56</div>
+                        <div id="57" class=" celda border ">57</div>
+                        <div id="58" class=" celda border ">58</div>
+                    </div>
+                </div>
+                <div class="centro  border w-25 d-flex flex-column  items-stretch">
+                    <div class="celdas border-0 w-100 h-50 d-flex flex-row justify-content-between   items-stretch">
+                        <div class="celda border"></div>
+                        <div class="celda border"></div>
+                        <div class="celda border"></div>
+                        <!-- <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div> -->
+                    </div>
+                    <div class="celdas border-0 w-100 h-50 d-flex flex-row justify-content-between   items-stretch">
+                        <div class="celda border"></div>
+                        <div class="celda border"></div>
+                        <div class="celda border"></div>
+                        <!-- <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div> -->
+                    </div>
+                    <div class="celdas border-0 w-100 h-50 d-flex flex-row justify-content-between   items-stretch">
+                        <div class="celda border"></div>
+                        <div class="celda border"></div>
+                        <div class="celda d-flex border-0 p-0 m-0">
+                            <div id="8" class="celda border border-left-0 border-right-0 w-50">8</div>
+    
+                            <div id="9" class="celda border border-left-0 border-right-0 w-50">9</div>
+                        </div>
+                        <!-- <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div>
+                                <div class="border"></div> -->
+                    </div>
+    
+    
+                </div>
+                <div class="casillas border-0 w-25 d-flex flex-column  items-stretch">
+                    <div class="celdas border-0 w-100 h-50 d-flex flex-row justify-content-between   items-stretch">
+                        <div id="24" class=" celda border ">24</div>
+                        <div id="23" class=" celda border ">23</div>
+                        <div id="22" class=" celda border ">22</div>
+                        <div id="21" class=" celda border ">21</div>
+                        <div id="20" class=" celda border ">20</div>
+                        <div id="19" class=" celda border ">19</div>
+                        <div id="18" class=" celda border ">18</div>
+                    </div>
+                    <div
+                        class="celdas border bg-primary w-100 h-50 d-flex flex-row justify-content-between   items-stretch">
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                        <div class="border"></div>
+                    </div>
+                    <div style="font-size: xx-small;  writing-mode: vertical-rl;
+            text-orientation: inherit;"
+                        class="celdas border w-100 h-50 p-0 d-flex flex-column justify-content-evenly   items-stretch">
+                        <div id="16" class="celda border h-100  ">16</div>
+                        <div id="15" class="celda border   ">15</div>
+                        <div id="14" class="celda border  ">14</div>
+                        <div id="13" class="celda border  ">13</div>
+                        <div id="12" class="celda border  ">12</div>
+                        <div id="11" class="celda border ">11</div>
+                        <div id="10" class="celda border ">10</div>
+                    </div>
+                </div>
+            </div>
+            <div class=" h-25 d-flex flex-row  items-stretch">
+                <div class="casa border-0 w-25 bg-success bg-gradient">
+                    <div class="casa_row row border-0 m-0 p-0 h-50 w-100 d-flex flex-column  items-stretch">
+    
+                        <div id="301" class="border w-50 h-100 m-0 p-3 text-center">
+                            <div class="border" >
+                                <svg  width="25" height="25">
+                                    <!-- <circle cx="5" cy="5" r="40" stroke="green" stroke-width="4" fill="yellow" /> -->
+                                    <text id="verdes_1_log" fill="#ffffff" font-size="10" font-family="Verdana" x="7" y="18">1</text>
+                                </svg>
+                            </div>
+    
+                        </div>
+                        <div id="302" class="border w-50 h-100 p-3 text-center">
+                            <div class="border" id="verdes_2_log">x</div>
+    
+                        </div>
+                    </div>
+                    <div class="casa_row row border-0 m-0 p-0 h-50 w-100 d-flex flex-column  items-stretch">
+                        <div id="303" class="border w-50 h-100 p-3 text-center">
+                            <div class="border" id="verdes_3_log">x</div>
+                        </div>
+                        <div id="304" class="border w-50 h-100 p-3 text-center">
+                            <div class="border" id="verdes_4_log">x</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="casillas border-0 w-25 d-flex flex-row   items-stretch">
+                    <div
+                        class="celdas border-0 p-0 w-50 d-flex flex-column justify-content-between items-stretch overflow-auto ">
+                        <div id="61" class="  celda border  ">61</div>
+                        <div id="62" class="  celda border  ">62</div>
+                        <div id="63" class="  celda border  ">63</div>
+                        <div id="64" class="  celda border  ">64</div>
+                        <div id="65" class="  celda border  ">65</div>
+                        <div id="66" class="  celda border  ">66</div>
+                        <div id="67" class="  celda border ">67</div>
+                    </div>
+                    <div class="celdas border bg-warning p-0 w-50 d-flex flex-column justify-content-between
+                            items-stretch overflow-auto ">
+                        <div class="celda border "></div>
+                        <div class="celda border "></div>
+                        <div class="celda border "></div>
+                        <div class="celda border "></div>
+                        <div class="celda border "></div>
+                        <div class="celda border "></div>
+                        <div class="celda border "></div>
+                        <div class="celda celda-casa border ">68</div>
+                    </div>
+                    <div style=" font-size: xx-small"
+                        class="celdas border-0 m-0 p-0 w-50 d-flex flex-column justify-content-evenly items-stretch overflow-auto ">
+                        <div id="7" class=" celda border ">7</div>
+                        <div id="6" class=" celda border">6</div>
+                        <div id="5" class="celda border ">5</div>
+                        <div id="4" class="celda  border  ">4</div>
+                        <div id="3" class="celda  border ">3</div>
+                        <div id="2" class="celda border ">2</div>
+                        <div id="1" class="celda border ">
+                            1
+                        </div>
+                    </div>
+    
+                </div>
+                <div class="casa border w-25 bg-warning  bg-gradient">
+                    <div class="casa_row row border-0 m-0 p-0 h-50 w-100 d-flex flex-column  items-stretch">
+    
+                        <div id="401" class="border w-50 h-100 m-0 p-3 text-center">
+                            <div class="border" id="amarillas_1_log">x</div>
+    
+                        </div>
+                        <div id="402" class="border w-50 h-100 p-3 text-center">
+                            <div class="border" id="amarillas_2_log">x</div>
+    
+                        </div>
+                    </div>
+                    <div class="casa_row row border-0 m-0 p-0 h-50 w-100 d-flex flex-column  items-stretch">
+                        <div id="403" class="border w-50 h-100 m-0 p-3 text-center" >
+                            <div class="border" id="amarillas_3_log">x</div>
+    
+                        </div>
+                        <div id="404" class="border w-50 h-100 m-0 p-3 text-center">
+                            <div class="border" id="amarillas_4_log">x</div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+        <!-- Plantilla 3 : ** log  *** -->
+        <template>
+            <div id="panel_log" class=" border-0 h-100 overflow-auto w-auto p-0 d-flex flex-column  items-stretch ">
+                <button class="btn w-100 btn-primary bg-gradient border text-black" onclick="$('#select_log').toggle();">Log </button>
+    <div style="display: none !important;"  class=" border rounded w-auto h-100 overflow-auto mt-2 p-0 text-small "   id="select_log" >
+    
+    </div>
+    </div>
+        </template>
+        <!-- Plantilla 4 : ** tools  *** -->
+        <template>
+          
+            <!-- <div id="panel_fi_se" class="border-0 h-100 col-6 "> -->
+                <div
+                    class="border-0 rounded border-outset h-100 gap-1   flex-grow-1 overflow-auto text-center p-1 d-flex justify-content-evenly flex-column ">
+    
+                    <h6 onclick="$('#panel_seleccion').toggle();" class="btn text-white bg-danger bg-gradient border rounded p-2 ms-1 me-1 mt-1 h-auto">Seleccion </h6>
+                    <!-- <hr class="text-white"> -->
+    
+    
+                    <div id="panel_seleccion" style="display: none !important;" class="border-0 w-100 h-100 ps-1 pe-1 gap-1 pt-1 flex-column">
+                        <div class="border-0 w-100 d-flex gap-1 flex-row justify-content-evenly">
+                            <div class="border border-3   btn w-75 bg-light bg-gradient">Ficha</div> <input
+                                id="input_select" type="text" class="border border-inset border-3 btn w-75 bg-info bg-gradient">
+                        </div>
+                        <div class="border-0 w-100 d-flex gap-1 flex-row justify-content-evenly mt-1">
+                            <div class="border border-3  btn w-75  bg-light bg-gradient"> Posicion</div> <input id="input_select2"
+                                type="text" class="border btn w-75 bg-info bg-gradient border-inset border-3 ">
+                        </div>
+                    <!-- <hr class="text-white border border-2 border-white m-2 border-color-white "> -->
+                    <div class="border rounded d-flex flex-row justify-content-between p-1 mt-2">
+                        <button id="boton_mueve" class="btn border btn-success bg-gradient text-white"
+                        onclick=" mueve_ficha(input_select.value, input_select2.value)  ">Mueve    <input class="btn border text-danger ms-2" id="mueve_auto" type="checkbox" checked></button>
+    
+                            <!-- onclick="mueve_ficha((badge_fichas.innerHTML), (badge_seleccion.innerHTML)) ">Mueve    <input class="btn border text-danger ms-2" id="mueve_auto" type="checkbox" checked></button> -->
+                            <!-- <input class="btn border" id="mueve_auto" type="checkbox" checked> -->
+                        <button class="btn border btn-warning bg-gradient mt-1 text-black"
+                            onclick="recalcula_casilla()">Recalcula</button>
+    
+                    </div>
+    
+                    </div>
+    
+    
+                </div>
+                <!-- <button class="btn broder btn-success" onclick="vete_casilla()">Go</button> -->
+    
+            <!-- </div>   -->
+        </template>
+<body  id="body_id" >
+   <script>
+
+   </script>
+</body>
+
+</html>

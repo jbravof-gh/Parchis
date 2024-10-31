@@ -76,20 +76,20 @@ function log_move(texto) {
     var valor_cuenta = (((document.getElementById("select_log").getElementsByTagName("DIV").length) / 10) + 1)
     badge_log.innerHTML = valor_cuenta
     var texto_panel = "";
-    texto_panel += "<div class=' border bg-white text-black rounded overflowx-auto d-flex flex-column justify-content-between flex-wrap m-2 p-1' >"
-    texto_panel += "<div class=' btn btn-success border border-black rounded w-auto ps-3'>No: " + valor_cuenta
+    texto_panel += "<div class=' border bg-white text-black rounded overflowx-auto d-flex flex-column justify-content-evenly  m-0 p-0' >"
+    texto_panel += "<div class=' btn btn-success border border-black rounded w-auto ps-3 h-auto'>No: " + valor_cuenta
     var valor_1 = "$('#panel_nota_" + valor_cuenta + "').toggle();"
-    texto_panel += "<button class='btn btn-danger w-50 border ps-3 ms-2' onclick=" + valor_1 + ">▦ Log</button>" + "</div>"
+    texto_panel += "<button class='btn btn-danger w-50 border ps-3 ms-2 h-auto' onclick=" + valor_1 + ">▦ Log</button>" + "</div>"
 
     texto_panel += "<div style='display: none;' id='panel_nota_" + valor_cuenta + "' class='border bg-white text-white rounded m-0 p-1  w-100  flex-wrap h-auto'>"
     texto_panel += "<div class='btn btn-warning m-0 p-2'>"
     texto_panel += "<div class='border btn btn-secondary'>Hora :</div> " + " <hr class='m-1 border-3'>" + "<div class=' btn border flex-wrap  btn-primary'>" + new Date() + "</div>"
     texto_panel += "</div>"
-    texto_panel += "<h6 class='bg-warning bg-gradient border rounded mt-2 m-0 p-2 w-100  flex-wrap h-auto   text-black '>"
+    texto_panel += "<h6 class='bg-warning bg-gradient border rounded mt-2 m-0 p-1 w-100  flex-wrap h-auto   text-black '>"
     texto_panel += "<div class='border btn btn-secondary'>Ficha:</div> " + "<div class='w-50 btn btn-primary border'>" + texto.split("-")[1] + "</div>"
     texto_panel += "</h6>"
-    texto_panel += "<h6 class='bg-warning bg-gradient border rounded m-0 p-2   flex-wrap h-auto  text-black '>"
-    texto_panel += "<div class='border btn btn-secondary w-50'>Posicion:</div> " + "<div class='btn border w-25 btn-primary'>" + texto.split("-")[0] + "</div>"
+    texto_panel += "<h6 class='bg-warning bg-gradient border rounded m-0 p-1   flex-wrap h-auto  text-black '>"
+    texto_panel += "<div class='border btn btn-secondary w-auto'>Posicion:</div> " + "<div class='btn border w-auto btn-primary'>" + texto.split("-")[0] + "</div>"
     texto_panel += "</h6>"
     texto_panel += "</div>"
     texto_panel += "</div>"
@@ -137,23 +137,156 @@ function run_ficha(id_pass){
 
 
     }
-
+function devuelve_width(id_pass){
+//alert(document.getElementById(id_pass).style.left)
+return document.getElementById(id_pass).style.left
+}
 function carga_paneles_div(){
-    var numero_paneles, panel_destino, panel_origen,panel_origen2, texto_final=""
+    var numero_paneles, panel_destino, panel_origen,panel_origen2, texto_final="", valor_estilo=""
     numero_paneles=document.getElementsByClassName("panel-div");
     panel_destino=document.getElementById("panel_conf_main")
-
     for (i = 0; i < numero_paneles.length -1 ; i++) {
         panel_origen=numero_paneles[i].getAttribute("name")
         panel_origen2=numero_paneles[i].getAttribute("id")
+        valor_estilo=numero_paneles[i].offsetLeft
+//alert("panel_origen -"  + panel_origen2 + "valor_estilo: " + valor_estilo)
+texto_final+='<div class="d-flex flex-column h-auto items-stretch overflow-hidden pb-1 pt-1">'
+    texto_final+='<div class="panel_bar form-check form-switch  items-stretch pt-0 mt-0 pb-0 mb-0 overflow-hidden h-50 d-flex justify-content-evenly border-0">'
+            texto_final+='<input name="'
+            texto_final+=panel_origen2 
+            texto_final+='" onclick="show_hide(this.name)" '
+            texto_final+=' class="form-check-input mt-2 h-50 me-0 w-50 " type="checkbox" '
+            texto_final+= 'id="flexSwitchCheckChecked'+i+'" > '
+            texto_final+=' <button name="' 
+            texto_final+=panel_origen2 + "_2"
+                 texto_final+='" onclick="show_hide(this.name)" '
+             texto_final+=' class="btn btn-sm border rounded w-50 p-0 m-0 mt-1 ms-0 me-0 mb-0 h-75 bg-primary text-white" '+'">'+ panel_origen
+                         
+             
+             texto_final+='</button>'
+    texto_final+='</div>'
 
-texto_final+='<div class="form-check form-switch pt-2 pb-2 d-flex justify-content-evenly">'
-        texto_final+='<input name="'
-        texto_final+=panel_origen2
-        texto_final+='" onclick="show_hide(this.name)" '
-        texto_final+=' class="form-check-input" type="checkbox" '
-        texto_final+= 'id="flexSwitchCheckChecked'+i+'" > '
-        texto_final+=' <label class="form-check-label" for="flexSwitchCheckChecked'+i+'">'+ panel_origen+'</label>'
+    
+    texto_final+='<div id="' 
+    texto_final+=panel_origen2 + "_2"
+
+     texto_final+='" class="panel_div h-75 overflow-auto  mt-0 mb-0 pb-0">'
+            texto_final+='<div class="panel_conf_main_div  h-auto border-0 pb-0 mb-0">'
+
+            texto_final += '<div id="' 
+            texto_final+=panel_origen2 + "_5"
+                        texto_final+='" class="panel_conf_main_div border-0 pt-1 pb-1 pe-2 ps-2 p-0 m-0 d-flex justify-content-evenly gap-1 ">'
+                                texto_final += '<div class="valores w-25 bg-success bg-gradient  border-outset">'
+                                    
+                            texto_final +='<h6  >'
+                            texto_final +='Id: '
+                            texto_final +='</h6>'
+
+                    texto_final += '</div>'
+                    texto_final += '<div class="w-75 h-100 fs-6 valores">'
+                            texto_final +='<h6 >'
+                            texto_final += panel_origen2
+                            texto_final +='</h6>'
+                    texto_final += '</div>'
+                    // texto_final += '<div class="boton_clase_div  ms-1  p-0 m-0 w-100 h-100" >'
+                    // texto_final+=' <button class="boton_clase btn rounded bg-danger border-0 w-100 h-100 p-0 m-0">↻  ' 
+                    // texto_final+='</button>'
+
+                    // texto_final += '</div>'
+            texto_final += '</div>'
+    texto_final+='</div>'
+                texto_final += '<div id="' 
+    texto_final+=panel_origen2 + "_3"
+                 texto_final+='" class="panel_conf_main_div border-0 pt-1 pb-1 pe-2 ps-2 p-0 m-0 d-flex justify-content-evenly gap-1 ">'
+                        texto_final += '<div class="valores w-100 bg-success bg-gradient  border-outset">'
+                                texto_final +='<h6 class="fs-6 mt-1" >'
+                                texto_final +='Height:'
+                                texto_final +='</h6>'
+
+                        texto_final += '</div>'
+                        texto_final += '<div class="w-100 fs-6 valores">'
+                                texto_final +='<h6 class=" fs-6 mt-1">'
+                                texto_final +=numero_paneles[i].offsetHeight
+                                texto_final +='</h6>'
+                        texto_final += '</div>'
+                        texto_final += '<div class="boton_clase_div  ms-1  p-0 m-0 w-100 h-100" >'
+                        texto_final+=' <button name="' 
+                        texto_final+=panel_origen2
+                        texto_final+='" class="boton_clase btn rounded bg-danger border-0 w-100 h-100 p-0 m-0">↻  ' 
+                        texto_final+='</button>'
+
+                        texto_final += '</div>'
+
+                texto_final += '</div>'
+
+                texto_final += '<div class="panel_conf_main_div border-0 pt-1 pb-1 p-0 m-0 d-flex justify-content-evenly gap-1 ">'
+                        texto_final += '<div class="valores w-100 bg-success bg-gradient  border-outset">'
+                                texto_final +='<h6 class="fs-6 mt-1" >'
+                                texto_final +='Width: '
+                                texto_final +='</h6>'
+
+                        texto_final += '</div>'
+                        texto_final += '<div class="w-100 fs-6 valores">'
+                                texto_final +='<h6 class=" fs-6 mt-1">'
+                                texto_final += numero_paneles[i].offsetWidth;//  devuelve_width(panel_origen2)
+                                texto_final +='</h6>'
+                        texto_final += '</div>'
+                        texto_final += '<div class="boton_clase_div  ms-1  p-0 m-0 w-100 h-100" >'
+                        texto_final+=' <button name="' 
+                        texto_final+=panel_origen2
+                        texto_final+='" class="boton_clase btn rounded bg-danger border-0 w-100 h-100 p-0 m-0">↻  ' 
+                        texto_final+='</button>'
+
+                        texto_final += '</div>'
+
+                texto_final += '</div>'
+                texto_final += '<div class="panel_conf_main_div border-0 pt-1 pb-1 p-0 m-0 d-flex justify-content-evenly gap-1 ">'
+
+             // texto_final += '<div class="panel_conf_main_div d-flex border-0 m-0  justify-content-evenly items-stretch">'
+              texto_final += '<div class="valores w-100 bg-success bg-gradient  border-outset">'
+
+          //    texto_final += '<div class="valores bg-success w-50">'
+                        texto_final +='<h6 class="fs-6 mt-1" >'
+                        texto_final +='Top:'
+                        texto_final +='</h6>'
+
+                texto_final += '</div>'
+                texto_final += '<div class="w-100 fs-6 valores">'
+                        texto_final +='<h6 class=" fs-6 mt-1">'
+                        texto_final +=numero_paneles[i].offsetTop
+                        texto_final +='</h6>'
+                texto_final += '</div>'
+                texto_final += '<div class="boton_clase_div  ms-1  p-0 m-0 w-100 h-100" >'
+                texto_final+=' <button class="boton_clase btn rounded bg-danger border-0 w-100 h-100 p-0 m-0">↻  ' 
+                texto_final+='</button>'
+
+                texto_final += '</div>'
+        texto_final += '</div>'
+
+        texto_final += '<div id="' 
+                texto_final+=panel_origen2 + "_4"
+                            texto_final+='" class="panel_conf_main_div border-0 pt-1 pb-1 pe-2 ps-2 p-0 m-0 d-flex justify-content-evenly gap-1 ">'
+                                    texto_final += '<div class="valores w-100 bg-success bg-gradient  border-outset">'
+                                        
+                                texto_final +='<h6 class="fs-6 mt-1" >'
+                                texto_final +='Left: '
+                                texto_final +='</h6>'
+
+                        texto_final += '</div>'
+                        texto_final += '<div class="w-100 fs-6 valores">'
+                                texto_final +='<h6 class="fs-6 mt-1" >'
+                                texto_final +=numero_paneles[i].offsetLeft
+                                texto_final +='</h6>'
+                        texto_final += '</div>'
+                        texto_final += '<div class="boton_clase_div  ms-1  p-0 m-0 w-100 h-100" >'
+                        texto_final+=' <button class="boton_clase btn rounded bg-danger border-0 w-100 h-100 p-0 m-0">↻  ' 
+                        texto_final+='</button>'
+
+                        texto_final += '</div>'
+                texto_final += '</div>'
+        texto_final+='</div>'
+    texto_final+='</div>'
+
 texto_final+='</div>'
 
 
@@ -162,11 +295,20 @@ texto_final+='</div>'
 
     }
     panel_destino.innerHTML=texto_final;
-    flexSwitchCheckChecked0.checked=true
+   // flexSwitchCheckChecked0.checked=true
+    for (i = 0; i < numero_paneles.length -1 ; i++) {
+        show_hide( numero_paneles[i].id)
 
+    }
+    for (i = 0; i < document.getElementsByClassName("panel_div").length  ; i++) {
+        show_hide( document.getElementsByClassName("panel_div")[i].id)
+
+    }
+
+    add_listeners_boton_clase()
 }
 function show_hide(id){
-
+//alert(id)
     const text_id = "#" + id
     $(text_id).toggle()
 }
