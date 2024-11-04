@@ -76,20 +76,20 @@ function log_move(texto) {
     var valor_cuenta = (((document.getElementById("select_log").getElementsByTagName("DIV").length) / 10) + 1)
     badge_log.innerHTML = valor_cuenta
     var texto_panel = "";
-    texto_panel += "<div class=' border bg-white text-black rounded overflowx-auto d-flex flex-column justify-content-evenly  m-0 p-0' >"
-    texto_panel += "<div class=' btn btn-success border border-black rounded w-auto ps-3 h-auto'>No: " + valor_cuenta
+    texto_panel += "<div class=' border-0 bg-white text-black rounded overflowx-auto d-flex flex-column justify-content-evenly  m-1 p-0' >"
+    texto_panel += "<div class=' btn btn-success border border-black rounded w-auto ps-3 m-1 h-auto'>No: " + valor_cuenta
     var valor_1 = "$('#panel_nota_" + valor_cuenta + "').toggle();"
     texto_panel += "<button class='btn btn-danger w-50 border ps-3 ms-2 h-auto' onclick=" + valor_1 + ">▦ Log</button>" + "</div>"
 
-    texto_panel += "<div style='display: none;' id='panel_nota_" + valor_cuenta + "' class='border bg-white text-white rounded m-0 p-1  w-100  flex-wrap h-auto'>"
-    texto_panel += "<div class='btn btn-warning m-0 p-2'>"
-    texto_panel += "<div class='border btn btn-secondary'>Hora :</div> " + " <hr class='m-1 border-3'>" + "<div class=' btn border flex-wrap  btn-primary'>" + new Date() + "</div>"
+    texto_panel += "<div style='display: none;' id='panel_nota_" + valor_cuenta + "' class='panel_nota border bg-white text-white rounded m-0 p-1  w-100  flex-wrap h-auto'>"
+    texto_panel += "<div class='btn btn-warning m-0 p-2 d-flex flex-column'>"
+    texto_panel += "<div class='border btn btn-secondary'>Hora</div> " + " <hr class='m-1 border-3'>" + "<div class=' btn border flex-wrap  btn-primary'>" + new Date() + "</div>"
     texto_panel += "</div>"
-    texto_panel += "<h6 class='bg-warning bg-gradient border rounded mt-2 m-0 p-1 w-100  flex-wrap h-auto   text-black '>"
-    texto_panel += "<div class='border btn btn-secondary'>Ficha:</div> " + "<div class='w-50 btn btn-primary border'>" + texto.split("-")[1] + "</div>"
+    texto_panel += "<h6 class='bg-warning bg-gradient border rounded mt-2 m-0 p-1 w-100 d-flex gap-3  flex-wrap h-auto   text-black '>"
+    texto_panel += "<div class='border btn btn-secondary ms-2'>Ficha:</div> " + "<div class='w-50 btn btn-primary border flex-grow-1 me-2'>" + texto.split("-")[1] + "</div>"
     texto_panel += "</h6>"
-    texto_panel += "<h6 class='bg-warning bg-gradient border rounded m-0 p-1   flex-wrap h-auto  text-black '>"
-    texto_panel += "<div class='border btn btn-secondary w-auto'>Posicion:</div> " + "<div class='btn border w-auto btn-primary'>" + texto.split("-")[0] + "</div>"
+    texto_panel += "<h6 class='bg-warning bg-gradient border rounded m-0 p-1 d-flex gap-3  flex-wrap h-auto  text-black '>"
+    texto_panel += "<div class='border border-white border-2 btn btn-secondary w-auto ms-2'>Posicion:</div> " + "<div class='btn border w-auto btn-primary flex-grow-1 me-2'>" + texto.split("-")[0] + "</div>"
     texto_panel += "</h6>"
     texto_panel += "</div>"
     texto_panel += "</div>"

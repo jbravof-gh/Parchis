@@ -13,7 +13,7 @@ layout_array.push([
 layout_array.push([
     ["tag", "div"],
     ["id", "principal_div_1"],
-    ["class", ("border rounded border-secondary d-flex flex-column items-stretch m-0 w-100 h-100 gap-1") ],
+    ["class", ("border-0 rounded border-secondary d-flex flex-column items-stretch m-0 w-100 h-100 gap-1") ],
     ["destino","id","principal"],
     ["innertext",document.getElementsByTagName("template")[0].innerHTML]
 ])
@@ -43,12 +43,13 @@ layout_array.push([
 // Principal ***********
 // ********************Panel 2
 //******************8********** Top*/
+var code_text="$('#select_log').toggle();"
             layout_array.push([
                 ["tag", "div"],
                 ["id", "principal_div_2_top"],
                 ["class", ("border border-warning border-2 rounded m-0 p-1 d-flex justify-content-between") ],
                 ["destino","id","principal_div_2_1"],
-                ["innertext",'             <h4 class="d-flex justify-content-evenly gap-1 p-0 mb-0">                    <p class="border border-black rounded h-auto me-1 ms-1 mt-0 mb-0 p-1 pt-0">Log</p>                    <span id="badge_log"                        class="badge border border-outset border-4 border-danger bg-success mt-1 ms-5 pt-2 w-auto h-auto">0</span>                </h4>']
+                ["innertext",'             <h4 class="d-flex justify-content-between gap-1 p-0 mb-0">                    <p class="border border-2 border-white border-black rounded h-auto me-1 ms-1 mt-0 mb-0 ps-2 pe-2 p-1 pt-0" onclick="'+ code_text +'"  >Log</p>                    <span id="badge_log"                        class="badge border border-outset border-4 border-danger bg-success mt-1 ms-5 pt-2 ps-3 pe-3 fs-6 w-auto h-auto">0</span>                </h4>']
             ])
                     // layout_array.push([
                     //     ["tag", "button"],
@@ -69,26 +70,27 @@ layout_array.push([
             layout_array.push([
                 ["tag", "div"],
                 ["id", "principal_div_2_mid"],
-                ["class", ("border border-secondary border-2 rounded overflow-auto h-auto w-100 m-0 p-2 ") ],
+                ["class", ("border border-secondary border-2 rounded overflow-auto h-auto w-100 m-0 p-1 pt-0 ") ],
                 ["destino","id","principal_div_2_1"],
                 ["innertext",document.getElementsByTagName("template")[1].innerHTML]
             ])
             layout_array.push([
                 ["tag", "div"],
                 ["id", "principal_div_2_2"],
-                ["class", ("border-0 border-primary d-flex flex-column items-stretch  m-0 w-100 h-100 gap-1") ],
+                ["class", ("border-0 border-primary d-flex flex-column items-stretch  m-0 w-50 h-100 gap-1") ],
                 ["destino","id","principal_div_2_0"],
                 ["innertext",""]
             ])
             // Principal ***********
             // ********************Panel 2
             //******************8********** Top*/
+            code_text="$('#panel_seleccion').toggle();"
                         layout_array.push([
                             ["tag", "div"],
                             ["id", "principal_div_22_top"],
                             ["class", ("border border-warning border-2 rounded m-0 p-1 d-flex justify-content-between") ],
                             ["destino","id","principal_div_2_2"],
-                            ["innertext",' <h4 class="d-flex justify-content-evenly gap-1 p-0 mb-0"> <p class="border border-black rounded me-1 ms-1 mt-0 mb-0 p-1 pt-0">Tools</p> <span id="badge_fichas" class="badge bg-success mt-2  w-auto h-auto pt-2">x</span><span id="badge_seleccion" class="badge bg-success  w-auto h-auto pt-2">0</span> </h4>']
+                            ["innertext",' <h4 class="d-flex justify-content-evenly gap-1 p-0 mb-0"> <p class="border border-2 border-white rounded me-1 ms-1 mt-0 mb-0 p-1 pt-0 ps-2 pe-2" onclick="'+ code_text +'" >Tools</p> <span id="badge_fichas" class="badge bg-success mt-2  w-auto h-auto pt-2">x</span><span id="badge_seleccion" class="badge bg-success  w-auto h-auto pt-2">0</span> </h4>']
                         ])
                                 // layout_array.push([
                                 //     ["tag", "button"],

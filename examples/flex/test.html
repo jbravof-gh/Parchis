@@ -79,7 +79,9 @@
  .panel-principal-div div {
     /* border: outset 2px; */
  }
-
+.panel_nota{
+    zoom:0.6;
+}
 
     </style>
 </head>
@@ -375,8 +377,8 @@
         <!-- Plantilla 3 : ** log  *** -->
         <template>
             <div id="panel_log" class=" border-0 h-100 overflow-auto w-auto p-0 d-flex flex-column  items-stretch ">
-                <button class="btn w-100 btn-primary bg-gradient border text-black" onclick="$('#select_log').toggle();">Log </button>
-    <div style="display: none !important;"  class=" border rounded w-auto h-100 overflow-auto mt-2 p-0 text-small "   id="select_log" >
+                <!-- <button class="btn w-100 btn-primary bg-gradient border text-black" onclick="$('#select_log').toggle();">Log </button> -->
+    <div style="display: none !important;"  class=" border-0 rounded w-auto h-100 overflow-auto mt-1 p-0 text-small "   id="select_log" >
     
     </div>
     </div>
@@ -388,7 +390,7 @@
                 <div
                     class="border-0 rounded border-outset h-100 gap-1   flex-grow-1 overflow-auto text-center p-1 d-flex justify-content-evenly flex-column ">
     
-                    <h6 onclick="$('#panel_seleccion').toggle();" class="btn text-white bg-danger bg-gradient border rounded p-2 ms-1 me-1 mt-1 h-auto">Seleccion </h6>
+                    <!-- <h6 onclick="$('#panel_seleccion').toggle();" class="btn text-white bg-danger bg-gradient border rounded p-2 ms-1 me-1 mt-1 h-auto">Seleccion </h6> -->
                     <!-- <hr class="text-white"> -->
     
     
@@ -402,13 +404,13 @@
                                 type="text" class="border btn w-75 bg-info bg-gradient border-inset border-3 ">
                         </div>
                     <!-- <hr class="text-white border border-2 border-white m-2 border-color-white "> -->
-                    <div class="border rounded d-flex flex-row justify-content-between p-1 mt-2">
-                        <button id="boton_mueve" class="btn border btn-success bg-gradient text-white"
+                    <div class="border rounded d-flex flex-row justify-content-evenly p-1 mt-2 gap-2">
+                        <button id="boton_mueve" class="btn border btn-success mt-1 bg-gradient text-white"
                         onclick=" mueve_ficha(input_select.value, input_select2.value)  ">Mueve    <input class="btn border text-danger ms-2" id="mueve_auto" type="checkbox" checked></button>
     
                             <!-- onclick="mueve_ficha((badge_fichas.innerHTML), (badge_seleccion.innerHTML)) ">Mueve    <input class="btn border text-danger ms-2" id="mueve_auto" type="checkbox" checked></button> -->
                             <!-- <input class="btn border" id="mueve_auto" type="checkbox" checked> -->
-                        <button class="btn border btn-warning bg-gradient mt-1 text-black"
+                        <button class="btn border btn-warning bg-gradient h-auto mt-1 text-black"
                             onclick="recalcula_casilla()">Recalcula</button>
     
                     </div>
