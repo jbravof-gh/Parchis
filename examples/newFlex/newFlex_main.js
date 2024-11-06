@@ -95,6 +95,8 @@ function log_move(texto) {
     texto_panel += "</div>"
     //-----
     document.getElementById("select_log").innerHTML = texto_panel + select_log.innerHTML
+// console.log("stor", document.getElementsByClassName("panel_nota")[sessionStorage.length].getElementsByTagName("*").length)
+//     sessionStorage.setItem(sessionStorage.length,( texto_panel) )
 }
 
 function mueve_ficha(ficha_id, celda_id) {

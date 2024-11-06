@@ -5,9 +5,9 @@ var _objeto_jugadores = [];
 var _objeto_partida = [];
 _objeto_partida.push({ Sesion: "1", Fecha:"", Configuracion: {} })
 _objeto_partida[0].Fecha= new Date().toLocaleDateString()  //("1/1/2020")
-
-function start() {
   const Parchis_Partida = new _Parchis(_objeto_partida, _objeto_jugadores, _objeto_partida)
+function start() {
+
 
   _objeto_jugadores.push(["Nombres", ["J1", "J2", "J3", "J4"]])
 _objeto_jugadores.push(["Colores", ["rojo", "verde", "amarillo", "azul"]])
@@ -25,11 +25,13 @@ _objeto_jugadores.push(["Colores", ["rojo", "verde", "amarillo", "azul"]])
       sessionStorage.setItem("jsonobject", jsonobject)
 
   var valor_10 = sessionStorage.getItem("Objeto2")
-  console.log(valor_10)
+  console.log("Objeto2",valor_10)
 }
 function alert_01() {
   const Parchis_Partida2 = new _Parchis(_objeto_partida, _objeto_jugadores, _objeto_partida)
-  sessionStorage.setItem("Sesion2", Parchis_Partida2.Partida[0].Sesion)
+  sessionStorage.setItem("Sesion2-partida-sesion", Parchis_Partida2.Partida[0].Sesion)
+  sessionStorage.setItem("Sesion2", Parchis_Partida2.Partida[0].Jugadores)
+
   alert(Parchis_Partida2.Jugadores.Nombres)
   // let products = JSON.parse(Parchis_Partida);
 }
@@ -38,6 +40,9 @@ function _Parchis(partida, jugadores, fichas) {
   this.Partida = partida
   this.Jugadores = jugadores
   this.Fichas = fichas
+  this.adjunta=function(){alert(99)}
+  // Cat.meow=function(){return "Meow!"};
+  // return Cat;
 
 }
 
@@ -109,6 +114,7 @@ console.log("Obj_Parchis", Obj_Parchis);
 function run01(){
   Obj_Parchis.clave1="nueva clave2ddddd"
 console.log("Obj_Parchis", Obj_Parchis);
+Parchis_Partida.adjunta
 }
 
 
