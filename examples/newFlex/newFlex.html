@@ -14,12 +14,16 @@
     
         <!-- Local Resources  -->
         <script src="./newFlex_eventlistener.js" defer></script>
-      
+               <script src="../../scripts/objeto.js" defer></script>
          <script src="./newFlex_main.js" defer></script>
 
 
 
+
+
         <link href="./newFlex.css" rel="stylesheet">
+        <script src="../dataStorage/scripts/storage.js" defer></script> 
+
 
 </head>
 <body>
@@ -589,7 +593,7 @@
     <template>
         <div id="panel_log" class=" border h-100 w-auto p-2 d-flex flex-column  items-stretch ">
             <button class="btn w-100 btn-primary bg-gradient border text-black" onclick="$('#select_log').toggle();">Log </button>
-<div style="display: none !important;"  class=" border rounded w-auto h-auto mt-2 p-0 text-small "   id="select_log" >
+<div style="display: none !important;"  class=" border rounded w-auto h-75 overflow-y-auto mt-2 p-0 text-small "   id="select_log" >
 
 </div>
 </div>
@@ -1018,7 +1022,7 @@
             <div id="panel-div-body_2" class="panel-div-body ">Tools body</div>
     
         </div>
-        <div name="▤ Log" class="bg-black text-white panel-div " id="panel_log_top">
+        <div name="▤ Log" class="bg-black text-white panel-div h-50  " id="panel_log_top">
             <header class=" flex-row text-white d-flex m-0 p-1 pb-0 justify-content-between h-auto ">
                 <h4 class="d-flex justify-content-evenly gap-1 p-1 mb-0">
                     <p class="h-auto me-1 ms-1 mt-1 mb-0">Log</p>
@@ -1035,10 +1039,13 @@
             <div id="panel-div-body_3" class="panel-div-body w-100"></div>
     
         </div>
-        <div name="Config2" class="bg-black bg-gradient text-white panel-div p-2" id="panel_conf2"></div>
+        <div name="Config2" class="bg-black bg-gradient text-white panel-div p-2 h-75" id="panel_config2"></div>
+        <div name="jugadores" class="bg-black bg-gradient text-white panel-div p-0 m-0 border-0 h-100 overflow-hidden" id="panel_jugadores"></div>
+        <div name="partida" class="bg-black bg-gradient d-flex text-white panel-div p-0 m-0 border-0 h-75 w-75 overflow-hidden" id="panel_partida"></div>
+
         <div name="Config" class="bg-black bg-gradient text-white panel-div p-0 m-0 border-0 h-100 overflow-hidden" id="panel_conf"></div>
         <!-- <div name="Config" class="bg-black bg-gradient text-white panel-div p-2"  id="panel_conf"></div> -->
-    
+
     
     
     </template>
@@ -1047,7 +1054,118 @@
     <div class="border-0 border-top-left-rounded border-outset w-100 p-0 h-auto d-flex flex-column items-stretch"  id="panel_conf_main"></div>
 
 </template>
+<template id="id_9" name="jugadores_new">
+    <div class="d-flex w-auto h-auto border rounded  border-outset border-5">
+        <div class="border-0 p-1 w-auto d-flex flex-column gap-2 pb-2">
+            <div class="d-flex gap-2 p-0 pb-1 justify-content-start border-bottom">
+                <h4 class="text-white ps-2 ms-2 me-2 mt-2">Jugador</h4> 
+                <button onclick="rellena_select(JSON.parse(sessionStorage.getItem('jugadores')))"
+                class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Carga</button>
+                <button class="btn btn-sm btn-danger bg-gradient p-0 pe-2 ps-2 m-2" onclick="add_player();">+</button>
+                <button class="btn btn-sm btn-warning text-black bg-gradient p-0 pe-2 ps-2 m-2" onclick="myFunction()">-</button>
+    
+            </div>
+            <div class="d-flex gap-2">
+                <div class="w-25 border bg-warning h-100 text-white d-flex flex-column p-1 ms-1">
+                    <div class="text-center text-primary">Player</div>
+                    <select size="4" onchange="select_change(this.value)"  class="btn btn-sm rounded border border-inset bg-danger bg-gradient w-auto text-white overflow-hidden p-2 ms-1 me-1 h-auto d-flex"></select>
+    
+                </div>
+                <div class="w-75 d-flex flex-column h-100 mt-3 gap-2 pe-1">
+                    <div class="d-flex gap-2 text-center">
+                        <div class="border-0 text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Id:</div>
+                        <input id="input_id" type="text" class="btn bg-white text-danger rounded w-50 p-0 text-center " disabled/>
+                        <button onclick="" class="btn btn-sm btn-primary bg-gradient disabled">↻</button>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <div class="border-0 text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Nombre:</div>
+                        <input id="input_nombre" type="text" class="rounded w-50 text-center"/>
+                        <button onclick="update_nombre(input_id.value)" class="btn btn-sm btn-primary bg-gradient">↻</button>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <div class="border-0 text-center text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Color:</div>
+                        <input id="input_color"  type="text" class="rounded w-50 text-center"/>
+                        <button  onclick="update_color(input_id.value)" class="btn btn-sm btn-primary bg-gradient">↻</button>
+            
+                    </div>
+                </div>
+    
+            </div>
+    
+       
+        </div>
+    
+      </div>  
+</template>
+    <template id="id_10" name="NAV_content">
+        <div style="zoom:1" class="d-flex border-0 flex-column text-white gap-1 mt-1 p-0 w-auto h-100 overflow-auto">
+            <h4  onclick="$('#panel_config223').toggle();" class="text-center bg-secondary bg-gradient border-bottom border-1 h-auto fs-5  border-outset rounded m-1 p-3">Configuration</h4>
+            <div  id="panel_config223"  class="border-0 h-75 flex-grow-1 m-0 p-1">
+                <div class="border-0 h-100 overflow-auto fs-5 text-warning d-flex gap-1 flex-column justify-content-start "> </div>
+            </div>
+        </div>
+    </template>
+    <template id="id_11" name="NAV_content_template">
+        <!-- <div class="border-0 h-100 text-warning d-flex flex-column justify-content-evenly items-stretch"> -->
+            <div class=" border border-0 border-primary h-auto d-flex flex-row mt-2 ms-2 me-3 gap-1 text-black">
+                <div class="border rounded border-3 border-warning bg-warning bg-gradient h-auto   btn btn-sm w-auto p-2 fs-6 pt-1 pb-1 d-flex flex-column justify-content-evenly">Campo</div>
+                <div class="border btn btn-success btn-sm rounded flex-grow-1 p-2 ms-2 me-2  pt-1 pb-1 h-100 d-flex fs-6 flex-column justify-content-evenly overflow-auto text-wrap flex-grow-1">Valor</div>
+           <!-- <input class="w-25" type="text" /> -->
+            </div>
+    
+        <!-- </div> -->
+    </template>
+    <template id="id_12" name="partida">
+        <!-- <div class="d-flex w-auto h-auto border rounded  border-outset border-5"> -->
+            <div class="border p-1 w-100 h-100 d-flex flex-column gap-0 pb-2">
+                <div class="d-flex gap-2 p-0 pb-0 justify-content-between border-bottom">
+                    <div class="d-flex m-0 p-0">
+                     <h4 class="text-white ps-2 ms-2 me-2 mt-2">Partida</h4> 
+                    <button onclick="start() "
+                    class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Start</button>
+                        
+                    </div>
+                    <div>
+                         <button class="btn btn-sm btn-danger bg-gradient p-0 pe-2 ps-2 m-2" onclick="add_player();">+</button>
+                    <button class="btn btn-sm btn-warning text-black bg-gradient p-0 pe-2 ps-2 m-2" onclick="myFunction()">-</button>
+               
+                    </div>
 
+           
+                </div>
+                <div class="d-flex pb-1 h-auto gap-1">
+                    <div class="w-25 border bg-warning h-100 text-white d-flex flex-column mb-3 pb-2 ms-0">
+                        <div class="bg-white d-flex justify-content-between gap-1 ps-1 pe-1 h-auto w-100 m-0 p-0">
+                            <h4 class="text-black rounded btn bt-sm  border border-black pt-1 mt-1 mb-1 w-auto ">Players</h4> 
+                            <button onclick="load_players(this.parentElement.parentElement)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button>
+                        </div>
+                        <div class="border d-flex flex-column items-stretch justify-content-evenly h-auto mb-1 p-1 gap-1">
+                            <div class="border">*</div>
+                            <div class="border">*</div>
+                            <div class="border">*</div>
+                            <div class="border">*</div>
+                        </div>
+
+
+                    </div>
+                    <div id="id_l_1" class="w-50 border-0 d-flex flex-column h-75  justify-content-start mb-0 mt-0 pt-0 gap-2 pe-1">
+                        <div class="bg-white d-flex justify-content-between gap-1 ps-1 pe-1 h-auto w-100 m-0 p-0">
+                            <h4 class="text-black rounded btn bt-sm  border border-black pt-1 mt-1 mb-1 w-auto ">Configuracion</h4> 
+                            <button onclick="carga_config(this.parentElement.parentElement.id)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button>
+                        </div>
+                        <div></div>
+                        <div style="position: relative;top: -15px;" class="h-50 overflow-auto mt-0"></div>
+                    </div>
+                    <div class="w-25 border d-flex flex-column h-auto mt-0 gap-2 pe-1">
+         
+                    </div>
+                </div>
+        
+           
+            </div>
+        
+          <!-- </div>   -->
+    </template>
       <script src="./newFlex_start.js" defer></script>
       <!-- <script>carga_paneles_div()</script> -->
 </body>

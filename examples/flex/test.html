@@ -30,6 +30,7 @@
 
      <script src="./layout-2.js" defer></script>
      <script src="./test.js" defer></script> 
+     <script src="../dataStorage/scripts/storage.js" defer></script> 
     
 
 
@@ -86,7 +87,7 @@
     </style>
 </head>
     <!-- Plantilla 5 : ** Pantalla1 , Tablero  *** -->
-    <template>
+    <template id="id_0" >
         <div id="pantalla1" class="tablero" style="">
             <div class=" h-25 d-flex flex-row  items-stretch">
                 <div class="p-0 casa border-0 w-25 bg-danger bg-gradient d-flex flex-column  items-stretch">
@@ -375,7 +376,7 @@
         </div>
     </template>
         <!-- Plantilla 3 : ** log  *** -->
-        <template>
+        <template id="id_1" >
             <div id="panel_log" class=" border-0 h-100 overflow-auto w-auto p-0 d-flex flex-column  items-stretch ">
                 <!-- <button class="btn w-100 btn-primary bg-gradient border text-black" onclick="$('#select_log').toggle();">Log </button> -->
     <div style="display: none !important;"  class=" border-0 rounded w-auto h-100 overflow-auto mt-1 p-0 text-small "   id="select_log" >
@@ -384,7 +385,7 @@
     </div>
         </template>
         <!-- Plantilla 4 : ** tools  *** -->
-        <template>
+        <template id="id_2" >
           
             <!-- <div id="panel_fi_se" class="border-0 h-100 col-6 "> -->
                 <div
@@ -423,6 +424,52 @@
     
             <!-- </div>   -->
         </template>
+
+        <template id="id_3" name="jugadores_new">
+            <div class="d-flex w-auto">
+            
+            
+                <div class="border-0 p-1 w-auto d-flex flex-column gap-2 pb-2">
+                    <div class="d-flex gap-2 p-0 justify-content-evenly border-bottom">
+                        <h4 class="text-white ps-2 ">Jugador</h4> 
+                        <button onclick="rellena_select(JSON.parse(sessionStorage.getItem('jugadores')))"
+                        class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-1">Carga</button>
+                        <button class="btn btn-sm btn-danger bg-gradient p-0 pe-2 ps-2 m-1" onclick="add_player();">+</button>
+                        <button class="btn btn-sm btn-warning bg-gradient p-0 pe-2 ps-2 m-1" onclick="myFunction()">-</button>
+            
+                    </div>
+                    <div class="d-flex gap-2">
+                        <div class="w-25 border bg-warning h-100 text-white d-flex flex-column p-1 ms-1">
+                            <div class="text-center text-primary">Player</div>
+                            <select size="4" onchange="select_change(this.value)"  class="btn btn-sm bg-danger bg-gradient w-auto text-black overflow-hidden p-2 ms-1 me-1 h-auto d-flex"></select>
+            
+                        </div>
+                        <div class="w-75 d-flex flex-column h-100 mt-3 gap-1 pe-1">
+                            <div class="d-flex gap-2 text-center">
+                                <div class="border-0 text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Id:</div>
+                                <input id="input_id" type="text" class="btn bg-white rounded w-50 p-0 text-center " disabled/>
+                                <button onclick="" class="btn btn-sm btn-primary bg-gradient disabled">↻</button>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <div class="border-0 text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Nombre:</div>
+                                <input id="input_nombre" type="text" class="rounded w-50 text-center"/>
+                                <button onclick="update_nombre(input_id.value)" class="btn btn-sm btn-primary bg-gradient">↻</button>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <div class="border-0 text-center text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Color:</div>
+                                <input id="input_color"  type="text" class="rounded w-50 text-center"/>
+                                <button  onclick="update_color(input_id.value)" class="btn btn-sm btn-primary bg-gradient">↻</button>
+                    
+                            </div>
+                        </div>
+            
+                    </div>
+            
+               
+                </div>
+            
+              </div>  
+            </template>
 <body  id="body_id" >
    <script>
 

@@ -129,7 +129,7 @@ layout_array.push([
     ["id", "principal_div_2_3"],
     ["class", ("border border-primary d-flex flex-column items-stretch m-0 w-100 h-100 gap-1") ],
     ["destino","id","principal_div_2"],
-    ["innertext",""]
+    ["innertext",document.getElementsByTagName("template")[3].innerHTML]
 ])
 
 

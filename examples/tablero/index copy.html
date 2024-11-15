@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tablero</title>
+            <!-- BootStrap -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- JQuery -->
+            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+        
+            <!-- Local Resources  
+            <script src="./newFlex_eventlistener.js" defer></script>
+            <script src="../../scripts/objeto.js" defer></script>
+            <script src="./newFlex_main.js" defer></script>
+            <link href="./newFlex.css" rel="stylesheet">
+            <script src="../dataStorage/scripts/storage.js" defer></script> 
+            -->
+<style>
+    #tablero{
+        font-size: 12px;
+    }
+    #tablero2{
+        font-size: 8px !important;
+
+    }
+    #panel_drag{
+        display: none !important;
+    }
+</style>
+    </head>
+<body id="id_body">
+    <template>
+        <div ctgr="tablero" class="border border-primary border-2 m-0 w-100 h-100"></div>
+        <div></div>
+        <div ctgr="" id="" class=""></div>
+        <div ctgr="" id="" class="border "></div>
+
+    </template>
+    <div class="m-0 p-0" style="height:100vh;width: 100vw; overflow: hidden;">
+        <div class="border overflow-hidden border-outset border-5 border-secondary rounded-3 h-100 w-100 p-1 m-0">
+            <div id="panel_conf" style="width: auto;height: auto;position: absolute;left: 100px;"  class="bg-black text-white border border-3 rounded-3  ">
+
+                <div ctgr="" id="" class="border-0 rounded-2 w-auto d-flex flex-column h-100 m-1 p-1 ">
+
+                    <h3 class="border-3 border-bottom ">Configuracion</h3>
+                    <div ctgr="" id="" class="border-0 w-100  d-flex justify-content-between gap-1">
+                        <!-- <input class="btn btn-warning btn-sm w-100" title="test" value="ttt"/> -->
+                         <div>
+                           
+                            <button onclick="list_all_tags( prompt('Id', 'tablero'))" class="btn btn-warning bg-gradient btn-sm w-auto">List Tags</button>
+                            <button onclick="list_all_class( prompt('Clase', 'celda'))"  class="btn btn-success bg-gradient btn-sm w-auto">List Class</button>
+                            <button class="btn btn-warning bg-gradient btn-sm w-auto">boton</button>
+                        </div>
+                        <button class="btn btn-warning bg-gradient btn-sm w-auto">boton</button>
+
+                    </div>
+
+                    <fieldset class="border rounded-3 m-2 p-2 h-100 d-flex flex-column">
+                        <caption class="border">Data</caption>
+                        <!-- <input class="w-100 rounded" type="text"/> -->
+                        <textarea id="id_textarea" class="w-100 rounded h-100"></textarea>
+                    </fieldset>
+                </div>
+
+            </div>
+            <!---->
+            <div style="width: 300px;height: 300px;" id="panel_drag" class="border border-3 rounded-4 bg-black bg-gradient text-white d-flex p-2  ">
+                <!-- Tablero Parchis -->
+                <div id="tablero" ctgr="tablero" class=" rounded border-primary border-2 m-0 w-100   d-flex flex-column items-stretch  justify-content-start gap-0 p-0"> 
+                    <!-- Tablero Parchis Linea 1-->
+                    <div ctgr="tablero_linea" id="" class="border-0 rounded h-100 d-flex flex-row items-stretch  justify-content-evenly gap-0 p-0">
+                        <!-- Tablero Parchis Linea 1 Cuadro 1-->
+                        <div ctgr="tablero_linea_cuadro" id="" class="border-0 rounded w-100 h-100 p-0 d-flex">
+                            <div ctgr="tablero_linea_cuadro_casa" id="" class="bg-danger bg-gradient border rounded w-100 h-100 m-0 p-2 d-flex">
+                                <div ctgr="" id="" class="border-0 d-flex flex-column w-100 p-1 gap-2">
+                                    <div ctgr="" id="" class="border border-3 rounded-5 h-100 "></div>
+                                    <div ctgr="" id="" class="border border-3 border-black  rounded-5  h-100"></div>
+                                </div>
+                                <div ctgr="" id="" class="border-0 d-flex flex-column w-100 p-1 gap-2">
+                                    <div ctgr="" id="" class="border border-3 border-primary  rounded-5  h-100 "></div>
+                                    <div ctgr="" id="" class="border border-3 border-secondary rounded-5  h-100"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Tablero Parchis Linea 1 Cuadro 2-->
+                        <div ctgr="tablero_linea_cuadro" id="" class="border-0 w-100 h-100 p-0 d-flex">
+                            <div ctgr="tablero_linea_cuadro_casillas" id="" class="border-0 w-100 h-100 m-0 d-flex">
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="border-0 w-100 h-100 m-0 p-0 d-flex flex-column justify-content-evenly">
+                                    <div ctgr="celda" id="" class="celda border h-100 ">3</div>
+                                    <div ctgr="celda" id="" class="celda border h-100 ">1</div>
+                                    <div ctgr="celda" id="" class="celda border h-100 ">1</div>
+                                    <div ctgr="celda" id="" class="celda border h-100 ">1</div>
+                                    <div ctgr="celda" id="" class="celda border h-100 ">1</div>
+                                    <div ctgr="celda" id="" class="celda border h-100 ">2</div>
+                                    <div ctgr="celda" id="" class="celda border h-100 ">2</div>
+
+
+                                </div>
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="bg-danger  w-100 h-100 m-0 p-0 d-flex flex-column justify-content-evenly">
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 ">2</div>
+
+                                </div>
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="border-0 w-100 h-100 m-0 p-0 d-flex flex-column justify-content-evenly">
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 ">2</div>
+
+                                </div>
+                            </div>
+                        </div>                        
+                        <!-- Tablero Parchis Linea 1 Cuadro 3-->
+                        <div ctgr="tablero_linea_cuadro" id="" class="border-0 w-100 h-100 p-0 d-flex">
+                            <div ctgr="tablero_linea_cuadro_casa" id="" class="bg-primary bg-gradient border rounded w-100 h-100 m-0 p-2 d-flex">
+                                <div ctgr="" id="" class="border-0 d-flex flex-column w-100 p-1 gap-2">
+                                    <div ctgr="" id="" class="border rounded-5 h-100 "></div>
+                                    <div ctgr="" id="" class="border rounded-5  h-100"></div>
+                                </div>
+                                <div ctgr="" id="" class="border-0 d-flex flex-column w-100 p-1 gap-2">
+                                    <div ctgr="" id="" class="border rounded-5  h-100 "></div>
+                                    <div ctgr="" id="" class="border rounded-5  h-100"></div>
+                                </div>
+
+                            </div>   
+                        </div>                   
+                    </div>
+                    <!-- Tablero Parchis Linea 2-->
+                    <div ctgr="tablero_linea" id="" class="border-0 h-100 d-flex flex-row items-stretch  justify-content-evenly gap-0 p-0">
+                        <!-- Tablero Parchis Linea 2 Cuadro 1-->
+                        <div ctgr="tablero_linea_cuadro" id="" class="border-0 w-100 ">
+                            <div ctgr="tablero_linea_cuadro_casillas" id="" class="border-0 w-100 h-100 m-0 d-flex flex-column">
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="border-0 w-100 h-100 m-0 d-flex justify-content-evenly">
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                </div>
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="bg-success bg-gradient border-0 w-100 h-100 m-0 d-flex justify-content-evenly">
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                </div>
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="border-0 w-100 h-100 m-0 d-flex justify-content-evenly">
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tablero Parchis Linea 2 Cuadro 2-->
+                        <div ctgr="" id="l2_c2" class="border rounded w-100 h-100 p-0 m-0 d-flex flex-column text-center ">
+                            <div ctgr="top" id="" class="border-0 h-auto m-0 p-0 d-flex justify-content-evenly   ">
+                                <div ctgr="" id="" class="border-0 w-100 d-flex justify-content-end ">
+                                    <div class="border w-50">
+                                        1
+                                    </div>    
+                                </div>
+                                <div ctgr="" id="" class="border bg-danger bg-gradient w-100 m-0">*</div>
+                                <div ctgr="" id="" class="border-0 w-100 ">
+                                    <div class="border w-50">
+                                        3
+                                    </div>    
+                                </div>
+                            </div>
+                            <div ctgr="middle" id="" class="border h-100 flex-grow-1 m-0 d-flex flex-column justify-content-evenly">
+                                <div class="h-100 w-100 d-flex ">
+                                <div class="border w-100 ">33</div>
+                                <div class="border w-100 ">33</div>
+
+                                <div class="border w-100 ">44</div>                                    
+                                </div>
+                                <div class="h-100 w-100 d-flex ">
+                                    <div class="border w-100 ">33</div>
+                                    <div class="border w-100 ">33</div>
+    
+                                    <div class="border w-100 ">44</div>                                    
+                                </div>
+                                <div class="h-100 w-100 d-flex ">
+                                    <div class="border w-100 ">33</div>
+                                    <div class="border w-100 ">33</div>
+    
+                                    <div class="border w-100 ">44</div>                                    
+                                </div>
+                            </div>
+                            <div ctgr="bottom" id="" class="border-0 h-auto m-0 p-0 d-flex justify-content-evenly   ">
+                                <div ctgr="" id="" class="border-0 w-100 d-flex justify-content-end ">
+                                    <div class="border w-50">
+                                        1
+                                    </div>    
+                                </div>
+                                <div ctgr="" id="" class="border bg-warning w-100 m-0">*</div>
+                                <div ctgr="" id="" class="border-0 w-100 ">
+                                    <div class="border w-50">
+                                        8
+                                    </div>    
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Tablero Parchis Linea 2 Cuadro 3-->
+                        <div ctgr="tablero_linea_cuadro" id="" class="border-0 w-100 ">
+                            <div ctgr="tablero_linea_cuadro_casillas" id="" class="border-0 w-100 h-100 m-0 d-flex flex-column">
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="border-0 w-100 h-100 m-0 d-flex justify-content-evenly">
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                </div>
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="bg-primary bg-gradient border-0 w-100 h-100 m-0 d-flex justify-content-evenly">
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                </div>
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="border-0 w-100 h-100 m-0 d-flex justify-content-evenly">
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                    <div ctgr="celda" id="" class="border w-100 "></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Tablero Parchis Linea 3-->
+                    <div ctgr="tablero_linea" id="" class="border-0 h-100 d-flex flex-row items-stretch  justify-content-evenly gap-0 p-0">
+                        <!-- Tablero Parchis Linea 3 Cuadro 1-->
+                        <div ctgr="tablero_linea_cuadro" id="" class="border-0 w-100 h-auto p-0 d-flex">
+                            <div ctgr="tablero_linea_cuadro_casa" id="" class="bg-success bg-gradient border rounded w-100 h-100 m-0 p-2 d-flex">
+                                <div ctgr="" id="" class="border-0 d-flex flex-column w-100 p-1 gap-2">
+                                    <div ctgr="" id="" class="border rounded-5 h-100 "></div>
+                                    <div ctgr="" id="" class="border rounded-5  h-100"></div>
+                                </div>
+                                <div ctgr="" id="" class="border-0 d-flex flex-column w-100 p-1 gap-2">
+                                    <div ctgr="" id="" class="border rounded-5  h-100 "></div>
+                                    <div ctgr="" id="" class="border rounded-5  h-100"></div>
+                                </div>
+
+                            </div>                        </div>
+                        <!-- Tablero Parchis Linea 3 Cuadro 2-->
+                        <div ctgr="tablero_linea_cuadro" id="" class="border-0 w-100 h-100 p-0 d-flex">
+                            <div ctgr="tablero_linea_cuadro_casillas" id="" class="border-0 w-100 h-100 m-0 d-flex">
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="border-0 w-100 h-100 m-0 p-0 d-flex flex-column justify-content-evenly">
+                                    <div ctgr="celda" id="" class="celda border h-100 ">1</div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+                                    <div ctgr="celda" id="" class="celda border h-100 "></div>
+
+
+                                </div>
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="bg-warning text-warning border-0 w-100 h-100 m-0 p-0 d-flex flex-column justify-content-evenly">
+                                    <div ctgr="celda" id="" class="border h-100 ">cc</div>
+                                    <div ctgr="celda" id="" class="border h-100 "></div>
+                                    <div ctgr="celda" id="" class="border h-100 "></div>
+                                    <div ctgr="celda" id="" class="border h-100 "></div>
+                                    <div ctgr="celda" id="" class="border h-100 "></div>
+                                    <div ctgr="celda" id="" class="border h-100 "></div>
+                                    <div ctgr="celda" id="" class="border h-100 "></div>
+
+
+                                </div>
+                                <div ctgr="tablero_linea_cuadro_casillas_celdas" id="" class="border-0 w-100 h-100 m-0 p-0 d-flex flex-column justify-content-evenly">
+                                    <div ctgr="celda" id="7" class="celda border h-100 ">7</div>
+                                    <div ctgr="celda" id="6" class="celda border h-100 ">6</div>
+                                    <div ctgr="celda" id="5" class="celda border h-100 ">5</div>
+                                    <div ctgr="celda" id="4" class="celda border h-100 ">4</div>
+                                    <div ctgr="celda" id="3" class="celda border h-100 ">3</div>
+                                    <div ctgr="celda" id="2" class="celda border h-100 ">2</div>
+                                    <div ctgr="celda" id="1" class="celda border h-100 ">1</div>
+
+
+                                </div>
+                            </div>
+                        </div>                        
+                        <!-- Tablero Parchis Linea 3 Cuadro 3-->
+                        <div ctgr="tablero_linea_cuadro" id="" class="border-0 w-100 h-100 p-0 d-flex">
+                            <div ctgr="tablero_linea_cuadro_casa" id="" class="bg-warning bg-gradient border rounded w-100 h-100 m-0 p-2 d-flex">
+                                <div ctgr="" id="" class="border-0 d-flex flex-column w-100 p-1 gap-2">
+                                    <div ctgr="" id="" class="border rounded-5 h-100 "></div>
+                                    <div ctgr="" id="" class="border rounded-5  h-100"></div>
+                                </div>
+                                <div ctgr="" id="" class="border-0 d-flex flex-column w-100 p-1 gap-2">
+                                    <div ctgr="" id="" class="border rounded-5  h-100 "></div>
+                                    <div ctgr="" id="" class="border rounded-5  h-100"></div>
+                                </div>
+
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div id="panel_test"  style="min-width:300px;min-height:300px; width: 500px;height: 500px;position: absolute;left: 400px;top:0px;" class=" bg-black rounded-3 d-flex flex-column p-2">
+                <!-- <h2 class="w-25 text-white">Test</h2> -->
+                <div id="panel_test_log" class="border-0 h-100 text-white"></div>
+            </div>
+        </div>
+    </div>
+    <script >
+// $("#tablero").resizable();
+$("#panel_drag").resizable();
+$("#panel_drag").draggable();
+
+$("#panel_conf").resizable();
+$("#panel_conf").draggable();
+
+$("#panel_test").resizable();
+$("#panel_test").draggable();
+
+    </script>
+    <script>
+
+        function list_all_tags(id_pass){
+
+           Array.from(document.getElementById(id_pass).getElementsByTagName("*")).forEach(element => {
+                  id_textarea.value+=
+                  "Tag: " + element.tagName + "\n" +
+                  "Nodos: " + element.parentElement.tagName + "\n" +
+                  "innerHTML: " + element.innerHTML + "\n" +
+                  "  --------   ****   ----------" +  "\n" 
+            });
+          
+        }
+        function list_all_class(class_pass){
+        let i=0
+            Array.from(document.body.getElementsByClassName(class_pass)).forEach(element => {
+                id_textarea.value+=
+                "No: " + i +"\n" +
+                "Tag: " + element.tagName + "\n" +
+                "innerHTML: " + element.innerHTML + "\n" +
+                "  --------   ****   ----------" +  "\n" 
+                i+=1
+            });
+            
+        }
+    
+    
+    
+    </script>
+    <script>
+        var panel_destino;
+        var texto_final = "";
+        var contador_tags
+
+        function crea_elemento(destino_id, tag_local, id_local, class_local, innerHTML_local) {
+            contador_tags = document.body.getElementsByTagName("*").length
+            texto_final = ""
+            panel_destino = document.getElementById(destino_id)
+
+            texto_final += "<"
+            texto_final += tag_local
+            texto_final += " id='"
+            texto_final += id_local
+            texto_final += "'"
+            texto_final += " class='"
+            texto_final += class_local
+            texto_final += "'"
+            texto_final += "> "
+            texto_final += innerHTML_local
+            texto_final += "</"
+            texto_final += tag_local
+            texto_final += ">"
+
+
+            // texto_final=
+            // "< " + 
+            // tag_local +
+            // " id='" +
+            // id_local + "'" +
+            // " class='" +
+            // class_local + "'" +           
+
+            // " >" +
+
+            // innerHTML_local +
+
+            // "</" +
+
+            // tag_local + ">"
+
+
+        }
+        function crear_tablero() {
+            //Tablero 2
+            crea_elemento("panel_test_log", "div", "tablero2", " rounded-3 border border-2 m-0 w-100  h-100 d-flex flex-column items-stretch  justify-content-evenly gap-0 p-0", "")
+            panel_destino.innerHTML += texto_final
+            //Lineas
+            for (let j = 1; j < 4; j++) {
+                crea_elemento("tablero2", "div", "tablero_linea_" + j, "border rounded h-100 d-flex flex-row items-stretch  justify-content-evenly m-0 gap-1 p-1", "")
+                panel_destino.innerHTML += texto_final
+                //Cuadros
+                for (let i = 1; i < 4; i++) {
+                    crea_elemento("tablero_linea_" + j, "div", "tablero_linea_" + j + "_cuadro_" + i, "border rounded-3 w-100 h-100 p-0 d-flex justify-content-evenly gap-1", "")
+                    panel_destino.innerHTML += texto_final
+
+                }
+
+            }
+
+
+            //casa rojas
+            crea_elemento("tablero_linea_1_cuadro_1", "div", "tablero_linea_1_cuadro_1_log", "border-0 bg-danger bg-gradient d-flex w-100 rounded-3 p-2 gap-1", "")
+            panel_destino.innerHTML += texto_final
+            for (let l = 1; l < 3; l++) {
+                crea_elemento("tablero_linea_1_cuadro_1_log", "div", "tablero_linea_1_cuadro_1_" + l, "border-0 text-white d-flex flex-column w-100 gap-1", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let m = 1; m < 3; m++) {
+                    crea_elemento("tablero_linea_1_cuadro_1_" + l, "div", "tablero_linea_1_cuadro_1__" + l + "_" + m, "border rounded-5 text-white w-100 h-100", l + "-" + m)
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+
+            //casa azules
+            crea_elemento("tablero_linea_1_cuadro_3", "div", "tablero_linea_1_cuadro_3_log", "border-0 bg-primary bg-gradient d-flex w-100 rounded-3 p-2", "")
+            panel_destino.innerHTML += texto_final
+            for (let l = 1; l < 3; l++) {
+                crea_elemento("tablero_linea_1_cuadro_3_log", "div", "tablero_linea_1_cuadro_3_" + l, "border-0 text-white d-flex flex-column w-100 gap-1", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let m = 1; m < 3; m++) {
+                    crea_elemento("tablero_linea_1_cuadro_3_" + l, "div", "tablero_linea_1_cuadro_3__" + l + "_" + m, " border border-outset border-3 rounded-5 text-white w-100 h-100", l + "-" + m)
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+
+            //casa verdes
+            crea_elemento("tablero_linea_3_cuadro_1", "div", "tablero_linea_3_cuadro_1_log", "border-0 bg-success bg-gradient d-flex w-100 rounded-3 p-2", "")
+            panel_destino.innerHTML += texto_final
+            for (let l = 1; l < 3; l++) {
+                crea_elemento("tablero_linea_3_cuadro_1_log", "div", "tablero_linea_3_cuadro_1_" + l, "border-0 text-white d-flex flex-column w-100 gap-1", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let m = 1; m < 3; m++) {
+                    crea_elemento("tablero_linea_3_cuadro_1_" + l, "div", "tablero_linea_3_cuadro_1__" + l + "_" + m, "border rounded-5 text-white w-100 h-100 text-center", l + "-" + m)
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+
+
+            //casa amarillas
+            crea_elemento("tablero_linea_3_cuadro_3", "div", "tablero_linea_3_cuadro_3_log", "border-0 bg-warning bg-gradient d-flex w-100 rounded-3 p-2", "")
+            panel_destino.innerHTML += texto_final
+            for (let l = 1; l < 3; l++) {
+                crea_elemento("tablero_linea_3_cuadro_3_log", "div", "tablero_linea_3_cuadro_3_" + l, "border-0 text-white d-flex flex-column w-100 gap-1", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let m = 1; m < 3; m++) {
+                    crea_elemento("tablero_linea_3_cuadro_3_" + l, "div", "tablero_linea_3_cuadro_3__" + l + "_" + m, "border rounded-5 text-white w-100 h-100 text-center", l + "-" + m)
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+            /* */
+
+            /**/
+            //casillas 1-1
+            for (let b = 1; b < 4; b++) {
+                crea_elemento("tablero_linea_1_cuadro_2", "div", "tablero_linea_1_cuadro_2_casillas_" + b, "border w-100 h-100 d-flex flex-column", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let c = 1; c < 8; c++) {
+                    crea_elemento("tablero_linea_1_cuadro_2_casillas_" + b, "div", "celda_" + c, "border w-100 h-100", c)
+                    panel_destino.innerHTML += texto_final
+
+                }
+
+            }
+            //casillas 3-1
+            for (let b = 1; b < 4; b++) {
+                crea_elemento("tablero_linea_3_cuadro_2", "div", "tablero_linea_3_cuadro_2_casillas_" + b, "border w-100 h-100 d-flex flex-column", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let c = 1; c < 8; c++) {
+                    crea_elemento("tablero_linea_3_cuadro_2_casillas_" + b, "div", "celda_" + c, "border w-100 h-100 p-0 m-0  ", c)
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+            document.getElementById("tablero_linea_3_cuadro_2_casillas_2").innerHTML = "<div class='bg-warning h-100 d-flex flex-column'>" + document.getElementById("tablero_linea_3_cuadro_2_casillas_2").innerHTML + "</div>"
+            //casillas 2-1
+            document.getElementById("tablero_linea_2_cuadro_1").innerHTML = "<div id='tablero_linea_2_cuadro_1_log' class='d-flex flex-column w-100'>" + document.getElementById("tablero_linea_2_cuadro_1").innerHTML + "</div>"
+            for (let b = 1; b < 4; b++) {
+                crea_elemento("tablero_linea_2_cuadro_1_log", "div", "tablero_linea_2_cuadro_1_casillas_" + b, "border w-100 h-100 d-flex ", "")
+                panel_destino.innerHTML += texto_final
+                // document.getElementById("tablero_linea_2_cuadro_1").innerHTML="<div class='d-flex flex-column'>"+     document.getElementById("tablero_linea_2_cuadro_1").innerHTML+"</div>"
+                for (let s = 1; s < 8; s++) {
+                    crea_elemento("tablero_linea_2_cuadro_1_casillas_" + b, "div", "celda_" + s, "border w-100 h-100 p-0 m-0  ", s)
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+            document.getElementById("tablero_linea_2_cuadro_1_casillas_2").innerHTML = "<div class='bg-success d-flex w-100'>" + document.getElementById("tablero_linea_2_cuadro_1_casillas_2").innerHTML + "</div>"
+            //casillas 2-3
+            document.getElementById("tablero_linea_2_cuadro_3").innerHTML = "<div id='tablero_linea_2_cuadro_3_log' class='d-flex flex-column w-100'>" + document.getElementById("tablero_linea_2_cuadro_3").innerHTML + "</div>"
+            for (let d = 1; d < 4; d++) {
+                crea_elemento("tablero_linea_2_cuadro_3_log", "div", "tablero_linea_2_cuadro_3_casillas_" + d, "border w-100 h-100 d-flex ", "")
+                panel_destino.innerHTML += texto_final
+                // document.getElementById("tablero_linea_2_cuadro_1").innerHTML="<div class='d-flex flex-column'>"+     document.getElementById("tablero_linea_2_cuadro_1").innerHTML+"</div>"
+                for (let w = 1; w < 8; w++) {
+                    crea_elemento("tablero_linea_2_cuadro_3_casillas_" + d, "div", "celda_" + w, "border w-100 h-100 p-0 m-0  ", w)
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+            document.getElementById("tablero_linea_2_cuadro_3_casillas_2").innerHTML = "<div class='bg-primary d-flex w-100'>" + document.getElementById("tablero_linea_2_cuadro_3_casillas_2").innerHTML + "</div>"
+
+
+        }
+        
+        crear_tablero()
+    </script>
+</body>
+</html>

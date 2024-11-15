@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=window.innerWidth,height=window.innerHeight, initial-scale=1.0">
+        <title>Tablero</title>
+            <!-- BootStrap -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- JQuery -->
+            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+        
+            <!-- Local Resources  
+            <script src="../../scripts/objeto.js" defer></script>
+         
+           
+            -->
+              <script src="./newFlex_eventlistener.js" defer></script>
+   <script src="./dataStorage.js" defer></script> 
+             <link href="./newFlex.css" rel="stylesheet">
+            <script src="./storage.js" defer></script> 
+         
+
+            <script src="./objeto.js" defer></script>
+
+               
+            <script src="./newFlex_main.js" defer></script>
+      
+ 
+
+<style>
+    p{width: 100% !important;
+    padding: 10%;
+}
+    body{
+        overflow: hidden;
+        zoom: .8;
+    }
+    #panel_conf{
+        /* zoom: .7; */
+        min-height: 320px !important;
+        min-width: 320px !important;
+    }
+    #panel_test{
+        /* zoom: .9; */
+        min-height: 600px !important;
+        min-width: 600px !important;
+    }
+    #tablero{
+        font-size: 12px;
+    }
+    #tablero2{
+        font-size: 10px !important;
+        padding: 0 !important;
+    }
+    #panel_drag{
+        display: none !important;
+    }
+    .ficha:hover{
+        border: outset 8px !important;
+        /* background-color: black!important; */
+        /* width: 50px !important;
+        height: 50px !important; */
+    }
+    .ficha{
+        /* font-size: 14px; */
+        /* text-align: center; */
+    }
+    .celda{
+        /* background-color: white !important;
+        color: black !important; */
+    }
+    textarea{
+        color: greenyellow !important;
+        color: greenyellow !important;
+
+    }
+    canvas{
+        /* border-radius: 50% !important; */
+        border: none  !important;
+        color: black !important;
+
+    }
+    .ficha:hover{
+        height: 50px !important;
+        width: 50px !important;
+        color :#ffa514;
+        /* left:40% !important;
+        top:40% !important; */
+        /* background-image: url(); */
+
+    }
+    .ficha-warning{
+        background-color: rgb(163, 163, 44) !important;
+    }
+    .celda-casa{
+        border: outset 8px !important;
+        border-radius: 50% !important;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.356);
+        color:  rgba(0, 0, 0, 0.356)!important;
+    }
+    #centro_casillas_1_1{
+        /* transform: rotate(45deg); */
+        
+    border: none !important;
+    
+    /* position: relative; */
+    /* 
+    top: -15px;
+    left: -5px;
+    height: 125% !important;
+    transform: rotate(45deg);  */
+    /* border: none !important; */
+    /* position: relative; */
+    /* top: -15px; */
+    /* left: -5px; */
+    /* height: 125% !important;*/
+    }
+    #tablero_linea_1_cuadro_2_casillas_1  canvas,#tablero_linea_3_cuadro_2_casillas_1  canvas{
+        text-align:right !important;
+    }
+    #tablero_linea_2_cuadro_2_casillas_1{
+        vertical-align: middle !important;
+    }
+    #tablero_linea_1_cuadro_2_casillas_1 div canvas , #tablero_linea_3_cuadro_2_casillas_1 div canvas{
+        padding-right: 25px !important;
+
+    }
+    #tablero_linea_1_cuadro_2_casillas_3 div canvas, #tablero_linea_3_cuadro_2_casillas_3 div canvas{
+        padding-left: 25px !important;
+
+    }
+    #tablero_linea_2_cuadro_1_casillas_1 canvas{
+       /* background-color: white; */
+    border: outset !important;
+    border-radius: 50%;
+    margin-top: 35px;
+    }
+    #tablero_linea_2_cuadro_1_casillas_3 canvas{
+        border: outset !important;
+    border-radius: 50%;
+    margin-top: 35px;
+    }
+     #celda_42{
+        border: none !important;
+
+    }
+      
+    #celda_43{
+       
+
+
+
+    }  /* */
+    .centro-casilla {
+        border: none !important;
+        /* width: 50% !important; */
+        /* padding-left: 25% !important; */
+        padding-left: 5px !important;
+    }
+    .centro-casilla div{
+        /* text-align: center !important;
+        border-bottom: none !important;
+        border-left : none !important;
+        border-right: none !important; */
+    }
+    .centro-casilla-right {
+        text-align: right !important;
+        width: 100%  !important;
+        height: 100%  !important;
+        /* padding-left: 5px !important; */
+
+    }
+    #centro_top{
+        position: relative;
+    top: 15%;
+    width: 66%;
+    height: 70%;
+    background-color: white;
+    /* z-index: 200; */
+    margin-left: -65%;
+    left: -18%;
+    border-radius: 10px;
+    padding: 5px !important;
+    }
+    .linea-cuadro{
+        min-width: 140px !important;
+        min-height: 140px !important;
+
+    }
+    #centro_log{
+        border: none !important;
+    }
+    #celda_17,#celda_22{
+        transform: rotate(270deg);
+            }
+            #celda_51,#celda_56{
+        transform: rotate(90deg);
+            }
+            #celda_34, #celda_39{
+        transform: rotate(180deg);
+            }
+</style>
+<template id="id_0" name="partida">
+    <!-- <div class="d-flex w-auto h-auto border rounded  border-outset border-5"> -->
+        <div class="border bg-black p-1 h-100 d-flex flex-column gap-1 pb-2">
+            <div class="d-flex h-auto  p-0 pb-0 justify-content-between border-bottom">
+                <div class="d-flex m-0 p-0">
+                 <h4 class="text-white ps-2 ms-2 me-2 mt-2">Partida</h4> 
+                <button onclick="start() " class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Start</button>
+                    
+                </div>
+
+                <div>
+                    <button onclick="crear_tablero();crea_fichas();carga_celdas();carga_canvas();recalcula_fichas();" class="btn btn-success bg-gradient btn-sm w-100 mt-1">Start</button>
+
+                </div>
+                <div>
+                     <button class="btn btn-sm btn-danger bg-gradient p-0 pe-2 ps-2 m-2" onclick="add_player();">+</button>
+                <button class="btn btn-sm btn-warning text-black bg-gradient p-0 pe-2 ps-2 m-2" onclick="myFunction()">-</button>
+           
+                </div>
+
+       
+            </div>
+            <div class="d-flex flex-grow-1 pb-1 h-100 gap-1">
+                <div style="position: relative;top: 0px;    margin-bottom: 45px;"  class="w-auto border-0 d-flex flex-column h-100 overflow-auto   justify-content-evenly pb-0 mt-0 gap-1 p-0 ">
+                    <div class="border m-0 h-auto ">
+                        <!-- <div class="d-flex bg-black w-100 h-100 border rounded  border-outset border-5">
+                            <div class="border-0 p-1 h-100 w-100 d-flex flex-column gap-2 pb-2">
+                                <div class="d-flex gap-2 p-0 pb-1 justify-content-start border-bottom">
+                                    <h4 class="text-white ps-2 ms-2 me-2 mt-2">Jugador</h4> 
+                                    <button onclick="rellena_select(JSON.parse(sessionStorage.getItem('jugadores')))"
+                                    class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Carga</button>
+                                    <button class="btn btn-sm btn-danger bg-gradient p-0 pe-2 ps-2 m-2" onclick="add_player();">+</button>
+                                    <button class="btn btn-sm btn-warning text-black bg-gradient p-0 pe-2 ps-2 m-2" onclick="myFunction()">-</button>
+                        
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <div class="w-25 border bg-warning h-100 text-white d-flex flex-column p-1 ms-1">
+                                        <div class="text-center text-primary">Player</div>
+                                        <select size="4" onchange="select_change(this.value)"  class="btn btn-sm rounded border border-inset bg-danger bg-gradient w-auto text-white overflow-hidden p-2 ms-1 me-1 h-auto d-flex"></select>
+                        
+                                    </div>
+                                    <div class="w-75 d-flex flex-column h-100 mt-3 gap-2 pe-1">
+                                        <div class="d-flex gap-2 text-center">
+                                            <div class="border-0 text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Id:</div>
+                                            <input id="input_id" type="text" class="btn bg-white text-danger rounded w-50 p-0 text-center " disabled/>
+                                            <button onclick="" class="btn btn-sm btn-primary bg-gradient disabled">↻</button>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <div class="border-0 text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Nombre:</div>
+                                            <input id="input_nombre" type="text" class="rounded w-50 text-center"/>
+                                            <button onclick="update_nombre(input_id.value)" class="btn btn-sm btn-primary bg-gradient">↻</button>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <div class="border-0 text-center text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Color:</div>
+                                            <input id="input_color"  type="text" class="rounded w-50 text-center"/>
+                                            <button  onclick="update_color(input_id.value)" class="btn btn-sm btn-primary bg-gradient">↻</button>
+                                
+                                        </div>
+                                    </div>
+                        
+                                </div>
+                        
+                           
+                            </div>
+                        
+                          </div>   -->
+                          <div  id="panel_players"></div>
+                        </div>
+                    <div class="border m-0  flex-grow-1 d-flex flex-column  ">
+                        <!-- <div class="bg-white d-flex justify-content-between gap-1 ps-1 pe-1 h-auto w-100 m-0 p-0">
+                            <h4 class="text-black rounded btn bt-sm  border border-black pt-1 mt-1 mb-1 w-auto ">Players</h4> 
+                            <button onclick="load_players(this.parentElement.parentElement)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button>
+                        </div>
+                        <div class="border-0 bg-warning d-flex flex-column justify-content-evenly  h-100  flex-grow-1 mb-1 p-1 gap-0">
+                            <div class="h-100 border">*</div>
+                            <div class="h-100 border">*</div>
+                            <div class="h-100 border">*</div>
+                            <div class="h-100 border">*</div>
+                        </div> -->
+                    </div>
+                </div>
+                <div id="panel_central" style="position: relative;top: 5px;    margin-bottom: 40px;"  class="w-50 border-0 text-white d-flex flex-column flex-grow-1 pb-0 pt-0 ms-0">
+                    <!-- <div class="bg-white d-flex justify-content-between gap-1 ps-1 pe-1 h-auto w-100 m-0 p-0">
+                        <h4 class="text-black rounded btn bt-sm  border border-black pt-1 mt-1 mb-1 w-auto ">Players</h4> 
+                        <button onclick="load_players(this.parentElement.parentElement)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button>
+                    </div>
+                    <div class="border-0 bg-warning d-flex flex-column justify-content-evenly  h-100 flex-grow-1 mb-1 p-1 gap-0">
+                        <div class="h-100 border">*</div>
+                        <div class="h-100 border">*</div>
+                        <div class="h-100 border">*</div>
+                        <div class="h-100 border">*</div>
+                    </div> -->
+
+
+                </div>
+                <div id="id_l_1" class="w-25 border-0 d-flex flex-column h-100  justify-content-start mb-0 mt-0 pt-0 gap-2 pe-1">
+                    <div  class="bg-white d-flex justify-content-between gap-1 ps-1 pe-1 h-auto w-100 mt-1 m-0 p-0">
+                        <h4 class="text-black rounded btn bt-sm  border border-black pt-1 mt-1 mb-1 w-auto ">Config</h4> 
+                        <button onclick="carga_config(this.parentElement.parentElement.id)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button>
+                    </div>
+                    <div  style="position: relative;top: -12px;    margin-bottom: 28px;" class="h-100 flex-grow-1 overflow-auto mt-1 border border-3 border-danger"></div>
+                    <!-- <div style="position: relative;top: -12px;    margin-bottom: 30px;" class="h-100 overflow-auto mt-0"></div> -->
+                </div>
+
+            </div>
+    
+       
+        </div>
+    
+      <!-- </div>   -->
+</template>
+<template id="id_1" name="jugadores_new">
+    <div class="d-flex bg-black w-100 h-100 border rounded   border-outset border-5">
+        <div class="border-0 p-1 h-100 w-100 d-flex flex-column gap-2 pb-2">
+            <div class="d-flex gap-2 p-0 pb-1 justify-content-start border-bottom w-100 overflow-auto">
+                <h4 class="text-white ps-2 ms-2 me-2 mt-2">Jugador</h4> 
+                <button onclick="rellena_select(JSON.parse(sessionStorage.getItem('jugadores')))"
+                class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Carga</button>
+                <button class="btn btn-sm btn-danger bg-gradient p-0 pe-2 ps-2 m-2" onclick="add_player();">+</button>
+                <button class="btn btn-sm btn-warning text-black bg-gradient p-0 pe-2 ps-2 m-2" onclick="myFunction()">-</button>
+    
+            </div>
+            <div class="d-flex gap-2 overflow-x-auto overflow-hidden">
+                <div class="w-25 border bg-warning h-100 text-white d-flex flex-column p-1 ms-1">
+                    <div class="text-center text-primary">Player</div>
+                    <select size="4" onchange="select_change(this.value)"  class="btn btn-sm rounded border border-inset bg-danger bg-gradient w-auto text-white overflow-hidden p-2 ms-1 me-1 h-auto d-flex"></select>
+    
+                </div>
+                <div class="w-75 d-flex flex-column h-100 mt-3 gap-2 pe-1">
+                    <div class="d-flex gap-2 text-center w-100">
+                        <div class="border-0 text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Id:</div>
+                        <input id="input_id" type="text" class="btn bg-white text-danger rounded w-50 p-0 text-center " disabled/>
+                        <button onclick="" class="btn btn-sm btn-primary bg-gradient disabled">↻</button>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <div class="border-0 text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Nombre:</div>
+                        <input id="input_nombre" type="text" class="rounded w-50 text-center"/>
+                        <button onclick="update_nombre(input_id.value)" class="btn btn-sm btn-primary bg-gradient">↻</button>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <div class="border-0 text-center text-white pt-1 ps-1 pe-1 w-25 flex-grow-1">Color:</div>
+                        <input id="input_color"  type="text" class="rounded w-50 text-center"/>
+                        <button  onclick="update_color(input_id.value)" class="btn btn-sm btn-primary bg-gradient">↻</button>
+            
+                    </div>
+                </div>
+    
+            </div>
+    
+       
+        </div>
+    
+      </div>  
+</template>
+<template id="id_2">
+    <div ctgr="tablero" class="border border-primary border-2 m-0 w-100 h-100"></div>
+    <div></div>
+    <div ctgr="" id="" class=""></div>
+    <div ctgr="" id="" class="border "></div>
+
+</template>
+<template id="id_3" name="NAV_content_template">
+    <!-- <div class="border-0 h-100 text-warning d-flex flex-column justify-content-evenly items-stretch"> -->
+        <div class=" border border-0 border-primary h-auto d-flex flex-row mt-1 ms-1 me-1 gap-1 text-black">
+            <div class="border rounded border-3 border-warning bg-warning bg-gradient h-auto   btn btn-sm w-auto p-2 fs-6 pt-1 pb-1 d-flex flex-column justify-content-evenly">Campo</div>
+            <div class="border btn btn-success btn-sm rounded flex-grow-1 p-2 ms-2 me-1  pt-1 pb-1 h-100 d-flex fs-6 flex-column justify-content-evenly overflow-auto text-wrap flex-grow-1">Valor</div>
+       <!-- <input class="w-25" type="text" /> -->
+        </div>
+
+    <!-- </div> -->
+</template>
+<template id="id_4" name="new_partida">
+    <div ctgr="Master" id="" class="border rounded-3 text-white bg-black h-100 w-100 d-flex flex-column items-stretch justify-content-evenly gap-2 p-1  ">
+        <!-- <h2>Master</h2>  -->
+         <div ctgr="Master_toolbar" id="" class="border-bottom d-flex justify-content-between p-1 gap-2 ">
+
+             <!-- <button class="btn btn-warning border">Go</button> -->
+             <!-- <button class="btn border btn-success">Go</button> -->
+              <div class=" w-25 ">
+             <button onclick="start() " class="btn btn-sm btn-success bg-gradient border text-white p-0 pe-2 ps-2 m-1">Start SS</button>
+            </div>
+            <div style="display: none;" class=" w-50 ">
+                <button onclick="crear_tablero();crea_fichas();carga_celdas();carga_canvas();recalcula_fichas();" class="btn btn-success bg-gradient btn-sm w-auto m-1 me-3">Start</button>
+
+             <button onclick="crear_tablero()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Tablero</button>
+             <button onclick="crea_fichas()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Fichas</button>
+             <button onclick=" recalcula_fichas()" class="btn border border-3 bg-white bg-gradient btn-sm  m-1">Recalcula</button>
+           
+             <button onclick="carga_celdas()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Celdas</button>
+             <button onclick="carga_canvas()" class="btn btn-primary bg-gradient btn-sm  m-1">Canvas</button>
+             <!-- <button onclick="carga_config(this.parentElement.parentElement.id)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button> -->
+              </div>
+              <div class=" w-25 ">
+
+             <button onclick="carga_config('panel_lateral')" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button>
+            </div>
+         </div>
+         <div ctgr="Master_paneles" id="" class="border-0 h-100 w-100 d-flex items-stretch justify-content-evenly gap-1 p-0 overflow-y-auto">
+             <div ctgr="Master_panel" id="" class="border border-outset border-5 rounded-3 w-25 flex-grow-1 d-flex flex-column gap-1">
+                   <div ctgr="" id="panel_players" class="border h-auto w-auto ">
+                    <!-- <div  id="panel_players"></div> -->
+                 </div>               
+                <div ctgr="" id="" class=" d-flex border  border-outset border-5 h-25 overflow-y-auto">
+                    <!-- <div class="h-50 d-flex text-white border mt-2"> -->
+                        <button name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='fs-1 w-100 h-100 ms-5  border p-0 m-0 btn btn-'+colores[this.name-1];" class="d-flex text-center ps-5 text-white w-100 fs-1 btn border h-100  ">🎲 <input id="dado_valor" class="h-100 w-100 btn disabled btn-secondary ms-5 border p-0 m-0" disabled type="text"></button>
+                    <!-- </div> -->
+                </div>
+
+                 <div ctgr="" id="" class="d-flex  h-25 flex-grow-1 ">
+                    <div ctgr="" id="" class="d-flex flex-column border  border-outset border-5 w-100 p-2">
+                        Fichas
+                        <!-- <hr> -->
+                        <button onclick="Presenta_fichas('panel_fichas_listado')" class="btn btn-success border">Presenta_fichas</button>
+
+                        <div id="panel_fichas_listado" class="d-flex flex-column border h-100 w-100 overflow-auto gap-1 mt-2 m-1 p-1">
+                       
+                        </div>
+
+                    </div>
+
+                 </div>
+
+             </div>
+             <div ctgr="Master_panel" id="panel_central" class="border  border-outset border-5 rounded-3 d-flex flex-column w-50 h-100 overflow-auto">
+                <div>
+
+                    <!-- <button class="btn btn-sm bg-warning m-1 p-0 ps-1 pe-1">Run!</button> -->
+                    <!-- <div class=" w-25 "> -->
+                       <!-- </div> -->
+                       <!-- <div class=" w-50 "> -->
+                           <button onclick="crear_tablero();crea_fichas();carga_celdas();carga_canvas();recalcula_fichas();" class="btn btn-success bg-gradient btn-sm p-0 ps-1 pe-1 m-1 me-3">Start</button>
+           
+                        <button onclick="crear_tablero()" class="btn btn-warning bg-gradient btn-sm p-0 ps-1 pe-1 m-1">Carga Tablero</button>
+                        <button onclick="crea_fichas()" class="btn bg-warning bg-gradient btn-sm p-0 ps-1 pe-1 m-1">Carga Fichas</button>
+                        <button onclick=" recalcula_fichas()" class="btn border border-3 bg-white bg-gradient btn-sm p-0 ps-1 pe-1 m-1">Recalcula</button>
+                      
+                        <button onclick="carga_celdas()" class="btn btn-warning bg-gradient btn-sm p-0 ps-1 pe-1 m-1">Carga Celdas</button>
+                        <button onclick="carga_canvas()" class="btn btn-primary bg-gradient btn-sm p-0 ps-1 pe-1 m-1">Canvas</button>
+                        <!-- <button onclick="carga_config(this.parentElement.parentElement.id)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button> -->
+                         <!-- </div> -->
+                         <!-- <div class=" w-25 "> -->
+           
+                       <!-- </div> -->
+                </div>
+             </div>
+             <div ctgr="Master_panel" id="panel_lateral" class="border-0 w-25 d-flex flex-column h-100 p-0 ">
+                <div ctgr="" id="" class="border border-outset border-5 rounded-3 m-0 p-2 h-50 overflow-auto"></div>
+
+             </div>
+         </div>
+
+     </div>
+</template>
+    </head>
+<body   id="id_body">
+
+    <div  style="zoom:1;height:100vh; overflow: auto;">
+        <!-- <div class="border overflow-hidden border-outset border-5 border-secondary rounded-3 h-100 w-100 p-1 m-0"> -->
+            <div id="panel_conf" style="display: none; width: 500px;height: 100%;position: absolute;right: 0px;top:0px"  class="bg-black text-white border border-5 rounded-4 border-warning  ">
+
+                <div ctgr="" id="" class="border-0 rounded-2 w-auto d-flex flex-column h-100 m-0 p-1 ">
+
+                    <h3 class="border-3 border-bottom ms-3">Configuracion</h3>
+                    <div ctgr="" id="" class="border border-5 rounded-4 w-auto  d-flex justify-content-between gap-1 m-1 p-2 ">
+                        <!-- <input class="btn btn-warning btn-sm w-100" title="test" value="ttt"/> -->
+                         <div class="border rounded-3 h-100 w-auto p-3">
+                           
+                            <button onclick="list_all_tags( prompt('Id', 'tablero'))" class="btn btn-warning bg-gradient btn-sm w-auto  m-1">List Tags</button>
+                            <button onclick="list_all_class( prompt('Clase', 'celda'))"  class="btn btn-success bg-gradient btn-sm w-auto  m-1">List Class</button>
+
+                        </div>
+                        
+                        <div class="border rounded-3 h-100 p-3">
+                            <button onclick="crear_tablero()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Tablero</button>
+                            <button onclick="crea_fichas()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Fichas</button>
+
+                            <button onclick="carga_celdas()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Celdas</button>
+                            <button onclick="carga_canvas()" class="btn btn-primary bg-gradient btn-sm  m-1">Canvas</button>
+                            <button onclick=" recalcula_fichas()" class="btn border border-3 bg-white bg-gradient btn-sm  m-1">Recalcula</button>
+                           
+
+                            <button onclick="comprueba_datos()" class="btn btn-danger bg-gradient btn-sm w-auto m-1">Comprueba</button>
+                            <button onclick="
+                                            const myDiv = document.getElementById(prompt('panel','panel_test'));
+                                             //var1= 45;//prompt('rotate','45');
+                                             var var2='rotate('+(var1)+'deg)';
+                                           //  alert(var2);
+                                            myDiv.style.transform =var2;              
+                                            id_textarea.value=
+                                                myDiv.style.transform+'\n'+
+                                                id_textarea.value;var1+= 45" 
+                                    class="
+                                            btn btn-danger bg-gradient btn-sm w-auto m-1"
+                            >Mueve
+                            </button>
+
+                            
+
+                            
+                        </div>
+                        <div class="border rounded-3 p-3 h-100">
+
+                            <button onclick="vuelta(prompt('Clase', 'success_1'),prompt('numero', 30));" class="btn btn-warning bg-gradient btn-sm w-100  mt-1 ">Vuelta</button>
+                            <button onclick="vuelta2(prompt('Clase', 'danger_1'));" class="btn btn-warning bg-gradient btn-sm w-100 mt-1">Vuelta2</button>
+                            <button onclick="crear_tablero();crea_fichas();carga_celdas();carga_canvas();recalcula_fichas();" class="btn btn-success bg-gradient btn-sm w-100 mt-3">Start</button>
+                        </div>
+
+                    </div>
+
+                    <fieldset class="border border-5 rounded-4 m-1 mb-2 mt-2 h-100 p-2  d-flex flex-column">
+                        <legend class="border">Data</legend>
+                        <!-- <input class="w-100 rounded" type="text"/> -->
+                        <textarea id="id_textarea" class="w-100 fs-5 rounded h-100 bg-black p-1"></textarea>
+                        <div class="h-50 d-flex text-white border mt-2">
+                            <button name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='fs-1 w-100 h-100 ms-5  border p-0 m-0 btn btn-'+colores[this.name-1];" class="d-flex text-center ps-5 text-white w-100 fs-1 btn border  ">🎲 <input id="dado_valor2" class="h-100 w-100 btn disabled btn-secondary ms-5 border p-0 m-0" disabled type="text"></button>
+                        </div>
+
+                    </fieldset>
+                    <!-- <button name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='fs-1 h-75 disabled border p-0 m-0 btn btn-'+colores[this.name-1];" class="fs-1 btn border h-75 ">🎲 Tira Dado <input id="dado_valor" class=" btn disabled btn-success border p-0 m-0" type="text"></button> -->
+                </div>
+
+            </div>
+            <div id="panel_test"  style="display: none !important; width:600px;height:600px;position: absolute;left: 10px;top:10px;" class=" bg-black rounded-3 d-flex flex-column p-1">
+                <!-- <h2 class="w-25 text-white">Test</h2> -->
+                <div id="panel_test_log" class="border-0 h-100 text-white"></div>
+            </div>
+ 
+            <div id="panel_partida" class="border rounded-3" style="width: auto;height:auto;position: absolute;" ></div>
+
+        <!-- </div> -->
+    </div>
+    <script>
+        var var1 = 45;
+        // $("#tablero").resizable();
+        $("#panel_drag").resizable();
+        $("#panel_drag").draggable();
+
+        $("#panel_conf").resizable();
+        $("#panel_conf").draggable();
+
+        $("#panel_test").resizable();
+        $("#panel_test").draggable();
+
+    </script>
+    <script>
+
+        function list_all_tags(id_pass) {
+
+            Array.from(document.getElementById(id_pass).getElementsByTagName("*")).forEach(element => {
+                id_textarea.value +=
+                    "Tag: " + element.tagName + "\n" +
+                    "Nodos: " + element.parentElement.tagName + "\n" +
+                    "innerHTML: " + element.innerHTML + "\n" +
+                    "  --------   ****   ----------" + "\n"
+            });
+
+        }
+        function list_all_class(class_pass) {
+            let i = 0
+            Array.from(document.body.getElementsByClassName(class_pass)).forEach(element => {
+                id_textarea.value +=
+                    "No: " + i + "\n" +
+                    "Tag: " + element.tagName + "\n" +
+                    "innerHTML: " + element.innerHTML + "\n" +
+                    "  --------   ****   ----------" + "\n"
+                i += 1
+            });
+
+        }
+        var contador_03 = 1
+        async function vuelta(id_pass, numero_pass) {
+            const ficha_mover = document.getElementById(id_pass)
+            id_textarea.value = id_pass + "_" + contador_03 + "\n" + id_textarea.value
+            ficha_mover.setAttribute("posicion", "celda_" + contador_03)
+            try {
+                var pan_origen = ficha_mover//document.getElementById(ficha_seleccionada)
+                var pan_destino = document.getElementById("celda_" + contador_03)
+                pan_origen.style.top = pan_destino.offsetTop + "px"
+                pan_origen.style.left = pan_destino.offsetLeft + "px"
+                pan_origen.style.height = pan_destino.offsetHeight + "px"
+                pan_origen.style.width = pan_destino.offsetHeight + "px"
+
+                if (contador_03 > numero_pass) {
+                    contador_03 = 1
+                }
+                else {
+
+                    setTimeout(() => {
+                        vuelta(id_pass, numero_pass)
+
+                    }, 100);
+
+                }
+            }
+            catch {
+                if (contador_03 < numero_pass) {
+                    setTimeout(() => {
+                        vuelta(id_pass, numero_pass)
+
+                    }, 100);
+                }
+            }
+
+
+            contador_03 += 1
+
+        }
+        var contador_04 = 1
+        async function vuelta2(id_pass) {
+
+            const ficha_mover = document.getElementById(id_pass)
+            id_textarea.value = id_pass + "_" + contador_04 + "\n" + id_textarea.value
+            ficha_mover.setAttribute("posicion", "celda_" + contador_04)
+
+            try {
+                var pan_origen = ficha_mover//document.getElementById(ficha_seleccionada)
+                var pan_destino = document.getElementById("celda_" + contador_04)
+                pan_origen.style.top = pan_destino.offsetTop + "px"
+                pan_origen.style.left = pan_destino.offsetLeft + "px"
+
+                if (contador_04 > 66) {
+
+                }
+                else {
+
+                    setTimeout(() => {
+                        vuelta2(id_pass)
+
+                    }, 100);
+
+                }
+            }
+            catch {
+                if (contador_04 < 68) {
+                    setTimeout(() => {
+                        vuelta2(id_pass)
+
+                    }, 100);
+                }
+            }
+
+
+            contador_04 += 1
+
+        }
+
+
+
+    </script>
+    <script>
+        var panel_destino;
+        var texto_final = "";
+        var contador_tags
+
+        function crea_elemento(destino_id, tag_local, id_local, class_local, innerHTML_local) {
+            contador_tags = document.body.getElementsByTagName("*").length
+            texto_final = ""
+            panel_destino = document.getElementById(destino_id)
+
+            texto_final += "<"
+            texto_final += tag_local
+            texto_final += " id='"
+            texto_final += id_local
+            texto_final += "'"
+            texto_final += " class='"
+            texto_final += class_local
+            texto_final += "'"
+            texto_final += "> "
+            texto_final += innerHTML_local
+            texto_final += "</"
+            texto_final += tag_local
+            texto_final += ">"
+
+
+            // texto_final=
+            // "< " + 
+            // tag_local +
+            // " id='" +
+            // id_local + "'" +
+            // " class='" +
+            // class_local + "'" +           
+
+            // " >" +
+
+            // innerHTML_local +
+
+            // "</" +
+
+            // tag_local + ">"
+
+
+        }
+        function crear_tablero() {
+            // document.ge
+            //Tablero 2
+            crea_elemento("panel_central", "div", "tablero2", " rounded-3 border border-5 m-0 w-100  h-100 d-flex flex-column items-stretch  justify-content-evenly gap-0 p-0", "")
+            panel_destino.innerHTML+= texto_final
+            //Lineas
+            for (let j = 1; j < 4; j++) {
+                crea_elemento("tablero2", "div", "tablero_linea_" + j, "tablero-linea border rounded h-100 d-flex flex-row items-stretch  justify-content-evenly m-0 gap-0 p-0", "")
+                panel_destino.innerHTML += texto_final
+                //Cuadros
+                for (let i = 1; i < 4; i++) {
+                    crea_elemento("tablero_linea_" + j, "div", "tablero_linea_" + j + "_cuadro_" + i, "linea-cuadro border rounded-3 w-100 h-100 p-0 d-flex justify-content-evenly gap-0", "")
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+
+            //casa rojas
+            crea_elemento("tablero_linea_1_cuadro_1", "div", "tablero_linea_1_cuadro_1_log", "border-0 bg-danger d-flex w-100 rounded-3 p-2 ", "")
+            panel_destino.innerHTML += texto_final
+            var contador_01 = 1
+            for (let l = 1; l < 3; l++) {
+                crea_elemento("tablero_linea_1_cuadro_1_log", "div", "tablero_linea_1_cuadro_1_" + l, "border-0 text-white d-flex flex-column w-100 gap-1 p-2", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let m = 1; m < 3; m++) {
+                    //crea_elemento("tablero_linea_1_cuadro_1_" + l, "div", "tablero_linea_1_cuadro_1_" + l, "celda border rounded-5 text-white w-100 h-100", l + "-" + m)
+
+                    crea_elemento("tablero_linea_1_cuadro_1_" + l, "div", "danger_casa_" + contador_01, "celda celda-casa border rounded-5 text-danger w-100 h-100 gap-4", 34)
+
+                    panel_destino.innerHTML += texto_final
+                    contador_01 += 1
+                }
+            }
+            //casa azules
+            crea_elemento("tablero_linea_1_cuadro_3", "div", "tablero_linea_1_cuadro_3_log", "border-0 bg-primary bg-gradient d-flex w-100 rounded-3 p-2", "")
+            panel_destino.innerHTML += texto_final
+            var contador_01 = 1
+            for (let l = 1; l < 3; l++) {
+                crea_elemento("tablero_linea_1_cuadro_3_log", "div", "tablero_linea_1_cuadro_3_" + l, "border-0 text-white d-flex flex-column w-100 gap-1 p-2", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let m = 1; m < 3; m++) {
+                    crea_elemento("tablero_linea_1_cuadro_3_" + l, "div", "primary_casa_" + contador_01, "celda celda-casa border border-outset border-3 rounded-5 text-white w-100 h-100 gap-4", 17)// l + "-" + m)
+                    panel_destino.innerHTML += texto_final
+                    contador_01 += 1
+
+                }
+            }
+            //casa verdes
+            crea_elemento("tablero_linea_3_cuadro_1", "div", "tablero_linea_3_cuadro_1_log", "border-0 bg-success bg-gradient d-flex w-100 rounded-3 p-2 ", "")
+            panel_destino.innerHTML += texto_final
+            contador_01 = 1
+            for (let l = 1; l < 3; l++) {
+                crea_elemento("tablero_linea_3_cuadro_1_log", "div", "tablero_linea_3_cuadro_1_" + l, "border-0 text-white d-flex flex-column w-100 gap-1 p-2", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let m = 1; m < 3; m++) {
+                    crea_elemento("tablero_linea_3_cuadro_1_" + l, "div", "success_casa_" + contador_01, "celda celda-casa border rounded-5 text-success w-100 h-100 text-center gap-4", 51)
+                    panel_destino.innerHTML += texto_final
+                    contador_01 += 1
+                }
+            }
+            //casa amarillas
+            crea_elemento("tablero_linea_3_cuadro_3", "div", "tablero_linea_3_cuadro_3_log", "border-0 bg-warning bg-gradient d-flex w-100 rounded-3 p-2", "")
+            panel_destino.innerHTML += texto_final
+            var contador_01 = 1
+
+            for (let l = 1; l < 3; l++) {
+                crea_elemento("tablero_linea_3_cuadro_3_log", "div", "tablero_linea_3_cuadro_3_" + l, "border-0 text-white d-flex flex-column w-100 gap-1 p-2", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let m = 1; m < 3; m++) {
+                    crea_elemento("tablero_linea_3_cuadro_3_" + l, "div", "warning_casa_" + contador_01, "celda celda-casa border rounded-5 text-white w-100 h-100 text-center gap-4", 0)
+                    panel_destino.innerHTML += texto_final
+                    contador_01 += 1
+
+                }
+            }
+            /* */
+
+            /**/
+            //casillas 1-1
+            for (let b = 1; b < 4; b++) {
+                crea_elemento("tablero_linea_1_cuadro_2", "div", "tablero_linea_1_cuadro_2_casillas_" + b, "border-0 w-100 h-100 d-flex flex-column", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let c = 1; c < 8; c++) {
+                    crea_elemento("tablero_linea_1_cuadro_2_casillas_" + b, "div", "", "celda border w-100 h-100 ", "")
+                    panel_destino.innerHTML += texto_final
+
+                }
+
+            }
+            document.getElementById("tablero_linea_1_cuadro_2_casillas_2").innerHTML = "<div class='bg-danger h-100 d-flex flex-column'>" + document.getElementById("tablero_linea_1_cuadro_2_casillas_2").innerHTML + "</div>"
+            //casillas 3-1
+            for (let b1 = 1; b1 < 4; b1++) {
+                crea_elemento("tablero_linea_3_cuadro_2", "div", "tablero_linea_3_cuadro_2_casillas_" + b1, "border-0 w-100 h-100 d-flex flex-column", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let c = 1; c < 8; c++) {
+                    crea_elemento("tablero_linea_3_cuadro_2_casillas_" + b1, "div", "", "celda border w-100 h-100 p-0 m-0  ", "")
+                    panel_destino.innerHTML += texto_final
+
+                }
+                // b1+=1
+            }
+            document.getElementById("tablero_linea_3_cuadro_2_casillas_2").innerHTML = "<div class='bg-warning h-100 d-flex flex-column'>" + document.getElementById("tablero_linea_3_cuadro_2_casillas_2").innerHTML + "</div>"
+            //casillas 2-1
+            document.getElementById("tablero_linea_2_cuadro_1").innerHTML = "<div id='tablero_linea_2_cuadro_1_log' class='d-flex flex-column w-100'>" + document.getElementById("tablero_linea_2_cuadro_1").innerHTML + "</div>"
+            for (let b = 1; b < 4; b++) {
+                crea_elemento("tablero_linea_2_cuadro_1_log", "div", "tablero_linea_2_cuadro_1_casillas_" + b, "border-0 w-100 h-100 d-flex ", "")
+                panel_destino.innerHTML += texto_final
+                // document.getElementById("tablero_linea_2_cuadro_1").innerHTML="<div class='d-flex flex-column'>"+     document.getElementById("tablero_linea_2_cuadro_1").innerHTML+"</div>"
+                for (let s = 1; s < 8; s++) {
+                    crea_elemento("tablero_linea_2_cuadro_1_casillas_" + b, "div", "", "celda border w-100 h-100 p-0 m-0  ", "")
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+            document.getElementById("tablero_linea_2_cuadro_1_casillas_2").innerHTML = "<div class='bg-success d-flex w-100'>" + document.getElementById("tablero_linea_2_cuadro_1_casillas_2").innerHTML + "</div>"
+            //casillas 2-3
+            document.getElementById("tablero_linea_2_cuadro_3").innerHTML = "<div id='tablero_linea_2_cuadro_3_log' class='d-flex flex-column w-100'>" + document.getElementById("tablero_linea_2_cuadro_3").innerHTML + "</div>"
+            for (let d = 1; d < 4; d++) {
+                crea_elemento("tablero_linea_2_cuadro_3_log", "div", "tablero_linea_2_cuadro_3_casillas_" + d, "border-0 w-100 h-100 d-flex ", "")
+                panel_destino.innerHTML += texto_final
+                // document.getElementById("tablero_linea_2_cuadro_1").innerHTML="<div class='d-flex flex-column'>"+     document.getElementById("tablero_linea_2_cuadro_1").innerHTML+"</div>"
+                for (let w = 1; w < 8; w++) {
+                    crea_elemento("tablero_linea_2_cuadro_3_casillas_" + d, "div", "", "celda border w-100 h-100 p-0 m-0  ", "")
+                    panel_destino.innerHTML += texto_final
+                }
+            }
+            document.getElementById("tablero_linea_2_cuadro_3_casillas_2").innerHTML = "<div class='bg-primary d-flex w-100'>" + document.getElementById("tablero_linea_2_cuadro_3_casillas_2").innerHTML + "</div>"
+
+            //centro
+            document.getElementById("tablero_linea_2_cuadro_2").innerHTML = "<div id='centro_log' class='border-0 d-flex flex-column w-100'>" + document.getElementById("tablero_linea_2_cuadro_2").innerHTML + "</div>"
+            for (let f = 1; f < 4; f++) {
+                crea_elemento("centro_log", "div", "centro_casillas_" + f, "border-0 w-100 h-100 d-flex ", "")
+                panel_destino.innerHTML += texto_final
+
+                for (let o = 1; o < 4; o++) {
+                    crea_elemento("centro_casillas_" + f, "div", "centro_casillas_" + f + "_" + o, "border w-100 h-100 d-flex flex-column", "")
+                    panel_destino.innerHTML += texto_final
+
+                    for (let p = 1; p < 3; p++) {
+                        crea_elemento("centro_casillas_" + f + "_" + o, "div", "centro_casillas_" + f + "_" + o + "_" + p, "border-0 w-100 h-100 d-flex  ", "")
+                        panel_destino.innerHTML += texto_final
+                    }
+                }
+
+            }
+
+        }
+
+        function carga_celdas() {
+
+
+            //amarillas 2
+            i = 7
+            Array.from(document.getElementById("tablero_linea_3_cuadro_2_casillas_3").getElementsByTagName("div")).forEach(element => {
+
+                element.innerHTML = "<canvas class='celda w-100 h-100' id='celda_" + i + "'>" + i + "</canvas>"
+                makeImage(i, ("celda_" + i), "bold 60px Calibri ")
+                i -= 1
+            });
+
+            //amarillas 1
+            i = 61
+            Array.from(document.getElementById("tablero_linea_3_cuadro_2_casillas_1").getElementsByTagName("div")).forEach(element => {
+                element.innerHTML = "<canvas class='celda w-100 h-100' id='celda_" + i + "'>" + i + "</canvas>"
+                //  element.id="celda_"+i
+                makeImage(i, ("celda_" + i), "bold 60px Calibri ")
+                //element.innerHTML=i
+                //element.id="celda_"+i
+
+                i += 1
+            });
+
+            //azules 1
+            i = 24
+            Array.from(document.getElementById("tablero_linea_2_cuadro_3_casillas_1").getElementsByTagName("div")).forEach(element => {
+                //element.innerHTML= "<div class='d-flex flex-column justify-content-end h-100'><div  class='celda h-auto'>" +  i + "</div></div>"
+
+                // element.innerHTML=i
+                //element.id="celda_"+i
+                element.innerHTML = "<div class='d-flex flex-column justify-content-end h-100'><canvas class='celda w-100 h-100' id='celda_" + i + "'>" + i + "</canvas></div>"
+                makeImage(i, ("celda_" + i), "bold 60px Calibri ")
+
+                i -= 1
+            });
+            //azules 2
+            i = 10
+            Array.from(document.getElementById("tablero_linea_2_cuadro_3_casillas_3").getElementsByTagName("div")).forEach(element => {
+
+                // element.innerHTML=i
+                // element.id="celda_"+i
+                element.innerHTML = "<div class='d-flex flex-column justify-content-end h-100'><canvas class='celda w-100 h-100' id='celda_" + i + "'>" + i + "</canvas></div>"
+                makeImage(i, ("celda_" + i), "bold 60px Calibri ")
+                i += 1
+            });
+
+            //verdes 1
+            i = 50
+            Array.from(document.getElementById("tablero_linea_2_cuadro_1_casillas_1").getElementsByTagName("div")).forEach(element => {
+
+                // element.innerHTML= "<div class='d-flex flex-column justify-content-end h-100'><div class='h-auto'>" +  i + "</div></div>"
+                // element.id="celda_"+i
+                element.innerHTML = "<div class='d-flex flex-column justify-content-end h-100'><canvas class='celda w-100 h-100' id='celda_" + i + "'>" + i + "</canvas></div>"
+                // makeImage(  i ,("celda_"+i),"bold 60px Calibri ") 
+                //element.innerHTML="<canvas class='celda w-100 h-100' id='celda_"+i+"'>"+i+"</canvas>"
+                makeImage(i, ("celda_" + i), " 60px Calibri ")
+                i -= 1
+            });
+            //verdes 2
+            i = 52
+            Array.from(document.getElementById("tablero_linea_2_cuadro_1_casillas_3").getElementsByTagName("div")).forEach(element => {
+
+                // element.innerHTML=i
+                // element.id="celda_"+i
+                element.innerHTML = "<canvas class='celda w-100 h-100' id='celda_" + i + "'>" + i + "</canvas>"
+                makeImage(i, ("celda_" + i), " 60px Calibri ")
+
+                i += 1
+            });
+
+            //rojas 1
+            i = 35
+            Array.from(document.getElementById("tablero_linea_1_cuadro_2_casillas_1").getElementsByTagName("div")).forEach(element => {
+
+                // element.innerHTML=i
+                // element.id="celda_"+i
+                element.innerHTML = "<canvas class='celda w-100 h-100' id='celda_" + i + "'>" + i + "</canvas>"
+                makeImage(i, ("celda_" + i), "bold 60px Calibri ")
+                i += 1
+            });
+            //rojas 2
+            i = 33
+            Array.from(document.getElementById("tablero_linea_1_cuadro_2_casillas_3").getElementsByTagName("div")).forEach(element => {
+
+                // element.innerHTML=i
+                // element.id="celda_"+i
+                element.innerHTML = "<canvas class='celda w-100 h-100' id='celda_" + i + "'>" + i + "</canvas>"
+                makeImage(i, ("celda_" + i), "bold 60px Calibri ")
+                i -= 1
+            });
+            //centro 1-1
+            i = 42
+            //"centro_casillas_1_1"
+            //   Array.from(document.getElementById("centro_casillas_1_1").getElementsByTagName("div")).forEach(element => {
+            document.getElementById("centro_casillas_1_1_1").innerHTML = "<div class='d-flex justify-content-end w-100'><div id='celda_" + i + "' class='centro-casilla centro-casilla-right celda w-100 h-100'>" + i + "</div></div>"
+            i += 1
+            //});  
+
+            document.getElementById("centro_casillas_1_1_2").innerHTML = "<div class='d-flex justify-content-start w-100'><div id='celda_" + i + "' class='centro-casilla celda  centro-casilla-left w-100 h-100 d-flex flex-column justify-content-end'>" + i + "</div></div>"
+
+            //centro 3-1
+            i = 59
+            document.getElementById("centro_casillas_3_1_1").innerHTML = "<div class='d-flex justify-content-start w-100'><div id='celda_" + i + "' class='centro-casilla centro-casilla-left  celda w-100'>" + i + "</div></div>"
+            i += 1
+            document.getElementById("centro_casillas_3_1_2").innerHTML = "<div class='d-flex justify-content-end w-100'><div id='celda_" + i + "' class='centro-casilla centro-casilla-right  celda w-100 h-100 d-flex flex-column justify-content-end'>" + i + "</div></div>"
+            //centro 3-3
+            i = 9
+            document.getElementById("centro_casillas_3_3_1").innerHTML = "<div class='d-flex justify-content-end w-100 ps-3'><div id='celda_" + i + "' class='centro-casilla  centro-casilla-right celda w-100'>" + i + "</div></div>"
+            i -= 1
+            document.getElementById("centro_casillas_3_3_2").innerHTML = "<div class='d-flex justify-content-start w-100'><div id='celda_" + i + "' class='centro-casilla  centro-casilla-left celda w-100 h-100 d-flex flex-column justify-content-end'>" + i + "</div></div>"
+            //centro 1-3
+            i = 26
+            //                                                       
+            document.getElementById("centro_casillas_1_3").innerHTML += "<canvas id='canvas_2' style='position:absolute;background-color: transparent; width: 10%;margin-top: 10px;margin-left: 10px;'>"
+            document.getElementById("centro_casillas_1_3_1").innerHTML = "<div class='d-flex justify-content-start w-100'><div id='celda_" + i + "' class='centro-casilla centro-casilla-left  celda w-100'>" + i + "</div></div>"
+            i -= 1
+            document.getElementById("centro_casillas_1_3_2").innerHTML = "<div class='d-flex justify-content-end w-100'><div id='celda_" + i + "' class='centro-casilla  centro-casilla-right celda w-100 h-100 d-flex flex-column justify-content-end'>" + i + "</div></div>"
+
+
+            ////verdes-casa-top
+            document.getElementById("centro_casillas_2_1").innerHTML = "<div class='d-flex h-100 w-100 '><div class='d-flex justify-content-start w-100 bg-success h-100'></div><div  class='   w-100'></div></div>"
+            ////azules-casa-top
+            document.getElementById("centro_casillas_2_3").innerHTML = "<div class='d-flex h-100 w-100 '><div  class='   w-100'></div><div class='d-flex justify-content-start w-100 bg-primary h-100'></div></div>"
+            ////amarillas-casa-top
+            document.getElementById("centro_casillas_3_2_2").innerHTML = "<div class='d-flex justify-content-start w-100 bg-warning h-100'></div>"
+
+            ////rojas-casa-top
+            document.getElementById("centro_casillas_1_2_1").innerHTML = "<div class='d-flex justify-content-start w-100 bg-danger h-100'></div>"
+
+
+            ////verdes-casa-bottom                                  <div class='celda bg-black border w-100 h-100 p-0 m-0'>
+            document.getElementById("tablero_linea_2_cuadro_1_casillas_2").getElementsByTagName("div")[1].outerHTML = "<div class=' bg-black border w-100 h-100 p-0 m-0'><div class='celda d-flex flex-column justify-content-evenly h-100 w-100 '><div id='celda_51'  class='border bg-black  rounded-5 text-center p-1'>51</div></div></div>"
+            ////azules-casa-bottom
+            document.getElementById("tablero_linea_2_cuadro_3_casillas_2").getElementsByTagName("div")[7].outerHTML = "<div class=' bg-black border w-100 h-100 p-0 m-0'><div class='celda d-flex flex-column justify-content-evenly h-100 w-100 '><div id='celda_17' class='border rounded-5 text-center p-1'>17</div></div></div>"
+            ////amarillas-casa-bottom
+            document.getElementById("tablero_linea_3_cuadro_2_casillas_2").getElementsByTagName("div")[7].outerHTML = "<div class=' bg-black border w-100 h-100 p-0 m-0'><div id='celda_68' class='celda d-flex  justify-content-evenly h-100 w-100 '><div class='border rounded-5 text-center p-1'>68</div></div></div>"
+
+            ////rojas-casa-bottom
+            document.getElementById("tablero_linea_1_cuadro_2_casillas_2").getElementsByTagName("div")[1].outerHTML = "<div class=' bg-black border w-100 h-100 p-0 m-0'><div class='celda d-flex  justify-content-evenly h-100 w-100 '><div  id='celda_34' class='celda border rounded-5 text-center p-1'>34</div></div></div>"
+
+            ////rojas-casa-salida
+            document.getElementById("celda_39").outerHTML = "<div class='d-flex justify-content-evenly'><div  id='celda_39' class='celda border rounded-5 text-center p-1'>39</div></div>"
+            ////verdes-casa-salida
+            document.getElementById("celda_56").outerHTML = "<div class='d-flex flex-column h-100 justify-content-evenly'><div  id='celda_56' class='celda border rounded-5 text-center p-1'>56</div></div>"
+            ////amarillas-casa-salida
+            document.getElementById("celda_5").outerHTML = "<div class='d-flex  w-100 justify-content-evenly'><div  id='celda_5' class='celda border rounded-5 text-center ps-2 pe-2 p-1'>5</div></div>"
+            // makeImage(  "5" ,("celda_5"),"bold 110px Calibri ") 
+            ////azules-casa-salida
+            document.getElementById("celda_22").outerHTML = "<div class='d-flex  flex-column  h-100 justify-content-evenly'><div  id='celda_22' class='celda border rounded-5 text-center p-1'>22</div></div>"
+
+            //centro-top
+            document.getElementById("tablero_linea_2_cuadro_2").innerHTML += "<div id='centro_top' style='' ><canvas class='w-100 h-100' id='myCanvas' ></canvas></div>"
+
+            jQuery(".celda").click(function (event) {
+                celda_seleccionada = this.id
+                id_textarea.value =
+                    "\n" + "Top: " +
+                    this.offsetTop + "\n" +
+                    "Left: " +
+                    this.offsetLeft + "\n" +
+                    "\n --------****--------- \n" +
+
+                    id_textarea.value
+
+                id_textarea.value =
+                    "Celda pulsada: " +
+                    this.innerHTML +
+                    "\n" +
+                    "Celda Id: " +
+                    this.id +
+                    id_textarea.value
+
+                id_textarea.value = "Ficha Pulsada_left: " + document.getElementById(ficha_seleccionada).offsetLeft + "\n" + id_textarea.value
+                id_textarea.value = "Ficha Pulsada_top: " + document.getElementById(ficha_seleccionada).offsetTop + "\n" + id_textarea.value
+
+                id_textarea.value = "Ficha Pulsada: " + ficha_seleccionada + "\n" + id_textarea.value
+
+
+
+
+                document.getElementById(ficha_seleccionada).offsetTop = document.getElementById(this.id).offsetTop
+                comprueba_datos()
+            });
+
+        }
+
+        jQuery("#panel_partida").resize(function (event) {
+            rtime = new Date();
+            if (timeout === false) {
+                timeout = true;
+                setTimeout(resizeend, delta);
+            }
+        });
+        var rtime;
+        var timeout = false;
+        var delta = 200;
+        function resizeend() {
+            if (new Date() - rtime < delta) {
+                setTimeout(resizeend, delta);
+            } else {
+                timeout = false;
+                // alert('Done resizing');
+                id_textarea.value +=
+                    "Id: " +
+                    "tt" + "\n" +
+                    'Done resizing \n' +
+                    "Width: " + tablero2.offsetWidth + "\n" +
+                    "Height: " + tablero2.offsetHeight + "\n"
+                // alert(tablero2.offsetHeight +"-" +panel_conf.offsetWidth )
+                panel_conf.offsetHeight = panel_conf.offsetWidth
+                recalcula_fichas()
+            }
+        }
+
+        var ficha_seleccionada, celda_seleccionada;
+        const colores = ["danger", "warning", "success", "primary"]
+
+        function crea_fichas() {
+            const colores = ["danger", "warning", "success", "primary"]
+
+            colores.forEach(element => {
+
+                for (let i = 1; i < 5; i++) {
+                    var final_id = element + "_" + i
+                    let ficha =
+                        "<canvas " +
+                        " posicion='" +
+                        element + "_casa_" + i +
+                        "' " +
+                        " id='" +
+                        final_id +
+                        "' " +
+                        " class='" +
+                        "ficha ficha-" + element + " rounded-5 bg-gradient bg-" + element +
+                        "' " +
+                        " style='" +
+                        "position:absolute; width:20px;height:20px;" +
+                        "' " +
+                        ">" +
+                        //i+
+                        "</canvas>"
+                    tablero2.innerHTML += ficha
+                }
+
+
+            });
+            // $(".ficha").draggable();
+
+            // $(".ficha").resizable();
+
+            jQuery(".ficha").click(function (event) {
+                ficha_seleccionada = this.id
+                id_textarea.value =
+                    "Ficha pulsada: " +
+                    this.innerHTML +
+                    "\n" +
+                    "<code>Ficha Id: " +
+                    this.id +
+                    // "\n --------****--------- \n"+
+                    "\n" + "</code>Top: " +
+                    this.offsetTop + "\n" +
+                    "Left: " +
+                    this.offsetLeft + "\n" +
+                    "\n --------****--------- \n"
+                    + id_textarea.value
+                id_textarea.value =
+
+                    "posicion: " +
+                    //this.getAttribute("posicion") +
+                    "celda_" + (parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) + parseInt(dado_valor.value)) +
+                    "\n" +
+                    id_textarea.value
+                // alert("celda_"+ (parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) +parseInt(dado_valor.value)))
+                celda_seleccionada = "celda_" + (parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) + parseInt(dado_valor.value))
+
+
+                comprueba_datos()
+                recalcula_fichas()
+            });
+
+
+        }
+        function comprueba_datos() {
+            id_textarea.value =
+                "Ficha: " + ficha_seleccionada +
+                " - Celda: " + celda_seleccionada +
+                "\n" +
+                "\n" +
+
+                id_textarea.value
+            var pan_origen = document.getElementById(ficha_seleccionada)
+            var pan_destino = document.getElementById(celda_seleccionada)
+            pan_origen.style.top = pan_destino.offsetTop + "px"
+            pan_origen.style.left = pan_destino.offsetLeft + "px"
+            pan_origen.setAttribute("posicion", celda_seleccionada)
+
+            if ((pan_destino.offsetWidth / pan_destino.offsetHeight) > 1.5) {
+                // alert(">1.5 | " + (pan_destino.offsetWidth/pan_destino.offsetHeight*100))
+                pan_origen.style.height = pan_destino.offsetHeight + "px"
+                pan_origen.style.width = pan_destino.offsetHeight + "px"
+
+            } else {
+                if ((pan_destino.offsetWidth / pan_destino.offsetHeight) < 0.7) {
+                    // alert("<1 | " +(pan_destino.offsetWidth/pan_destino.offsetHeight*100))
+                    pan_origen.style.width = pan_destino.offsetWidth + "px"
+                    pan_origen.style.height = pan_destino.offsetWidth + "px"
+                    pan_origen.style.border = "outset 8px !important;"
+                }
+                else {
+                    // alert("equal")
+                    pan_origen.style.width = pan_destino.offsetWidth - 30 + "px"
+                    pan_origen.style.height = pan_destino.offsetWidth - 30 + "px"
+                    pan_origen.style.top = pan_destino.offsetTop + 15 + "px"
+                    pan_origen.style.left = pan_destino.offsetLeft + 15 + "px"
+
+
+                    pan_origen.style.border = "outset 2px !important;"
+                }
+
+            }
+
+        }
+
+        function recalcula_fichas() {
+
+            for (let i = 0; i < 16; i++) {
+                //const element = array[i];
+                const origen_pan = document.getElementsByClassName("ficha")[i]
+                id_textarea.value =
+                    "\n" +
+                    "Posicion: " +
+                    origen_pan.getAttribute("posicion") +
+                    id_textarea.value
+
+                //    var pan_origen=document.getElementById(element.id)
+                const pan_destino = document.getElementById(origen_pan.getAttribute("posicion"))
+                origen_pan.style.top = pan_destino.offsetTop + "px"
+                origen_pan.style.left = pan_destino.offsetLeft + "px"
+
+                if ((pan_destino.offsetWidth / pan_destino.offsetHeight) > 1.5) {
+                    // origen_pan.style.margin="10px;"
+                    origen_pan.style.height = (pan_destino.offsetHeight) + "px"
+                    origen_pan.style.width = (pan_destino.offsetHeight) + "px"
+
+                } else {
+                    if ((pan_destino.offsetWidth / pan_destino.offsetHeight) < 0.7) {
+                        origen_pan.style.width = (pan_destino.offsetWidth) + "px"
+                        origen_pan.style.height = (pan_destino.offsetWidth) + "px"
+
+                    } else {
+                        origen_pan.style.width = pan_destino.offsetWidth - 30 + "px"
+                        origen_pan.style.height = pan_destino.offsetWidth - 30 + "px"
+                        origen_pan.style.top = pan_destino.offsetTop + 15 + "px"
+                        origen_pan.style.left = pan_destino.offsetLeft + 15 + "px"
+                        origen_pan.style.border = "outset 6px !important;"
+
+
+                        //   origen_pan.style.setAttribute("border","outset 18px !important;")
+                    }
+                }
+            }
+
+
+            // Array.from(document.getElementsByClassName("ficha")).forEach(element => {
+            //     id_textarea.value=
+            //     "\n"+
+            //     "Posicion: "+
+            //     element.getAttribute("posicion")+
+            //     id_textarea.value
+
+            //     var pan_origen=document.getElementById(element.id)
+            //     var pan_destino=document.getElementById(element.getAttribute("posicion"))
+            //         pan_origen.style.top=pan_destino.offsetTop +"px"
+            //         pan_origen.style.left=pan_destino.offsetLeft +"px"
+
+
+            // });
+
+        }
+        function tira_dadoold() {
+            var valor_dado = Math.floor(Math.random() * 6) + 1;
+            valor_dado = Math.floor(Math.random() * 6) + 1;
+            valor_dado = Math.floor(Math.random() * 6) + 1;
+            var dado_field = document.getElementById("dado_valor");
+            dado_field.value = valor_dado;
+
+            var eventify = function (arr, callback) {
+                arr.push = function (e) {
+                    Array.prototype.push.call(arr, e);
+                    callback(arr);
+                };
+            };
+            var testArr = [1, 2];
+
+
+            eventify(testArr, function (updatedArr) {
+                //alert(updatedArr.length);
+                id_textarea.value = updatedArr.length + "\n" + id_textarea.value;
+
+            });
+            testArr.push(3);
+
+            testArr.push(4);
+            testArr.push(5);
+            testArr.push(6);
+            sessionStorage.setItem("Test-arr", JSON.stringify(testArr))
+
+        }
+
+
+
+
+    </script>
+    
+    <!-- <div class="big-label">
+        <h2>Text to Image</h2>
+        <form class="the-words">
+            <input class="form-control" type="text" name="words" placeholder="Put Some Text Here" required="required"/>
+            <input class="btn" type="submit" value="+ Create Image"/>
+        </form>
+    </div>
+    <p class="help">You can share the generated image by right-clicking and copying</p>
+    <canvas id="myCanvas"></canvas> -->
+    <script>
+        function makeImage(text2, id_pass2, font_pass2) {
+            // e.preventDefault();
+            updateCanvas(text2, id_pass2, font_pass2);
+            // this.reset();
+        }
+
+        function updateCanvas(text, id_pass, font_pass) {
+            const c = document.getElementById(id_pass);
+            const ctx = c.getContext("2d");
+
+            //const c = document.getElementById("myCanvas");
+            //const ctx = c.getContext("2d");
+
+            //  ctx.clearRect(0, 0, 50, 50);
+            //ctx.fillStyle = "#212121";
+            //   ctx.fillRect(0, 0, 50, 50);
+
+            // Customize font size, color, etc., as needed
+            ctx.font = font_pass// "bold 110px Calibri ";
+            //ctx.color="yellow"
+            // ctx.fillStyle = "#39FF14";
+            ctx.fillStyle = "yellow";
+
+            ctx.fillText(text, 120, 110);
+
+        }
+
+        // Set up event listener
+        // document.querySelector(".the-words").addEventListener("submit", makeImage);
+        //$("#myCanvas").resizable();
+        //$("#myCanvas").draggable();
+
+        function carga_canvas() {
+            var r;
+            const colores = ["danger", "warning", "success", "primary"]
+
+            colores.forEach(element => {
+
+                for (r = 1; r < 5; r++) {
+
+                    makeImage(r, (element + "_" + r), "bold 110px Calibri ")
+
+                }
+
+            })
+            var canvasElement = document.querySelector("#myCanvas");
+            var context = canvasElement.getContext("2d");
+
+            // the triangle
+
+            var el_h = screen.height; //canvasElement.offsetHeight
+            var el_w = screen.width; //canvasElement.offsetWidth
+            //alert(el_h + " _" + el_w )
+
+            context.beginPath();
+            //context.moveTo((el_w/2), (el_h/2));
+            context.moveTo((0), (150));
+
+            //context.lineTo(el_w/2, (el_h/2)+50);
+            //context.lineTo((el_w/2)+100, (el_h/2)+50);
+            context.lineTo(150, (75));
+
+            context.lineTo(300, 150);
+            context.closePath();
+
+            // the outline
+            context.lineWidth = 1;
+            context.strokeStyle = '#666666';
+            context.stroke();
+
+            // the fill color
+            context.fillStyle = "#FFCC00";
+            context.fill();
+
+
+            context.beginPath();
+            //context.moveTo((el_w/2), (el_h/2));
+            context.moveTo((0), (150));
+
+            //context.lineTo(el_w/2, (el_h/2)+50);
+            //context.lineTo((el_w/2)+100, (el_h/2)+50);
+            context.lineTo(150, (75));
+
+            context.lineTo(0, 0);
+            context.closePath();
+
+            // the outline
+            context.lineWidth = 1;
+            context.strokeStyle = '#666666';
+            context.stroke();
+
+            // the fill color
+            context.fillStyle = "#198754";
+            context.fill();
+
+
+
+
+            context.beginPath();
+            //context.moveTo((el_w/2), (el_h/2));
+            context.moveTo((0), (0));
+
+            //context.lineTo(el_w/2, (el_h/2)+50);
+            //context.lineTo((el_w/2)+100, (el_h/2)+50);
+            context.lineTo(150, (75));
+
+            context.lineTo(300, 0);
+            context.closePath();
+
+            // the outline
+            context.lineWidth = 1;
+            context.strokeStyle = '#666666';
+            context.stroke();
+
+            // the fill color
+            context.fillStyle = "#dc3545";
+            context.fill();
+
+
+            context.beginPath();
+            //context.moveTo((el_w/2), (el_h/2));
+            context.moveTo((300), (0));
+
+            //context.lineTo(el_w/2, (el_h/2)+50);
+            //context.lineTo((el_w/2)+100, (el_h/2)+50);
+            context.lineTo(150, (75));
+
+            context.lineTo(300, 150);
+            context.closePath();
+
+            // the outline
+            context.lineWidth = 1;
+            context.strokeStyle = '#666666';
+            context.stroke();
+
+            // the fill color
+            context.fillStyle = "#0d6efd";
+            context.fill()
+
+
+            // canvasElement = document.querySelector("#canvas_1");
+            // context = canvasElement.getContext("2d");
+            // context.beginPath();
+            // //context.moveTo((el_w/2), (el_h/2));
+            // context.moveTo((0), (0));
+            // context.lineTo(50,45);
+            // context.closePath();
+            // // the outline
+            // context.lineWidth = 5;
+            // context.strokeStyle = 'white';
+            // context.stroke();
+
+            // canvasElement = document.querySelector("#canvas_2");
+            // context = canvasElement.getContext("2d");
+            // context.beginPath();
+            // //context.moveTo((el_w/2), (el_h/2));
+            // context.moveTo((0), (50));
+            // context.lineTo(65,0);
+            // context.closePath();
+            // // the outline
+            // context.lineWidth = 5;
+            // context.strokeStyle = 'white';
+            // context.stroke();
+            // canvasElement = document.querySelector("#canvas_4");
+            // context = canvasElement.getContext("2d");
+            // context.beginPath();
+            // //context.moveTo((el_w/2), (el_h/2));
+            // context.moveTo((0), (50));
+            // context.lineTo(55,0);
+            // context.closePath();
+            // // the outline
+            // context.lineWidth = 5;
+            // context.strokeStyle = 'white';
+            // context.stroke();
+            // canvasElement = document.querySelector("#canvas_3");
+            // context = canvasElement.getContext("2d");
+            // context.beginPath();
+            // //context.moveTo((el_w/2), (el_h/2));
+            // context.moveTo((50), (50));
+            // context.lineTo(0,5);
+            // context.closePath();
+            // // the outline
+            // context.lineWidth = 5;
+            // context.strokeStyle = 'white';
+            // context.stroke();
+        }
+                                                                                                                                                                                                                                    
+   function Presenta_fichas(id_pass){
+
+    try{
+        const  parchis_from_storage=Array.from(JSON.parse(sessionStorage.getItem("Parchis_Partida")).Fichas)
+        //alert(parchis_from_storage.length)
+        parchis_from_storage.forEach(element => {
+  document.getElementById(id_pass).innerHTML+=
+  "<div class='border p-2'>"+
+    "Ficha: " +
+    element[0][1] + "<br>"+
+    "Posicion:  " +
+
+    element[1][1] +  
+    "</div>"                                  
+                                                                               
+        });                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+    }
+  
+  catch{
+    alert("no hay partida")
+  }
+   // var parchis_from_storage=Array.from(JSON.parse(sessionStorage.getItem("Parchis_Partida")))
+    
+    //const datos_load=JSON.parse(sessionStorage.getItem("Parchis_Partida"))
+
+    // for (let f = 0; f < datos_load.length; f++) {
+    //     const element = datos_load[f];
+    //     Location_pass.getElementsByTagName("div")[f+2].innerHTML= "<p  class='border rounded bg-primary text-center m-0'>" + element[0][1] + "</p>" // + "<br>" // datos_load.Jugadores.length
+        
+    // }
+    
+    
+
+    //new_array2[numero_pass][1][1]=input_color.value
+    
+    
+    
+   // sessionStorage.setItem("jugadores",JSON.stringify(new_array2))
+    //rellena_select(JSON.parse(sessionStorage.getItem("jugadores")))
+    //document.getElementsByTagName("main")[0].getElementsByTagName("select")[0].value=""
+   }
+   
+   </script>
+    <script>
+        panel_partida.innerHTML+=document.getElementsByTagName("template")[4].innerHTML
+        panel_players.innerHTML+=document.getElementsByTagName("template")[1].innerHTML
+
+      
+    </script>
+    
+    <script defer>
+       
+  </script>
+</body>
+</html>

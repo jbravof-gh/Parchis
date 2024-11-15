@@ -22,6 +22,7 @@ function carga_plantillas(){
 }
 
 function carga_config(Id_pass){
+    document.getElementById(Id_pass).innerHTML='Config<hr><div ctgr="" id="" class="border border-outset border-5 rounded-3 m-0 pb-1 h-50 overflow-auto"></div>'
     const lista_array=[]
 const lista_metrics=[]
 
@@ -38,16 +39,18 @@ for (let i = 0; i < lista_array.length; i++) {
     const element = lista_array[i][0];
     const element2 = lista_array[i][1];
 
-   document.getElementById(Id_pass).getElementsByTagName("div")[2].innerHTML+=document.getElementsByTagName("template")[11].innerHTML
-   document.getElementById(Id_pass).getElementsByTagName("div")[2].getElementsByTagName("div")[i*3].getElementsByTagName("div")[0].innerHTML=element //lista_array[i]
-   document.getElementById(Id_pass).getElementsByTagName("div")[2].getElementsByTagName("div")[i*3].getElementsByTagName("div")[1].innerHTML=element2 //lista_array[i]
+   document.getElementById(Id_pass).getElementsByTagName("div")[0].innerHTML+=document.getElementsByTagName("template")[3].innerHTML
+   document.getElementById(Id_pass).getElementsByTagName("div")[0].getElementsByTagName("div")[i*3].getElementsByTagName("div")[0].innerHTML=element //lista_array[i]
+   document.getElementById(Id_pass).getElementsByTagName("div")[0].getElementsByTagName("div")[i*3].getElementsByTagName("div")[1].innerHTML=element2 //lista_array[i]
 } 
+// document.getElementById(Id_pass).getElementsByTagName("div")[0].innerHTML+="<hr>"
 
-document.getElementById(Id_pass).getElementsByTagName("div")[2].getElementsByTagName("div")[(lista_array.length-1)*3].getElementsByTagName("div")[1].innerHTML=""
-document.getElementById(Id_pass).getElementsByTagName("div")[2].getElementsByTagName("div")[(lista_array.length-1)*3].getElementsByTagName("div")[1].setAttribute("class",((   document.getElementById(Id_pass).getElementsByTagName("div")[2].getElementsByTagName("div")[(lista_array.length-1)*3].getElementsByTagName("div")[1].getAttribute("class"))+" d-flex gap-1 ")) //.style="background-color:black;"
+document.getElementById(Id_pass).getElementsByTagName("div")[0].getElementsByTagName("div")[(lista_array.length-1)*3].getElementsByTagName("div")[1].innerHTML=""
+document.getElementById(Id_pass).getElementsByTagName("div")[0].getElementsByTagName("div")[(lista_array.length-1)*3].getElementsByTagName("div")[1].setAttribute("class",((   document.getElementById(Id_pass).getElementsByTagName("div")[0].getElementsByTagName("div")[(lista_array.length-1)*3].getElementsByTagName("div")[1].getAttribute("class"))+" d-flex gap-1 ")) //.style="background-color:black;"
 
+document.getElementById(Id_pass).getElementsByTagName("div")[0].getElementsByTagName("div")[(lista_array.length-1)*3].innerHTML+="<hr>"
 for (let p = 0; p < JSON.stringify(lista_specs).split(",").length; p++) {
-    document.getElementById(Id_pass).getElementsByTagName("div")[2].getElementsByTagName("div")[(lista_array.length-1)*3].getElementsByTagName("div")[1].innerHTML+="<div class='d-flex gap-0 border-0 mb-0 gap-1'><div class='bg-danger bg-gradient text-warning flex-grow-1 p-2'>"+(p+1)+" - " + JSON.stringify(lista_specs).split(",")[p].split(":")[0].replace('{','').replace('"','').replace('"','')   + "</div>" + "<div class='btn btn-sm w-25 bg-primary bg-gradient text-white p-0'>" + JSON.stringify(lista_specs).split(",")[p].split(":")[1].replace('}','') + "</div></div>"
+    document.getElementById(Id_pass).getElementsByTagName("div")[0].getElementsByTagName("div")[(lista_array.length-1)*3].getElementsByTagName("div")[1].innerHTML+="<div class='d-flex gap-0 border-0 mb-0 gap-1'><div class='bg-danger bg-gradient text-warning flex-grow-1 p-2'>"+(p+1)+" - " + JSON.stringify(lista_specs).split(",")[p].split(":")[0].replace('{','').replace('"','').replace('"','')   + "</div>" + "<div class='btn btn-sm w-25 bg-primary bg-gradient text-white p-0'>" + JSON.stringify(lista_specs).split(",")[p].split(":")[1].replace('}','') + "</div></div>"
  
 }
 
@@ -383,8 +386,12 @@ function show_hide(id){
     $(text_id).toggle()
 }
 
-   
+adding_listeners()
+
+//$("#panel_players").resizable();
+//$("#panel_players").draggable();
     
-      
+$("#panel_partida").resizable();
+$("#panel_partida").draggable();
 
 

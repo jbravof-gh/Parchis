@@ -13,29 +13,32 @@ _objeto_partida.push({ Sesion: "1", Fecha:"", Configuracion: JSON.parse(sessionS
 _objeto_partida[0].Fecha= new Date().toLocaleDateString()  //("1/1/2020")
   const Parchis_Partida = new _Parchis(_objeto_partida, _objeto_jugadores, _objeto_fichas)
 function start() {
-for (let x = 0; x < 16; x++) {
-  //const element = _objeto_fichas[x];
-  _objeto_fichas.push([["id", document.getElementsByClassName("ficha")[x].id ],["posicion", document.getElementsByClassName("ficha")[x].getAttribute("posicion") ]])
+
   
-}
+  
+  for (let x = 0; x < 16; x++) {
+    //const element = _objeto_fichas[x];
+    _objeto_fichas.push([["id", document.getElementsByClassName("ficha")[x].id], ["posicion", document.getElementsByClassName("ficha")[x].getAttribute("posicion")]])
 
-//  _objeto_jugadores.push(["Nombres", ["J1", "J2", "J3", "J4"]])
-//_objeto_jugadores.push(["Colores", ["rojo", "verde", "amarillo", "azul"]])
+  }
+
+  //  _objeto_jugadores.push(["Nombres", ["J1", "J2", "J3", "J4"]])
+  //_objeto_jugadores.push(["Colores", ["rojo", "verde", "amarillo", "azul"]])
   console.log("Parchis_Partida", Parchis_Partida)
-  sessionStorage.setItem("Parchis_Partida",  JSON.stringify(Parchis_Partida))
+  sessionStorage.setItem("Parchis_Partida", JSON.stringify(Parchis_Partida))
 
 
 
-      const jsonString = JSON.stringify(Parchis_Partida);
-      console.log("jsonString", jsonString)
-      //sessionStorage.setItem("jsonString", jsonString)
+  const jsonString = JSON.stringify(Parchis_Partida);
+  console.log("jsonString", jsonString)
+  //sessionStorage.setItem("jsonString", jsonString)
 
-      const jsonobject = JSON.parse(jsonString)
-      console.log("jsonobject", jsonobject)
-     // sessionStorage.setItem("jsonobject", jsonobject)
+  const jsonobject = JSON.parse(jsonString)
+  console.log("jsonobject", jsonobject)
+  // sessionStorage.setItem("jsonobject", jsonobject)
 
   var valor_10 = sessionStorage.getItem("Objeto2")
-  console.log("Objeto2",valor_10)
+  console.log("Objeto2", valor_10)
 }
 function alert_01() {
   const Parchis_Partida2 = new _Parchis(_objeto_partida, _objeto_jugadores, _objeto_partida)
