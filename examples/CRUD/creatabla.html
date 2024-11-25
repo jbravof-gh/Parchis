@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+                    <!-- BootStrap -->
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                    <!-- JQuery -->
+                    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+                    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+                    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+                    <script src="script.js" defer></script>
+
+</head>
+<body class="bg-black text-white">
+
+<div style="height: 150px;width: 200px; " id="div_general" class="border  text-white">
+    <div class="border d-flex flex-column h-100 overflow-auto justify-content-between">
+        <header class="border bg-danger h-auto d-flex">
+            <button class=" btn btn-sm bg-success border border-2" onclick="run_table(prompt('lineas',1),prompt('columnas',campos_lista.length))">Table</button>
+            <button class=" btn btn-sm border border-2" onclick="recibe_Datos(event)">recibe</button>
+            <button class=" btn btn-sm border bg-warning border-2" onclick="carga_tabla_storage()">Load</button>
+
+        </header>
+        <main class="border bg-white text-black d-flex  flex-grow-1  overflow-auto p-2 table-responsive-sm">
+            <table  style="zoom: .8;"  class="table table-light table-striped rounded-3 border border-4  h-auto overflow-auto">
+                <thead class="h-25 bg-warning m-1">
+        
+                </thead>
+                <tbody class="h-auto overflow-auto flex-grow-1">
+        
+                </tbody>
+              </table>
+        </main>
+        <footer class="border d-flex bg-warning h-auto m-1">
+f
+        </footer>
+
+    </div>
+
+</div>
+
+
+
+
+      <script>
+                const campos_lista=["Id","Name","Description","Others","About"]//,"Extra_1","Extra_2","About2","Extra_3","Extra_4"]
+        function run_table(lineas,columnas){
+            // Create a new <table> element
+            const newTable = document.getElementsByTagName("table")[0];
+
+            // Add some content to the new element
+            newTable.id = "storeList";
+          //  newTable.className="bg-gradient d-flex flex-column h-100 "
+            var newLinea="" ;  var newLinea2="" ;
+
+                var newBody=""
+
+            for (let i = 0; i < (lineas  ); i++) {
+
+                if(i==0){
+                    newLinea2 =  newTable.getElementsByTagName("thead")[0];
+                   // newLinea2.className="bg-white text-black"
+                    newLinea = document.createElement("tr");
+                     //newLinea.className="bg-black d-flex"
+                    newLinea2.appendChild(newLinea)
+                }
+                else{
+                    newLinea = document.createElement("tr");
+                    //  newLinea.className="border d-flex  "
+                }
+
+              
+
+                for (let j = 0; j < (columnas ); j++) {
+                    const newColumna = document.createElement("td");                        
+
+                    if(i==0){
+                        newColumna.innerHTML= campos_lista[j] //+ (j+1)
+                      //  newColumna.className="bg-warning w-100 d-flex flex-column bg-gradient text-black text-center"
+
+                        newColumna.innerHTML+="<input type='text' value='3'/>"
+                    }
+                    else{
+                        newColumna.innerHTML= (i+1) + " - " + (j+1)
+                        //newColumna.className="border w-100"
+
+                    }
+                    
+
+                    newLinea.appendChild(newColumna)
+                }
+                    if(i==0){
+                      //  newTable.appendChild(newLinea2)
+                         newBody = newTable.getElementsByTagName("tbody")[0]; 
+                       //  newBody.className="h-100 overflow-hidden"    
+                       // newTable.appendChild(newBody)
+
+                    }
+                    else{
+                        newBody.appendChild(newLinea)
+
+                    }
+            }
+            // Append the new element to the body of the document
+           // document.getElementById("div_table").appendChild(newTable);
+
+            document.getElementsByTagName("tr")[0].innerHTML+="<td class='td-spcl'>td</td>"
+            lee_datos_forma()
+            recibe_Datos(event)
+
+        }
+
+            //    $(".table").resizable();
+            //    $(".table").draggable();
+               $("#div_general").resizable();
+               $("#div_general").draggable();
+               
+               
+      </script>
+      
+</body>
+</html>

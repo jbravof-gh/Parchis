@@ -17,15 +17,13 @@
          
            
             -->
-            <script src="./crear_partida_def.js" defer></script>
               <script src="./newFlex_eventlistener.js" defer></script>
-   <!-- <script src="./dataStorage.js" defer></script>  -->
+   <script src="./dataStorage.js" defer></script> 
              <link href="./newFlex.css" rel="stylesheet">
-            <!-- <script src="./storage.js" defer></script>  -->
+            <script src="./storage.js" defer></script> 
          
 
-            <!-- <script src="./objeto.js" defer></script> -->
-      
+            <script src="./objeto.js" defer></script>
 
                
             <script src="./newFlex_main.js" defer></script>
@@ -320,9 +318,10 @@
 <template id="id_1" name="jugadores_new">
     <div class="d-flex bg-black w-100 h-100 border rounded   border-outset border-5">
         <div class="border-0 p-1 h-100 w-100 d-flex flex-column gap-2 pb-2">
-            <div class="d-flex gap-2 p-0 pb-1 justify-content-start border-bottom h-auto w-100 overflow-auto">
+            <div class="d-flex gap-2 p-0 pb-1 justify-content-start border-bottom w-100 overflow-auto">
                 <h4 onclick="show_hide2('jugador_detail')" class="text-white ps-2 ms-2 me-2 mt-2">Jugador</h4> 
-                <button onclick="rellena_select('jugadores')"   class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Carga</button>
+                <button onclick="rellena_select(JSON.parse(sessionStorage.getItem('jugadores')))"
+                class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Carga</button>
                 <button class="btn btn-sm btn-danger bg-gradient p-0 pe-2 ps-2 m-2" onclick="add_player();">+</button>
                 <button class="btn btn-sm btn-warning text-black bg-gradient p-0 pe-2 ps-2 m-2" onclick="myFunction()">-</button>
     
@@ -383,16 +382,11 @@
 
              <!-- <button class="btn btn-warning border">Go</button> -->
              <!-- <button class="btn border btn-success">Go</button> -->
-              <div class=" w-25 d-flex">
-                <button onclick="show_hide2('panel_lateral_i')" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Toggle</button>
-
-             <button onclick="crear_partida_parchis()" class="btn btn-sm btn-success bg-gradient border text-white p-0 pe-2 ps-2 m-1">Start SS</button>
-
+              <div class=" w-25 ">
+             <button onclick="start() " class="btn btn-sm btn-success bg-gradient border text-white p-0 pe-2 ps-2 m-1">Start SS</button>
             </div>
-            <div  class=" w-50 ">
-                <button name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='fs-1 w-100 h-100 ms-5  border p-0 m-0 btn btn-'+colores[this.name-1];" class="d-flex text-center ps-5 text-white w-100 fs-1 btn border h-100  ">🎲 <input id="dado_valor" class="h-100 w-100 btn disabled btn-secondary ms-5 border p-0 m-0" disabled type="text"></button>
-
-                <!-- <button onclick="crear_tablero();crea_fichas();carga_celdas();carga_canvas();recalcula_fichas();" class="btn btn-success bg-gradient btn-sm w-auto m-1 me-3">Start</button>
+            <div style="display: none;" class=" w-50 ">
+                <button onclick="crear_tablero();crea_fichas();carga_celdas();carga_canvas();recalcula_fichas();" class="btn btn-success bg-gradient btn-sm w-auto m-1 me-3">Start</button>
 
              <button onclick="crear_tablero()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Tablero</button>
              <button onclick="crea_fichas()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Fichas</button>
@@ -400,44 +394,39 @@
            
              <button onclick="carga_celdas()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Celdas</button>
              <button onclick="carga_canvas()" class="btn btn-primary bg-gradient btn-sm  m-1">Canvas</button>
-             <button onclick="carga_config(this.parentElement.parentElement.id)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button> -->
+             <!-- <button onclick="carga_config(this.parentElement.parentElement.id)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button> -->
               </div>
               <div class=" w-25 ">
 
-             <button onclick="carga_config('panel_lateral_1')" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button>
+             <button onclick="carga_config('panel_lateral')" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button>
              <button onclick="show_hide2('panel_lateral')" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Toggle</button>
 
             </div>
          </div>
          <div ctgr="Master_paneles" id="" class="border-0 h-100 w-100 d-flex items-stretch justify-content-evenly gap-1 p-0 overflow-y-auto">
-             <div ctgr="Master_panel" id="panel_lateral_i" class="border border-outset border-5 rounded-3 w-25 flex-grow-1 d-flex flex-column gap-1 p-1">
+             <div ctgr="Master_panel" id="" class="border border-outset border-5 rounded-3 w-25 flex-grow-1 d-flex flex-column gap-1 p-1">
                    <div ctgr="" id="panel_players" class="border h-auto w-auto ">
                     <!-- <div  id="panel_players"></div> -->
-                 </div>       
-                  <div ctgr="" id="" class="d-flex  h-auto overflow-y-auto">
-                    <div ctgr="" id="" class="d-flex flex-column border  border-outset border-5 w-100 p-2 h-auto">
-                        <div class="d-flex gap-2 p-2 pb-1 justify-content-start border-bottom w-100 h-auto overflow-auto">
+                 </div>               
+                <div ctgr="" id="" class=" d-flex border  border-outset border-5 h-25 overflow-y-auto">
+                    <!-- <div class="h-50 d-flex text-white border mt-2"> -->
+                        <button name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='fs-1 w-100 h-100 ms-5  border p-0 m-0 btn btn-'+colores[this.name-1];" class="d-flex text-center ps-5 text-white w-100 fs-1 btn border h-100  ">🎲 <input id="dado_valor" class="h-100 w-100 btn disabled btn-secondary ms-5 border p-0 m-0" disabled type="text"></button>
+                    <!-- </div> -->
+                </div>
 
-                        <h4 onclick="show_hide2('panel_fichas_listado')" class="text-white ps-2 ms-2 me-2 mt-2">Fichas</h4>
-                        <button onclick="Presenta_fichas('panel_fichas_listado')" class="btn btn-sm btn-success border">Presenta_fichas</button>
+                 <div ctgr="" id="" class="d-flex  h-25 flex-grow-1 ">
+                    <div ctgr="" id="" class="d-flex flex-column border  border-outset border-5 w-100 p-2">
+                        Fichas
+                        <!-- <hr> -->
+                        <button onclick="Presenta_fichas('panel_fichas_listado')" class="btn btn-success border">Presenta_fichas</button>
 
-
-                        </div>
-
-                        <div id="panel_fichas_listado" class="d-flex flex-wrap border h-100 w-100 overflow-y-auto gap-1 mt-2 m-1 p-1">
+                        <div id="panel_fichas_listado" class="d-flex flex-column border h-100 w-100 overflow-y-auto gap-1 mt-2 m-1 p-1">
                        
                         </div>
 
                     </div>
 
-                 </div>                        
-                <div ctgr="" id="" class=" d-flex border  border-outset border-5 h-25 flex-grow-1  overflow-y-auto">
-                    <!-- <div class="h-50 d-flex text-white border mt-2"> -->
-                        <!-- <button name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='fs-1 w-100 h-100 ms-5  border p-0 m-0 btn btn-'+colores[this.name-1];" class="d-flex text-center ps-5 text-white w-100 fs-1 btn border h-100  ">🎲 <input id="dado_valor" class="h-100 w-100 btn disabled btn-secondary ms-5 border p-0 m-0" disabled type="text"></button> -->
-                    <!-- </div> -->
-                </div>
-
-
+                 </div>
 
              </div>
              <div ctgr="Master_panel" id="panel_central" class="border  border-outset border-5 rounded-3 d-flex flex-column w-50 h-100 overflow-auto p-1">
@@ -462,16 +451,9 @@
                        <!-- </div> -->
                 </div>
              </div>
-             <div ctgr="Master_panel" id="panel_lateral" class="border border-5 rounded w-25 flex-grow-1 d-flex flex-column h-100 p-1 ">
-                <!-- <div ctgr="" id="" class="border border-outset border-5 rounded-3 m-0 p-2 h-50 overflow-auto"></div> -->
-                <div class="border border-5 p-1 h-25 d-flex flex-column flex-grow-1" id="panel_lateral_1">
-                    <h3 name="config_detail" onclick="show_hide2('config_detail')">Config</h3>
+             <div ctgr="Master_panel" id="panel_lateral" class="border border-5 rounded w-25 d-flex flex-column h-100 p-1 ">
+                <div ctgr="" id="" class="border border-outset border-5 rounded-3 m-0 p-2 h-50 overflow-auto"></div>
 
-                </div>
-                <div class="border border-5 p-1" id="panel_lateral_2">
-                    <h3 name="config_detail2" onclick="show_hide2('config_detail2')">Config</h3>
-                        <div  class="border border-5 p-1" id="config_detail2"></div>
-                </div>
              </div>
          </div>
 
@@ -1144,20 +1126,10 @@
                 // alert("celda_"+ (parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) +parseInt(dado_valor.value)))
                 celda_seleccionada = "celda_" + (parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) + parseInt(dado_valor.value))
 
-                const  parchis_from_storage2=Array.from(JSON.parse(sessionStorage.getItem("Parchis_Partida")).Fichas)
-              //  alert(parchis_from_storage2[0][3][1])
-              //  _objeto_fichas[0][3][1].push("9")
-               // parchis_from_storage.Fichas[0][3][1]=parseInt(dado_valor.value)
-                //sessionStorage.setItem("Parchis_Partida",JSON.stringify(parchis_from_storage))
-              //  alert(JSON.parse(sessionStorage.getItem("Parchis_Partida")).Fichas)
-              //  alert(_objeto_fichas)
 
                 comprueba_datos()
                 recalcula_fichas()
-                //start() 
-                //_objeto_fichas=parchis_from_storage2
-                crear_partida_parchis()
-
+                start() 
                 Presenta_fichas('panel_fichas_listado')            
             });
 
@@ -1305,8 +1277,6 @@
     <p class="help">You can share the generated image by right-clicking and copying</p>
     <canvas id="myCanvas"></canvas> -->
     <script>
-    var tiradas_acumuladas=0;                                                                                                                                                                                               
-
         function makeImage(text2, id_pass2, font_pass2) {
             // e.preventDefault();
             updateCanvas(text2, id_pass2, font_pass2);
@@ -1493,61 +1463,32 @@
             // context.strokeStyle = 'white';
             // context.stroke();
         }
+                                                                                                                                                                                                                                    
    function Presenta_fichas(id_pass){
-    tiradas_acumuladas+=1
     document.getElementById(id_pass).innerHTML=""
-
+    try{
         const  parchis_from_storage=Array.from(JSON.parse(sessionStorage.getItem("Parchis_Partida")).Fichas)
-           try{ 
         //alert(parchis_from_storage.length)
         parchis_from_storage.forEach(element => {
   document.getElementById(id_pass).innerHTML+=
-  "<div class='d-flex w-auto  border-0 gap-2 p-1 m-2'>"+
+  "<div class='d-flex  border gap-2 p-2'>"+
 
         "<div "+
-        "class='p-1 w-auto gap-2 d-flex justify-content-evenly rounded-3 bg-"+
+        "class='p-1 d-flex justify-content-evenly rounded-3 bg-"+
         element[0][1].split("_")[0] +
         "' "+
         ">"+
             // "Ficha: " +
-            "<div onclick='show_hide_pastilla("+
-            // element[0][1].split("_")[1] + 
-            element[0][1].split("_")[1]+ 
-
-            
-            ")' class='pt-0 ps-0 pb-0 pe-0 ms-1  mt-3 border bg-white  rounded-5  text-black flex-grow-1  w-50 h-50 fs-5'>" +
+            "<div class='border rounded-5 d-flex m-1 p-1 h-auto w-25 ps-3 fs-3 text-center'>" +
                 element[0][1].split("_")[1] + 
             "</div>" +
-                "<div class='d-flex gap-1 w-auto p-0 d-flex flex-column ' id='pastilla_"+
-                    element[0][1].split("_")[1]+
-                "'>"+
-
-                    "<div class='border p-1 fs-5 d-flex gap-1 flex-nowrap overflow-auto rounded bg-white text-black m-0 w-auto h-auto '>" +
-                         "<div class='w-100 overflow-auto' style='font-size:x-small'>Posicion</div>  <div style='font-size:x-small' class='bg-warning w-25 h-100  rounded-3'>" +
-
-                        element[1][1].split("_")[1] +  "</div>"+
-                    "</div>"+                   
-                    "<div class='border p-1 fs-5 d-flex flex-nowrap  gap-1 overflow-auto rounded bg-white text-black m-0 w-100 h-auto '>" +
-                     "<div class='w-100 overflow-auto'  style='font-size:x-small'>Casa</div>  <div style='font-size:x-small' class='bg-warning w-auto rounded-3 p-1'>" +
-                        "Y"+
-                      //  element[1][1].split("_")[1] + 
-                          "</div>"+
-                    "</div>"+      
-                     "<div class='border p-1 fs-5 d-flex flex-nowrap gap-1 overflow-auto rounded bg-white text-black m-0  h-auto '>" +
-                        "<div  class='w-100 overflow-auto' style='font-size:x-small'>Tiradas</div>  <div style='font-size:x-small' class='bg-warning w-auto rounded-3'>" +
-
-                       // element[1][1].split("_")[1] + 
-                      ( element[3][1]+1)+
-                      // tiradas_acumuladas+
-                      // element[1][1].split("_")[1] +// (this.innerHTML + dado_valor.value)+
-                        
-                        "</div>"+
-                    "</div>"+      
-               "</div>"+
 
 
+            "<div class='p-1 border rounded bg-white text-black m-1'>" +
+                "Posicion:  " +
 
-
+                element[1][1] +  
+            "</div>"+
         "</div>"+
    "</div>"                                  
                                                                                

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD_DB</title>
+    <!-- BootStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="./variables.js" defer></script>
+
+    <script src="./scripts.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+
+
+</head>
+
+<body style="height: 100vh;width: 100%;padding: 0px;overflow: hidden;">
+    <div id="panel_general" style="min-height: 420px !important;min-width: 940px !important;" old_top="0" old_left="0"
+        old_width="0" old_height="0"
+        class="border rounded-3   p-0 pt-0 d-flex flex-column bg-black bg-gradient text-white ">
+        <div class="d-flex h-auto justify-content-between m-0 mb-0">
+            <!-- <h3 class="">General Lay - Parchis</h3> -->
+
+            <div style=" height: 40px !important; " ctgr="Master_toolbar" id=""
+                class="border border-outset border-0 d-flex justify-content-between bg-white bg-gradient text-black pt-0 p-0 gap-1 pe-2 w-50 flex-grow-1 m-0 me-0 mt-0">
+
+                <div class="d-flex w-25  flex-grow-1">
+                    <button id="boton_toggle_1"
+                        onclick="if(this.innerHTML=='◁'){this.innerHTML='▷';this.style=''; }else{this.innerHTML='◁';this.style='';};show_hide('panel_lateral');"
+                        class="btn bt-sm  btn-black text-black rounded-5 border-0 border-black ms-2 p-1 pt-0 pb-0 ps-2 pe-2 fs-5">◁</button>
+                    <h5 class="mt-1 mb-1 border  border-black border-2 rounded p-2 pt-1 fs-6 ">Data Base</h5>
+
+                </div>
+
+                <div class="  d-flex w-50 ">
+
+                </div>
+                <div class="  d-flex justify-content-between gap-2 p-0 m-0">
+                    <button id="boton_toggle_2"
+                        onclick="var text_01='top:0;left:0;height:'+(window.innerHeight)+'px !important;';  document.getElementById('panel_general').style=text_01;"
+                        class=" btn btn-sm border border-0 border-outset rounded-5  border-white p-0 m-0 w-100 fs-4">+</button>
+                    <button
+                        onclick="document.getElementById('panel_general').style=' top: 20px;left: 20px;width: 94%; height: 550px !important; min-height: 236px !important;';"
+                        class=" btn btn-sm border border-0 border-outset rounded-5  border-white m-0 p-0 w-100 fs-4">-</button>
+                    <button
+                        onclick="if(this.innerHTML=='▷'){this.innerHTML='◁';this.style=''; }else{this.innerHTML='▷';this.style='';};show_hide('panel_lateral_i');"
+                        class="btn bt-sm  btn-black text-black rounded-5 border-0 border-black ms-2  p-1 pt-0 pb-0 ps-2 pe-2 fs-5">▷</button>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div ctgr="Master" id=""
+            class="border-0 rounded-3 text-white bg-black bg-gradient flex-grow-1 w-100 d-flex flex-column items-stretch justify-content-between gap-0 p-1 pt-0 pe-0 overflow-y-auto">
+            <!-- <h2>Master</h2>  -->
+
+
+            <div ctgr="Master_paneles" id=""
+                class="border-0 h-100 w-100 d-flex items-stretch justify-content-evenly gap-1 p-0  m-0 overflow-y-auto">
+
+
+                <div style="position: relative;margin-top: 2px;" ctgr="Master_panel" id="panel_lateral" old_top="0" old_left="0" old_width="0" old_height="0"
+                    class="border border-2  w-25 flex-grow-1 d-flex flex-column  p-0 gap-1 overflow-y-auto">
+                    <div style="zoom: .8;" ctgr="Master_panel_toolbar"
+                        class="border-bottom d-flex justify-content-between p-0 m-0">
+                        <div ctgr="Master_panel_toolbar" class="border-0 d-flex justify-content-evenly pt-1 ps-1 gap-2">
+                            <button onclick="show_hide('panel_central_i_2')"
+                                class="btn btn-sm  btn-danger text-white border rounded-3  border-black mt-0 mb-1 p-2 pt-1 pb-1">Top</button>
+                            <button onclick="show_hide('panel_central_i_1')"
+                                class="btn btn-sm  btn-warning text-black border rounded-3  border-black mt-0 mb-1 p-2 pt-1 pb-1 ">Mid</button>
+                            <button onclick="show_hide('panel_central_i_3')"
+                                class="btn btn-sm  btn-primary text-white border rounded-3 border-black mt-0 mb-1 p-2 pt-1 pb-1">Bot</button>
+
+                        </div>
+                        <div class="d-flex gap-2 justify-content-evenly me-3">
+                            <button
+                                class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                            <button
+                                class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+
+                        </div>
+                    </div>
+                    <div ctgr="Master_panel_boxes"
+                        class="border-0 d-flex flex-column gap-2 h-auto flex-grow-1 overflow-auto pt-0 p-1">
+
+                        <div id="panel_central_i_2"
+                            class="border border-danger border-1 rounded-3  p-2 d-flex flex-column h-50  overflow-auto bg-danger bg-gradient">
+                            <!-- <h3 name="config_detail2" onclick="show_hide2('config_central_i2')">Config2</h3>
+                                    <div  class="border border-5 p-1 h-100 overflow-auto " id="config_central_i2">2</div> -->
+                        </div>
+
+                        <div id="panel_central_i_1" style=""
+                            class="border border-warning border-5 rounded-3 p-0 d-flex flex-grow-1 h-100  flex-column bg-black bg-gradient gap-0">
+                            <div style="zoom: .8;" ctgr="Master_panel_toolbar"
+                                class="border border-bottom rounded bg-black d-flex justify-content-between ps-2 p-1 m-0 gap-2 border-white w-100 h-auto overflow-x-auto ">
+                                <!-- <button onclick="rellena_fichas()"   class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Carga</button> -->
+                                <div style="zoom: 0.9;" ctgr="Master_panel_toolbar"
+                                    class="border-0 d-flex justify-content-evenly gap-2 m-0 p-0">
+                                    <!-- <button onclick="show_hide3('config_central_i_l_1',1)" class="btn btn-sm    bg-gradient text-white border rounded-5 p-0 m-0  border-black ">
+                                            <i class="material-icons" style="font-size:20px;color:red">add</i>
+                                        </button> -->
+                                    <h4 onclick="show_hide2('fichas_detail')" class="text-white ms-2  mt-2">Mid</h4>
+
+                                    <i onclick="rellena_fichas();this.className='material-icons mt-0 me-3 text-white'"
+                                        class="material-icons mt-0 ms-2 text-primary "
+                                        style="font-size:40px">cloud_download</i>
+                                    <!--                                        
+                                        <i  onclick="show_hide3('config_central_i_l_2_success',2)"  class="rellena-f-success material-icons p-1 bg-success bg-gradient rounded-5" style="font-size:30px">remove</i>
+                                        <i  onclick="show_hide3('config_central_i_l_2_warning',3)"  class="rellena-f-warning material-icons p-1 bg-warning bg-gradient rounded-5" style="font-size:30px">remove</i>
+                                        <i  onclick="show_hide3('config_central_i_l_2_danger',4)"  class="rellena-f-danger material-icons p-1 bg-danger bg-gradient rounded-5" style="font-size:30px">remove</i>
+                                        <i  onclick="show_hide3('config_central_i_l_2_primary',5)"  class="rellena-f-primary material-icons p-1 bg-primary bg-gradient rounded-5" style="font-size:30px">remove</i>
+     -->
+                                    <!-- <button onclick="show_hide3('config_central_i_l_2',2)" class="btn btn-sm  btn-warning text-white border rounded-5  border-black  pt-2">
+                                            <i class="material-icons" style="font-size:20px;color:red">remove</i>
+    
+                                        </button>
+                                        <button onclick="show_hide3('config_central_i_l_3',3)" class="btn btn-sm  btn-danger text-white border rounded-5 border-black mt-1 mb-1 p-2 pt-1 pb-1">-</button>
+                                        <button onclick="show_hide3('config_central_i_l_4',4)" class="btn btn-sm  btn-primary text-white border rounded-5 border-black mt-1 mb-1 p-2 pt-1 pb-1">-</button> -->
+
+                                </div>
+                                <div class="d-flex gap-2 justify-content-evenly me-3">
+                                    <button
+                                        class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                                    <button
+                                        class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+
+                                </div>
+                            </div>
+                            <div id="fichas_detail"
+                                class="border d-flex flex-wrap h-50 overflow-auto    bg-warning bg-gradient gap-2 p-1 mt-1 flex-grow-1">
+                                <!-- <div class="d-flex border rounded-3 m-0 border-2 p-1  w-50 overflow-auto m-0" id="config_central_i_l_1">
+                                        <div class="border bg-success bg-gradient h-100 w-100"
+                                            >1</div>
+                                    
+                                    </div>
+                                    <div class="border rounded-3 m-0 border-2 p-1  w-50 overflow-auto m-0"  id="config_central_i_l_2">
+                                        <div class="border bg-warning bg-gradient h-100 w-100"
+                                           >2</div>
+                                    
+                                    </div>
+                                    <div class="border rounded-3 m-0 border-2 p-1  w-50 overflow-auto m-0" id="config_central_i_l_3">
+                                        <div class="border bg-danger bg-gradient " >3
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="border rounded-3 m-0 border-2 p-1  w-50 overflow-auto m-0"   id="config_central_i_l_4">
+                                        <div class="border bg-primary bg-gradient "
+                                           >4</div>
+                                    
+                                    </div> -->
+
+
+
+                            </div>
+
+                        </div>
+
+                        <div id="panel_central_i_3" style="display: none !important;"
+                            class="border border-outset border-primary rounded-3 border-5 p-1 d-flex flex-column h-75 overflow-auto bg-black bg-gradient">
+
+                            <div class="d-flex h-auto p-1 border-bottom">
+                                <h6 class="w-100  h-auto m-0 p-0" name="config_detail3"
+                                    onclick="show_hide2('config_central_3')">Session</h6>
+                                <div class="border-0 p-0 d-flex gap-2">
+                                    <i style="font-size: 15px;" class="material-icons">folder</i>
+                                    <i onclick="carga_tabla_storage()" class="material-icons text-secondary" style="font-size:15px;">account_circle</i>
+                                    <i onclick="crea_tabla()" class="material-icons text-warning" style="font-size:15px;">home</i>
+                                    <i onclick="config_central_3.innerHTML=''" class="material-icons"
+                                        style="font-size:15px">delete</i>
+                                    <i onclick="busca_datos()" class="material-icons" style="font-size:15px">search</i>
+
+                                </div>
+                            </div>
+
+
+                            <div class="border  p-1 m-0 mt-0 rounded-1 bg-white text-black bg-gradient overflow-auto flex-grow-1  d-flex flex-column"
+                                id="config_central_3">
+                                <!-- <button  style="border: inset 4px !important;" name=0 onclick="let cuenta_1=colores_seleccionados.length; if(this.name==cuenta_1){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor2.className='disabled fs-1 mt-1 w-50 h-75  ms-5  mb-2 border p-0 m-0 btn btn-sm btn-'+colores_seleccionados[this.name-1];" class="bg-black d-flex text-center ps-5 pt-2 pb-0 text-red h-100 w-100 fs-1 btn btn-sm border justify-content-evenly rounded-4 "><div class="mt-0"> 🎲</div><input id="dado_valor2" class=" w-50 h-75 btn disabled btn-secondary fs-1 mt-1 ms-5 border p-0 mb-0" disabled type="text"></button> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ctgr="Master_panel" id="panel_central"
+                    class="border  border-1  d-flex flex-column w-50 flex-grow-1 overflow-auto p-0 m-0  ">
+                    <table id="storeList" style="zoom: .8;"
+                        class="table table-light table-striped rounded-2 border border-1 m-0 h-auto overflow-auto">
+                        <thead class="h-25 bg-warning m-1">
+
+                            <tr>
+                                <td>Id<input type="text" value="3"></td>
+                                <td>Name<input type="text" value="3"></td>
+                                <td>Description<input type="text" value="3"></td>
+                                <td>Others<input type="text" value="3"></td>
+                                <td>About<input type="text" value="3"></td>
+                                <td class="td-spcl">td</td>
+                            </tr>
+                        </thead>
+                        <tbody class="h-auto overflow-auto flex-grow-1">
+
+                            <!-- <tr>
+                                <td>2 - 1</td>
+                                <td>2 - 2</td>
+                                <td>2 - 3</td>
+                                <td>2 - 4</td>
+                                <td>2 - 5</td>
+                            </tr>
+                            <tr>
+                                <td>3 - 1</td>
+                                <td>3 - 2</td>
+                                <td>3 - 3</td>
+                                <td>3 - 4</td>
+                                <td>3 - 5</td>
+                            </tr>
+                            <tr>
+                                <td>4 - 1</td>
+                                <td>4 - 2</td>
+                                <td>4 - 3</td>
+                                <td>4 - 4</td>
+                                <td>4 - 5</td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td>5 - 1</td>
+                                <td>5 - 2</td>
+                                <td>5 - 3</td>
+                                <td>5 - 4</td>
+                                <td>5 - 5</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>
+                                    <div class="d-flex gap-1 me-2"><button class="btn btn-sm"
+                                            onclick="onEdit(this)">Edit</button> <button class="btn btn-sm"
+                                            onclick="onDelete(this)">Delete</button></div>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div  style="position: relative;margin-top: 2px;margin-right: 2px;"  ctgr="Master_panel" id="panel_lateral_i"
+                    class="border border-outset border-2 w-25 flex-grow-1 d-flex flex-column gap-1 p-1 ">
+                    <div ctgr="Master_panel_toolbar" style="zoom: .8;"
+                        class="border-bottom d-flex justify-content-between p-1 pt-0 m-0">
+                        <div ctgr="Master_panel_toolbar" class="border-0 d-flex justify-content-evenly gap-2 w-75">
+                            <button onclick="show_hide2('panel_lateral_i_1')"
+                                class="btn btn-sm  btn-warning text-black border rounded-5 w-50  border-black mt-1 mb-1 p-2 pt-1 pb-1">Log</button>
+                            <button onclick="show_hide2('panel_lateral_i_2')"
+                                class="btn btn-sm  btn-danger text-black border rounded-5 w-50  border-black mt-1 mb-1 p-2 pt-1 pb-1">Dado</button>
+                            <button onclick="show_hide2('panel_lateral_i_3')"
+                                class="btn btn-sm  btn-primary text-black border rounded-5 w-50 border-black mt-1 mb-1 p-2 pt-1 pb-1">Partida</button>
+
+                        </div>
+                        <div class="d-flex gap-2 justify-content-end w-auto pe-2">
+                            <button
+                                class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                            <button
+                                class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+
+                        </div>
+                    </div>
+                    <div ctgr="Master_panel_boxes"
+                        class="border-0 d-flex flex-column gap-2 h-auto flex-grow-1 overflow-auto pt-0 p-1">
+                        <div id="panel_lateral_i_1"
+                            class="border border-warning border-5 rounded-3 p-0 d-flex flex-column h-50 flex-grow-1 bg-warning bg-gradient gap-1">
+                            <div style="zoom: .8;" ctgr="Master_panel_toolbar"
+                                class="border-bottom rounded bg-black d-flex justify-content-between ps-2 p-1 m-0 gap-2">
+                                <div ctgr="Master_panel_toolbar"
+                                    class="border-0 d-flex justify-content-evenly gap-2 m-0 p-0">
+                                    <button onclick="show_hide2('config_detail_i_l_1')"
+                                        class="btn btn-sm   bg-success bg-gradient text-success border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">1</button>
+                                    <button onclick="show_hide2('config_detail_i_l_2')"
+                                        class="btn btn-sm  btn-secondary text-secondary border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">2</button>
+                                    <button onclick="show_hide2('panel_lateral_i_3')"
+                                        class="btn btn-sm  btn-primary text-primary border rounded-5 border-black mt-1 mb-1 p-2 pt-1 pb-1">3</button>
+
+                                </div>
+                                <div class="d-flex gap-2 justify-content-evenly me-3">
+                                    <button
+                                        class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                                    <button
+                                        class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column  border bg-success bg-gradient rounded-3 m-0 border-2 p-0 h-100 overflow-hidden"
+                                id="config_detail_i_l_1">
+                                <div class="d-flex flex-column h-100 ">
+                                    <div class="d-flex gap-3 justify-content-end w-auto me-3">
+                                        <button onclick="id_textarea.value='';contador_texto=0;"
+                                            class=" btn btn-sm border border-0 border-outset rounded-5  border-white text-white me-3 pt-2">
+                                            <i class="material-icons" style="font-size:20px;color:red">delete</i>
+
+                                        </button>
+                                        <button
+                                            class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0 pt-0 pb-1  fs-5">+</button>
+                                        <button
+                                            class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1  fs-5">-</button>
+
+                                    </div>
+                                    <textarea
+                                        class="border flex-grow-1  bg-black bg-gradient border-4 border-warning m-1 mt-1 rounded-3"
+                                        id="id_textarea"></textarea>
+
+                                </div>
+                            </div>
+                            <div style="display: none !important;"
+                                class="border bg-secondary bg-gradient rounded-3 m-0 border-2 p-1 h-100 overflow-auto"
+                                id="config_detail_i_l_2">
+                                <div class="d-flex justify-content-end">
+                                    <div class="d-flex gap-2 justify-content-end w-auto me-3">
+                                        <button
+                                            class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                                        <button
+                                            class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="panel_lateral_i_2" style=""
+                            class="border border-danger border-1 rounded-3  p-1 d-flex flex-column   flex-grow-1  overflow-auto bg-danger bg-gradient">
+                            <h3 name="config_detail2" onclick="show_hide2('config_detail_i2')">Dado</h3>
+                            <div class="border-0 border-5 p-0 overflow-hidden" id="config_detail_i2">
+                                <!-- <div  class="d-flex flex-column  border bg-secondary bg-gradient rounded-3 m-0 border-2 p-1 flex-grow-1 overflow-auto" id="config_detail_i2_l_1">
+                                            <div class="d-flex h-auto justify-content-end">
+                                                <div class="d-flex gap-2 justify-content-end w-auto me-3">
+                                                    <button class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                                                    <button class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+                                    
+                                               
+    
+                                                </div>
+                                            </div>
+                                            <div class="border  overflow-auto flex-grow-1 m-0 mt-0 w-100 rounded-2 d-flex p-1 gap-1">
+                                                <button id="boton_dado" name=0 onclick="let cuenta_1=colores_seleccionados.length; if(this.name==cuenta_1){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor3.className=' rounded-5 fs-1  w-100 text-center bg-gradient bg-'+colores_seleccionados[this.name-1];" class="w-50 text-center border-0 fs-1 mt-0 bg-secondary bg-gradient">🎲</button>
+                                                <div class="border rounded-5 m-2 flex-grow-1 text-center fs-1">1</div>
+                                                <div class="border-0 d-flex   m-2 flex-grow-1 text-center fs-1 p-0">
+                                                    <input class="bg-secondary rounded-5 text-center w-75 bg-gradient" id="dado_valor3" value="1"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                         
+                                         <div style="" class="border bg-secondary bg-gradient rounded-3 m-0 border-2 p-1 h-100 d-flex flex-column " id="config_detail_i2_l_2">
+                                            <div class="d-flex justify-content-end">
+                                                <div class="d-flex gap-2 justify-content-end w-auto me-3">
+                                                    <button class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                                                    <button class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+                                    
+                                                </div>
+         
+                                            </div>
+                                            <div class="h-75 overflow-auto">
+    
+                                            </div>
+                                         </div> -->
+                            </div>
+                        </div>
+                        <div id="panel_lateral_i_3" style="display: none !important;"
+                            class="border rounded-3 border-5 p-1 d-flex flex-column h-50   overflow-auto bg-primary bg-gradient">
+                            <!-- <h3 name="config_detail3" onclick="show_hide2('config_detaili_3')">Config3</h3> -->
+                            <div class="border-0 border-5 p-1 h-100 overflow-auto flex-grow-1 d-flex flex-column"
+                                id="config_detaili_3">
+                                <!-- <h4 class="w-100 border-bottom" name="config_detail3" onclick="show_hide2('config_central_3')">Dado</h4>
+                                        <div  class="border border-2 p-1  h-100 overflow-auto  d-flex items-stretch" id="config_central_3">
+                                            <button  style="border: inset 4px !important;" name=0 onclick="let cuenta_12=colores_seleccionados.length; if(this.name==cuenta_12){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor2.className='disabled fs-1 mt-1 w-75 h-75  ms-3  mb-2 border p-0 m-0 btn btn-sm btn-'+colores_seleccionados[this.name-1];" class="bg-black d-flex  text-center ps-1 pt-2 pb-0 text-red h-100 w-100 fs-1 btn btn-sm border justify-content-evenly rounded-4 "><div class="ms-2 mt-0 w-25"> 🎲</div><input id="dado_valor2" class=" w-75 h-75 btn disabled btn-secondary fs-1 mt-1 ms-1 border p-0 mb-0" disabled type="text"></button>
+        
+                                        </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+        const campos_lista = ["Id", "Name", "Description", "Others", "About"]//,"Extra_1","Extra_2","About2","Extra_3","Extra_4"]
+        function run_table(lineas, columnas) {
+            // Create a new <table> element
+            const newTable = document.getElementsByTagName("table")[0];
+
+            // Add some content to the new element
+            newTable.id = "storeList";
+            //  newTable.className="bg-gradient d-flex flex-column h-100 "
+            var newLinea = ""; var newLinea2 = "";
+
+            var newBody = ""
+
+            for (let i = 0; i < (lineas); i++) {
+
+                if (i == 0) {
+                    newLinea2 = newTable.getElementsByTagName("thead")[0];
+                    // newLinea2.className="bg-white text-black"
+                    newLinea = document.createElement("tr");
+                    //newLinea.className="bg-black d-flex"
+                    newLinea2.appendChild(newLinea)
+                }
+                else {
+                    newLinea = document.createElement("tr");
+                    //  newLinea.className="border d-flex  "
+                }
+
+
+
+                for (let j = 0; j < (columnas); j++) {
+                    const newColumna = document.createElement("td");
+
+                    if (i == 0) {
+                        newColumna.innerHTML = campos_lista[j] //+ (j+1)
+                        //  newColumna.className="bg-warning w-100 d-flex flex-column bg-gradient text-black text-center"
+
+                        newColumna.innerHTML += "<input type='text' value='3'/>"
+                    }
+                    else {
+                        newColumna.innerHTML = (i + 1) + " - " + (j + 1)
+                        //newColumna.className="border w-100"
+
+                    }
+
+
+                    newLinea.appendChild(newColumna)
+                }
+                if (i == 0) {
+                    //  newTable.appendChild(newLinea2)
+                    newBody = newTable.getElementsByTagName("tbody")[0];
+                    //  newBody.className="h-100 overflow-hidden"    
+                    // newTable.appendChild(newBody)
+
+                }
+                else {
+                    newBody.appendChild(newLinea)
+
+                }
+            }
+            // Append the new element to the body of the document
+            // document.getElementById("div_table").appendChild(newTable);
+
+            document.getElementsByTagName("tr")[0].innerHTML += "<td class='td-spcl'>td</td>"
+            lee_datos_forma()
+            recibe_Datos(event)
+
+        }
+        function crea_tabla(){
+  var table = document
+  .getElementById("storeList")
+  .getElementsByTagName("tbody")[0];
+//var newRow = table.insertRow(table.length);
+  var tabla_texto=[]
+
+// tabla_texto=[]
+   Array.from(table.rows).forEach(element => {
+     var tabla_texto2=[]
+ //tabla_texto2=[]
+    Array.from(element.cells).forEach(element2 => {
+      // alert()
+     
+      var cell_text =storeList.getElementsByTagName("td")[element2.cellIndex].innerHTML.split("<")[0]
+      tabla_texto2.push([cell_text,element2.innerHTML])
+
+    })
+ tabla_texto.push(["linea",tabla_texto2])
+   
+   });
+
+  sessionStorage.setItem("tabla1",JSON.stringify(tabla_texto))
+
+}
+        //    $(".table").resizable();
+        //    $(".table").draggable();
+        $("#div_general").resizable();
+        $("#div_general").draggable();
+
+
+    </script>
+</body>
+
+</html>

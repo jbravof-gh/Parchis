@@ -22,7 +22,7 @@ function carga_plantillas(){
 }
 
 function carga_config(Id_pass){
-    document.getElementById(Id_pass).innerHTML='Config<hr><div ctgr="" id="" class="border border-outset border-5 rounded-3 m-0 pb-1 h-50 overflow-auto"></div>'
+    document.getElementById(Id_pass).innerHTML+='<div ctgr="" id="config_detail" class="border border-outset border-5 flex-grow-1 rounded-3 m-0 pb-1 h-100 overflow-auto"></div>'
     const lista_array=[]
 const lista_metrics=[]
 
@@ -385,7 +385,78 @@ function show_hide(id){
     const text_id = "#" + id
     $(text_id).toggle()
 }
+function show_hide2(id_pass){
+    //alert(id)
+    try{
+        if(document.getElementById(id_pass).style.display==""){
 
+            document.getElementById(id_pass).style="display:none !important;"
+        }
+        else{
+
+            document.getElementById(id_pass).style=""
+
+        }
+
+    }
+
+    catch{
+      //  alert("no"+id_pass)
+
+        document.getElementById(id_pass).style="display:none !important;"
+
+    }
+    recalcula_fichas()
+       
+}
+function show_hide3(){
+    //alert(id)
+    try{
+        if(document.getElementById("config_detail").style.display==""){
+
+            document.getElementById("config_detail").style="display:none !important;"
+        }
+        else{
+
+            document.getElementById("config_detail").style=""
+
+        }
+
+    }
+
+    catch{
+      //  alert("no"+id_pass)
+
+        document.getElementById("config_detail").style="display:none !important;"
+
+    }
+
+       
+}
+
+function show_hide_pastilla(numero){
+let id_pass="pastilla_"+numero
+    try{
+        if(document.getElementById(id_pass).style.display==""){
+
+            document.getElementById(id_pass).style="display:none !important;"
+        }
+        else{
+
+            document.getElementById(id_pass).style=""
+
+        }
+
+    }
+
+    catch{
+      //  alert("no"+id_pass)
+
+        document.getElementById(id_pass).style="display:none !important;"
+
+    }
+
+}
 adding_listeners()
 
 //$("#panel_players").resizable();

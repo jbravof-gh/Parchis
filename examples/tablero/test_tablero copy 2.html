@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=window.innerWidth,height=window.innerHeight, initial-scale=1.0">
+    <title>Tablero_test</title>
+        <!-- BootStrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+        
+        <script src="./newFlex_eventlistener.js" defer></script>
+        <script src="./dataStorage.js" defer></script> 
+                  <!-- <link href="./newFlex.css" rel="stylesheet"> -->
+                 <!-- <script src="./storage.js" defer></script> 
+              
+     
+                 <script src="./objeto.js" defer></script>
+     
+                    
+                 <script src="./newFlex_main.js" defer></script> -->
+        
+        <template id="id_2">
+            <div ctgr="tablero" class="border border-primary border-2 m-0 w-100 h-100"></div>
+            <div></div>
+            <div ctgr="" id="" class=""></div>
+            <div ctgr="" id="" class="border "></div>
+        
+        </template>
+</head>
+<body style="height: 100vh;padding: 5px;">
+
+    <div  id="panel_general"  style="min-height: 400px !important;"  old_top="0" old_left="0"   old_width="0" old_height="0" class="border rounded-3   p-2 d-flex flex-column bg-black bg-gradient text-white ">
+        <div class="d-flex h-auto justify-content-between mt-1">
+            <h1>General Lay - Parchis</h1>
+            <div class="d-flex justify-content-end gap-2 h-50 mt-1">
+                <button onclick="document.getElementById('panel_general').style='top:0;left:0;height:100%;'" class=" btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-3">+</button>
+                <button onclick="document.getElementById('panel_general').style='top:5%;left:5%;width:70%;height:70%;min-height: 400px !important;'"class=" btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-3">-</button>
+
+            </div>
+        </div>
+        <div ctgr="Master" id="" class="border rounded-3 text-white bg-black  flex-grow-1 w-100 d-flex flex-column items-stretch justify-content-evenly gap-0 p-1 overflow-y-auto">
+            <!-- <h2>Master</h2>  -->
+             <div ctgr="Master_toolbar" id="" class="border-0 d-flex justify-content-between p-0 gap-2 ">
+    
+                 <!-- <button class="btn btn-warning border">Go</button> -->
+                 <!-- <button class="btn border btn-success">Go</button> -->
+                  <div class=" w-25 d-flex">
+                    <button onclick="if(this.innerHTML=='◁'){this.innerHTML='▷';this.style='background-color:white;color:black !important'; }else{this.innerHTML='◁';this.style='';};show_hide2('panel_lateral_i');" class="btn bt-sm  btn-black text-white rounded-5 border border-black mt-1 mb-1 p-1 pt-1 pb-1 ps-2 pe-2">◁</button>
+    
+                 <!-- <button onclick="crear_partida_parchis()" class="btn btn-sm btn-success bg-gradient border text-white p-0 pe-2 ps-2 m-1">Start SS</button> -->
+    
+                </div>
+                <div  class=" w-50 ">
+                    <!-- <button name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='fs-1 w-100 h-100 ms-5  border p-0 m-0 btn btn-'+colores[this.name-1];" class="d-flex text-center ps-5 text-white w-100 fs-1 btn border h-100  ">🎲 <input id="dado_valor" class="h-100 w-100 btn disabled btn-secondary ms-5 border p-0 m-0" disabled type="text"></button> -->
+    
+                    <!-- <button onclick="crear_tablero();crea_fichas();carga_celdas();carga_canvas();recalcula_fichas();" class="btn btn-success bg-gradient btn-sm w-auto m-1 me-3">Start</button>
+    
+                 <button onclick="crear_tablero()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Tablero</button>
+                 <button onclick="crea_fichas()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Fichas</button>
+                 <button onclick=" recalcula_fichas()" class="btn border border-3 bg-white bg-gradient btn-sm  m-1">Recalcula</button>
+               
+                 <button onclick="carga_celdas()" class="btn btn-warning bg-gradient btn-sm w-auto m-1">Carga Celdas</button>
+                 <button onclick="carga_canvas()" class="btn btn-primary bg-gradient btn-sm  m-1">Canvas</button>
+                 <button onclick="carga_config(this.parentElement.parentElement.id)" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button> -->
+                  </div>
+                  <div class=" w-25 d-flex justify-content-end">
+    
+                 <!-- <button onclick="carga_config('panel_lateral_1')" class="btn bt-sm  btn-primary border border-black mt-1 mb-1 p-1 pt-1 pb-1">Load</button> -->
+                 <button onclick="if(this.innerHTML=='◁'){this.innerHTML='▷';this.style='';}else{this.innerHTML='◁';this.style='background-color:white;color:black ! important';};show_hide2('panel_lateral');" class="btn bt-sm  btn-black text-white border rounded-5 border-black mt-1 mb-1 p-1 pt-1 pb-1 pe-2 ps-2">▷</button>
+    
+                </div>
+             </div>
+             <div ctgr="Master_paneles" id="" class="border-0 h-100 w-100 d-flex items-stretch justify-content-evenly gap-1 p-0  mt-1 overflow-y-auto">
+                 <div ctgr="Master_panel" id="panel_lateral_i" class="border border-outset border-3 rounded-3 w-25 flex-grow-1 d-flex flex-column gap-1 p-1 ">
+                    <div ctgr="Master_panel_toolbar"  class="border-bottom d-flex justify-content-between p-1 m-0">
+                        <div ctgr="Master_panel_toolbar"  class="border-0 d-flex justify-content-evenly gap-2">
+                            <button onclick="show_hide2('panel_lateral_i_1')" class="btn btn-sm  btn-warning text-warning border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">1</button>
+                            <button onclick="show_hide2('panel_lateral_i_2')" class="btn btn-sm  btn-danger text-danger border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">2</button>
+                            <button onclick="show_hide2('panel_lateral_i_3')" class="btn btn-sm  btn-primary text-primary border rounded-5 border-black mt-1 mb-1 p-2 pt-1 pb-1">3</button>
+         
+                        </div>
+                        <div class="d-flex gap-2 justify-content-evenly me-3">
+                        <button class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                        <button class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+        
+                        </div>
+                    </div>
+                    <div ctgr="Master_panel_boxes"  class="border-0 d-flex flex-column gap-2 h-auto flex-grow-1 overflow-auto pt-0 p-1">
+                        <div id="panel_lateral_i_1" class="border border-warning border-5 rounded-3 p-0 d-flex flex-column h-100 flex-grow-1 bg-warning bg-gradient gap-1" >
+                            <div style="zoom: .8;" ctgr="Master_panel_toolbar"  class="border-bottom rounded bg-black d-flex justify-content-between ps-2 p-1 m-0 gap-2">
+                                <div ctgr="Master_panel_toolbar"  class="border-0 d-flex justify-content-evenly gap-2 m-0 p-0">
+                                    <button onclick="show_hide2('config_detail_i_l_1')" class="btn btn-sm   bg-success bg-gradient text-success border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">1</button>
+                                    <button onclick="show_hide2('config_detail_i_l_2')" class="btn btn-sm  btn-secondary text-secondary border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">2</button>
+                                    <button onclick="show_hide2('panel_lateral_i_3')" class="btn btn-sm  btn-primary text-primary border rounded-5 border-black mt-1 mb-1 p-2 pt-1 pb-1">3</button>
+                 
+                                </div>
+                                <div class="d-flex gap-2 justify-content-evenly me-3">
+                                <button class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                                <button class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+                
+                                </div>
+                            </div>
+                             <div  class="border bg-success bg-gradient rounded-3 m-0 border-2 p-1 h-100 overflow-auto" id="config_detail_i_l_1">1</div>
+                             <div  class="border bg-secondary bg-gradient rounded-3 m-0 border-2 p-1 h-100 overflow-auto" id="config_detail_i_l_2">2</div>
+
+                        </div>
+                        <div id="panel_lateral_i_2"  class="border border-danger border-1 rounded-3  p-1 d-flex flex-column h-100  overflow-auto bg-danger bg-gradient" >
+                            <h3 name="config_detail2" onclick="show_hide2('config_detail_i2')">Config2</h3>
+                                <div  class="border border-5 p-1 h-100 overflow-auto " id="config_detail_i2">2</div>
+                        </div>
+                        <div id="panel_lateral_i_3"  class="border rounded-3 border-5 p-1 d-flex flex-column h-100  overflow-auto bg-primary bg-gradient" >
+                            <h3 name="config_detail3" onclick="show_hide2('config_detail_i3')">Config3</h3>
+                                <div  class="border border-5 p-1 h-100 overflow-auto " id="config_detaili_3">3</div>
+                        </div>
+                    </div>
+    
+    
+    
+                 </div>
+                 <div ctgr="Master_panel" id="panel_central" class="border  border-outset border-3 rounded-3 d-flex flex-column w-50 overflow-auto p-1 flex-grow-1 ">
+
+                 </div>
+                 <div  old_top="0" old_left="0"   old_width="0" old_height="0"  ctgr="Master_panel" id="panel_lateral" class="border border-3 rounded w-25 flex-grow-1 d-flex flex-column  p-1 gap-1 overflow-y-auto">
+                    <div ctgr="Master_panel_toolbar"  class="border-bottom d-flex justify-content-between p-1 m-0">
+                        <div ctgr="Master_panel_toolbar"  class="border-0 d-flex justify-content-evenly gap-2">
+                            <button onclick="show_hide2('panel_central_i_1')" class="btn btn-sm  btn-warning text-warning border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">1</button>
+                            <button onclick="show_hide2('panel_central_i_2')" class="btn btn-sm  btn-danger text-danger border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">2</button>
+                            <button onclick="show_hide2('panel_central_i_3')" class="btn btn-sm  btn-primary text-primary border rounded-5 border-black mt-1 mb-1 p-2 pt-1 pb-1">3</button>
+         
+                        </div>
+                        <div class="d-flex gap-2 justify-content-evenly me-3">
+                        <button class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                        <button class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+        
+                        </div>
+                    </div>
+                    <div ctgr="Master_panel_boxes"  class="border-0 d-flex flex-column gap-2 h-auto flex-grow-1 overflow-auto pt-0 p-1">
+                        <div id="panel_central_i_1" class="border border-warning border-5 rounded-3 p-0 d-flex flex-column h-100 flex-grow-1 bg-warning bg-gradient gap-1" >
+                            <div style="zoom: .8;" ctgr="Master_panel_toolbar"  class="border-bottom rounded bg-black d-flex justify-content-between ps-2 p-1 m-0 gap-2">
+                                <div ctgr="Master_panel_toolbar"  class="border-0 d-flex justify-content-evenly gap-2 m-0 p-0">
+                                    <button onclick="show_hide2('config_central_i_l_1')" class="btn btn-sm   bg-success bg-gradient text-success border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">1</button>
+                                    <button onclick="show_hide2('config_central_i_l_2')" class="btn btn-sm  btn-secondary text-secondary border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">2</button>
+                                    <button onclick="show_hide2('panel_central_i_l_3')" class="btn btn-sm  btn-primary text-primary border rounded-5 border-black mt-1 mb-1 p-2 pt-1 pb-1">3</button>
+                 
+                                </div>
+                                <div class="d-flex gap-2 justify-content-evenly me-3">
+                                <button class="maximiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-5">+</button>
+                                <button class="minimiza btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0  p-0  pt-0 pb-1 w-100 fs-5">-</button>
+                
+                                </div>
+                            </div>
+                             <div  class="border bg-success bg-gradient rounded-3 m-0 border-2 p-1 h-100 overflow-auto" id="config_central_i_l_1">1</div>
+                             <div  class="border bg-secondary bg-gradient rounded-3 m-0 border-2 p-1 h-100 overflow-auto" id="config_central_i_l_2">2</div>
+
+                        </div>
+                        <div id="panel_central_i_2"  class="border border-danger border-1 rounded-3  p-1 d-flex flex-column h-100  overflow-auto bg-danger bg-gradient" >
+                            <h3 name="config_detail2" onclick="show_hide2('config_central_i2')">Config2</h3>
+                                <div  class="border border-5 p-1 h-100 overflow-auto " id="config_central_i2">2</div>
+                        </div>
+                        <div id="panel_central_i_3"  class="border rounded-3 border-5 p-1 d-flex flex-column h-100  overflow-auto bg-primary bg-gradient" >
+                            <h3 name="config_detail3" onclick="show_hide2('config_central_i3')">Config3</h3>
+                                <div  class="border border-5 p-1 h-100 overflow-auto " id="config_central_3">3</div>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+    
+         </div>
+    </div>
+    <script>
+         jQuery(".maximiza").click(function (event) {
+            // alert(this.parentElement.parentElement.getElementsByTagName("DIV")[1].id) 
+            const text_origen=this.parentElement.parentElement.parentElement
+            const text_id =  this.parentElement.parentElement.parentElement.id
+            //$(text_id).toggle()
+            document.getElementById(text_id).style.position="absolute"
+            document.getElementById(text_id).setAttribute("old_top",document.getElementById(text_id).offsetTop )
+            document.getElementById(text_id).setAttribute("old_left",document.getElementById(text_id).offsetLeft)
+            document.getElementById(text_id).setAttribute("old_width",document.getElementById(text_id).offsetWidth)
+            document.getElementById(text_id).setAttribute("old_height",document.getElementById(text_id).offsetHeight )
+
+            document.getElementById(text_id).style=
+            "position:absolute !important;top:0px !important;left:0px !important;height:100% !important;width:100% !important;background-color:black;color:white"
+            //document.getElementById(text_id).style.left="0px !important;"
+
+            // alert(
+            //     "Origen: " + this.className.split(" ")[0] + "\n" +
+            //     "id_destino: " + text_id + "\n" +
+            //     "Top: " + document.getElementById(text_id).offsetTop + "\n" +
+            //     "Left: " + document.getElementById(text_id).offsetLeft + "\n" +
+            //     "Width: " + document.getElementById(text_id).offsetWidth + "\n" +
+            //     "Height: " + document.getElementById(text_id).offsetHeight + "\n" 
+
+            // )
+            // alert(
+            //     "Origen: " + this.className.split(" ")[0] + "\n" +
+            //     "id_destino: " + text_id + "\n" +
+            //     "old_Top: " + document.getElementById(text_id).getAttribute("old_top") + "\n" +
+            //     "old_Left: " + document.getElementById(text_id).getAttribute("old_left") +"\n" +
+            //     "old_Width: " + document.getElementById(text_id).getAttribute("old_width") +"\n" +
+            //     "old_Height: " +  document.getElementById(text_id).getAttribute("old_height") +"\n" 
+
+            //     )          
+
+        });
+        jQuery(".minimiza").click(function (event) {
+        // alert(this.parentElement.parentElement.getElementsByTagName("DIV")[1].id) 
+        const text_origen=this.parentElement.parentElement.parentElement
+
+        const text_id =  this.parentElement.parentElement.parentElement.id
+        //$(text_id).toggle()
+        // this.old_top=document.getElementById(text_id).offsetTop 
+        //     this.old_left=document.getElementById(text_id).offsetLeft
+        //     this.old_width=document.getElementById(text_id).offsetWidth
+        //     this.old_height=document.getElementById(text_id).offsetHeight 
+           
+        document.getElementById(text_id).setAttribute("style","")
+        // "position:unset;"+
+        //     "top:"+
+        //     document.getElementById(text_id).getAttribute("old_top") +
+        //     "px !important;"+
+        //     "left:"+
+        //     document.getElementById(text_id).getAttribute("old_left")+
+        //     "px !important;"+
+        //     "height:" +
+        //     document.getElementById(text_id).getAttribute("old_height") +
+        //     "px !important;"+
+        //     "width:"+
+        //     document.getElementById(text_id).getAttribute("old_width")+
+        //     "px !important;"
+        
+           
+        
+        
+        // alert(
+        //        "Origen: " + this.className.split(" ")[0] + "\n" +
+        //        "id_destino: " + text_id + "\n" +
+        //        "Top: " + document.getElementById(text_id).offsetTop + "\n" +
+        //        "Left: " + document.getElementById(text_id).offsetLeft + "\n" +
+        //        "Width: " + document.getElementById(text_id).offsetWidth + "\n" +
+        //        "Height: " + document.getElementById(text_id).offsetHeight + "\n" 
+
+        //     )
+        //     alert(
+        //         "Origen: " + this.className.split(" ")[0] + "\n" +
+        //         "id_destino: " + text_id + "\n" +
+        //         "old_Top: " + this.old_top + "\n" +
+        //         "old_Left: " + this.old_left + "\n" +
+        //         "old_Width: " + this.old_width + "\n" +
+        //         "old_Height: " + this.old_height + "\n" 
+
+        //         ) 
+        });
+        function show_hide2(id_pass){
+    //alert(id)
+    try{
+        if(document.getElementById(id_pass).style.display==""){
+
+            document.getElementById(id_pass).style="display:none !important;"
+        }
+        else{
+
+            document.getElementById(id_pass).style=""
+
+        }
+
+    }
+
+    catch{
+      //  alert("no"+id_pass)
+
+        document.getElementById(id_pass).style="display:none !important;"
+
+    }
+   // recalcula_fichas()
+       
+}
+        $("#panel_general").resizable();
+        $("#panel_general").draggable();
+    </script>
+                     <!-- <script src="./newscripts.js" defer></script> -->
+
+</body>
+</html>

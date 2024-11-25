@@ -13,6 +13,7 @@ _objeto_partida.push({ Sesion: "1", Fecha:"", Configuracion: JSON.parse(sessionS
 _objeto_partida[0].Fecha= new Date().toLocaleDateString()  //("1/1/2020")
   const Parchis_Partida = new _Parchis(_objeto_partida, _objeto_jugadores, _objeto_fichas)
 function start() {
+  _objeto_fichas.splice(0, _objeto_fichas.length);
 
   
   
