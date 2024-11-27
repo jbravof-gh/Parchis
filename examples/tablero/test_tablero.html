@@ -266,6 +266,21 @@
                     #celda_34, #celda_39{
                 transform: rotate(180deg);
                     }
+                    .ficha-panel canvas{
+                        position: relative !important;
+                        top:0 !important;
+                        left: 0 !important;
+                    }
+                    .fichin{
+                        position: relative !important;
+                        width: 30px !important;
+                        height: 30px !important;
+                        text-align: center !important;
+                    }
+                    .fichina canvas{
+                        width: 30px !important;
+                        height: 30px !important;
+                    }
         </style>
 </head>
 <body style="height: 100vh;width: 100%;padding: 0px;overflow: hidden;">
@@ -278,13 +293,13 @@
 
                 <div style="/* height: 50px !important; */" ctgr="Master_toolbar" id="" class="border border-outset border-3 rounded-3 d-flex justify-content-between bg-white bg-gradient text-black pt-1 p-0 gap-1 pe-2 w-50 flex-grow-1 m-0 me-0 mt-0">
                     
-                    <div class="d-flex  flex-grow-1">
+                    <div class="d-flex w-25">
                     <button id="boton_toggle_1" onclick="if(this.innerHTML=='◁'){this.innerHTML='▷';this.style=''; }else{this.innerHTML='◁';this.style='';};show_hide('panel_lateral');" class="btn bt-sm  btn-black text-black rounded-5 border-0 border-black ms-2 p-1 pt-0 pb-0 ps-2 pe-2 fs-5">◁</button>
                     <h6 class="mt-3">Parchis</h6>
 
                     <!-- <button class="btn btn-warning border">Go</button> -->
                     <!-- <button class="btn border btn-success">Go</button> -->
-                    <div style="border: inset 4px !important;" class=" flex-grow-1 d-flex gap-2 ps-2 bg-black mt-2 m-1 ms-2 me-0 border border-0 rounded-4">
+                    <div style="border: inset 4px !important;" class=" flex-grow-1 d-flex gap-2 ps-2 pe-2 bg-black mt-2 m-1 ms-2 me-0 border border-0 rounded-4">
                         <!-- <button onclick="if(this.innerHTML=='◁'){this.innerHTML='▷';this.style='background-color:white;color:black !important'; }else{this.innerHTML='◁';this.style='';};show_hide('panel_lateral');" class="btn bt-sm  btn-black text-white rounded-5 border border-black me-2 mt-1 mb-1 p-1 pt-1 pb-1 ps-2 pe-2">◁</button> -->
                         <button onclick="crear_tablero()" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Board</button>
                         <button onclick="carga_celdas()" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Cells</button>
@@ -297,11 +312,16 @@
 
                     </div>
 
-                    <div  class="  d-flex ">
+                    <div  class="  d-flex w-50 flex-grow-1">
 
-                        <div   class="rounded-3 d-flex text-white border mt-1 mb-1 ps-5 w-100">
+                        <div   class="rounded-5 border-outset d-flex text-white bg-black border mt-1 mb-1 ps-5 w-100">
                             <!-- <button  style="border: inset 4px !important;" name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='disabled fs-6 mt-1 w-50  ms-5  border p-0 m-0 btn btn-sm btn-'+colores[this.name-1];" class="bg-black d-flex text-center ps-5 pt-0 pb-0 text-white w-100 fs-4 btn btn-sm border justify-content-evenly rounded-4 ">🎲 <input id="dado_valor" class=" w-50 btn disabled btn-secondary fs-6 mt-1 ms-5 border p-0 mb-0" disabled type="text"></button> -->
+                            <!-- <button id="boton_dado" name=0 onclick="let cuenta_1=colores_seleccionados.length; if(this.name==cuenta_1){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor3.className=' rounded-5   w-100 text-center bg-gradient bg-'+colores_seleccionados[this.name-1];" class="w-50 text-center border-0  mt-0 bg-white ">🎲</button> -->
+                            <button id="boton_dado" name=0 onclick="" class="w-25 fs-3 text-center border-0 bg-black  mt-0 ">🎲</button>
 
+                            <div class="border-0 d-flex   m-0 flex-grow-1 text-center  p-0">
+                                <input class="bg-secondary rounded-5 text-center w-75 bg-gradient" id="dado_valor3" value="1"/>
+                            </div>
                         
                         </div>
                         <!-- <button name=0 onclick="if(this.name==4){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor.className='fs-1 w-100 h-100 ms-5  border p-0 m-0 btn btn-'+colores[this.name-1];" class="d-flex text-center ps-5 text-white w-100 fs-1 btn border h-100  ">🎲 <input id="dado_valor" class="h-100 w-100 btn disabled btn-secondary ms-5 border p-0 m-0" disabled type="text"></button> -->
@@ -325,8 +345,9 @@
                         <!-- <button onclick="document.getElementById('panel_general').style='top:5%;left:5%;width:70%;height:70%;min-height: 400px !important;';recalcula_fichas();"class=" btn btn-sm border border-0 border-outset rounded-5  border-white text-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-3">-</button> -->
                         <button onclick="document.getElementById('panel_general').style=' top: 20px;left: 20px;width: 94%; height: 550px !important; min-height: 236px !important;';recalcula_fichas();"class=" btn btn-sm border border-0 border-outset rounded-5  border-white mt-0 mb-0 p-0` pt-0 pb-1 w-100 fs-3">-</button>
                     </div>
+                                        <button onclick="if(this.innerHTML=='▷'){this.innerHTML='◁';this.style=''; }else{this.innerHTML='▷';this.style='';};show_hide('panel_lateral_i');" class="btn bt-sm  btn-black text-black rounded-5 border-0 border-black ms-2  p-1 pt-0 pb-0 ps-2 pe-2 fs-5">▷</button>
+
                     </div>
-                    <button onclick="if(this.innerHTML=='▷'){this.innerHTML='◁';this.style=''; }else{this.innerHTML='▷';this.style='';};show_hide('panel_lateral_i');" class="btn bt-sm  btn-black text-black rounded-5 border-0 border-black ms-2  p-1 pt-0 pb-0 ps-2 pe-2 fs-5">▷</button>
                     <!-- <i class="material-icons">cloud</i> -->
                 </div>
 
@@ -339,7 +360,7 @@
              <div ctgr="Master_paneles" id="" class="border-0 h-100 w-100 d-flex items-stretch justify-content-evenly gap-1 p-0  m-0 overflow-y-auto">
 
 
-                 <div  ctgr="Master_panel" id="panel_lateral"  old_top="0" old_left="0"   old_width="0" old_height="0" class="border border-3 rounded w-auto flex-grow-1 d-flex flex-column  p-1 gap-1 overflow-y-auto">
+                 <div  ctgr="Master_panel" id="panel_lateral"  old_top="0" old_left="0"   old_width="0" old_height="0" class="border border-3 rounded w-25 flex-grow-1 d-flex flex-column  p-1 gap-1 overflow-y-auto">
                     <div ctgr="Master_panel_toolbar"  class="border-bottom d-flex justify-content-between p-1 m-0">
                         <div ctgr="Master_panel_toolbar"  class="border-0 d-flex justify-content-evenly gap-2">
                             <button onclick="show_hide('panel_central_i_2')" class="btn btn-sm  btn-danger text-white border rounded-5  border-black mt-1 mb-1 p-2 pt-1 pb-1">Jugadores</button>
@@ -497,11 +518,10 @@
                                             </div>
                                         </div>
                                         <div class="border  overflow-auto flex-grow-1 m-0 mt-0 w-100 rounded-2 d-flex p-1 gap-1">
-                                            <button id="boton_dado" name=0 onclick="let cuenta_1=colores_seleccionados.length; if(this.name==cuenta_1){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor3.className=' rounded-5 fs-1  w-100 text-center bg-gradient bg-'+colores_seleccionados[this.name-1];" class="w-50 text-center border-0 fs-1 mt-0 bg-secondary bg-gradient">🎲</button>
-                                            <!-- <div class="border rounded-5 m-2 flex-grow-1 text-center fs-1">1</div> -->
+                                            <!-- <button id="boton_dado" name=0 onclick="let cuenta_1=colores_seleccionados.length; if(this.name==cuenta_1){this.name=0};tira_dadoold();this.name=parseInt(this.name) +1;dado_valor3.className=' rounded-5 fs-1  w-100 text-center bg-gradient bg-'+colores_seleccionados[this.name-1];" class="w-50 text-center border-0 fs-1 mt-0 bg-secondary bg-gradient">🎲</button>
                                             <div class="border-0 d-flex   m-2 flex-grow-1 text-center fs-1 p-0">
                                                 <input class="bg-secondary rounded-5 text-center w-75 bg-gradient" id="dado_valor3" value="1"/>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                      
@@ -1170,6 +1190,7 @@
                         " posicion='" +
                         element + "_casa_" + i +
                         "' " +
+                        " casa='si'"+
                         " id='" +
                         final_id +
                         "' " +
@@ -1192,7 +1213,7 @@
             // $(".ficha").resizable();
 
             jQuery(".ficha").click(function (event) {
-                comprueba_ficha(this.id)         
+            //    comprueba_ficha(this.id)         
 
                 ficha_seleccionada = this.id
 
@@ -1238,7 +1259,7 @@
               //  alert(JSON.parse(sessionStorage.getItem("Parchis_Partida")).Fichas)
               //  alert(_objeto_fichas)
 
-                comprueba_datos()
+              //  comprueba_datos()
                // recalcula_fichas()
                 //start() 
                 //_objeto_fichas=parchis_from_storage2
@@ -1247,16 +1268,87 @@
               //  Presenta_fichas('panel_fichas_listado')   
             });
 
+           
 //alert("fin")
+       
+        jQuery(".ficha").click(ficha_click)
+ }
+
+        async function ficha_click() {
+          //   alert(this.id)
+            id_textarea.value=
+            "*********************" + "\n" +
+                "id: " + 
+                this.id + "\n" +
+                "casa: " + 
+                this.getAttribute("casa")  + "\n" +
+                "numero: " + 
+                this.id.split("_")[1] + "\n" +  
+                "color: " + 
+                this.id.split("_")[0] + "\n" +  
+                "destino: " + 
+                document.getElementById("ficha_div_"+this.id.split("_")[0]).childElementCount + "\n" +             
+
+                
+            
+            "*********************" + "\n" +
+
+            id_textarea.value
+            document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].innerHTML=
+            
+                    "<div class='bg-primary m-1 rounded'>"+
+                    document.getElementById("config_detail_i2_l_2").getElementsByClassName("contador-panel")[0].innerHTML + "<hr>" +
+                    this.outerHTML  +
+                    "celda: " + document.getElementById(celda_seleccionada).innerHTML + "<hr>" +
+                    "</div>" +
+            document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].innerHTML
+
+                    document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].id="" 
+                    document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].outerHTML="<div style='width:100px ! important;height:100px ! important;overflow:auto;' class='fichina border p-2 w-50'>Ficha : <br>"+document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].outerHTML+"<div style='position:relative;top:-35px;left:10px;'>"+  this.id.split("_")[1] + "</div></div>" 
+                   // document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("div")[0].innerHTML="ttt" 
+
+
+        
+                if(this.getAttribute("casa")=="si"){
+                    if (valor_dado==5){
+                            comprueba_datos()
+                    }else{
+                            alert("no cinco")
+                    }
+                }else{
+
+                    for (let i = 1; i < 5; i++) {
+                        var contador_casas
+                        if(document.getElementById(this.id.split("_")[0]  +"_"+i).getAttribute("casa")=="si"){
+                            contador_casas=1
+                        }else{
+                            contador_casas=0
+                        }
+                    
+             
+                    }
+                   if(contador_casas==1 & valor_dado==5){alert("saca de casa") }else{                            comprueba_datos()
+                   }
+
+                }
+
+
+                   
+
+
         }
+
+
+
+        
         async function comprueba_ficha(params) {
            // alert(params)
-           var sumatorio=""
-            for (let i = 0; i < 10000; i++) {
-                sumatorio+= i + "\n" 
+        //    var sumatorio=""
+        //     for (let i = 0; i < 10000; i++) {
+        //         sumatorio+= i + "\n" 
                 
-            }
-            id_textarea.value= "\n" + "Sumatorio: " + sumatorio +"\n" + id_textarea.value
+        //     }
+        //     id_textarea.value= "\n" + "Sumatorio: " + sumatorio +"\n" + id_textarea.value
 
         }
 
@@ -1319,6 +1411,9 @@
             pan_origen.style.top = pan_destino.offsetTop + "px"
             pan_origen.style.left = pan_destino.offsetLeft + "px"
             pan_origen.setAttribute("posicion", celda_seleccionada)
+            pan_origen.setAttribute("casa", "no")
+
+
 
             if ((pan_destino.offsetWidth > pan_destino.offsetHeight) ) {
                 // alert(">1.5 | " + (pan_destino.offsetWidth/pan_destino.offsetHeight*100))
@@ -1559,8 +1654,9 @@ id_textarea.value =
 "\n RECALCULA \n"+ id_textarea.value 
 contador_texto+=1
 }
+var valor_dado 
         function tira_dadoold() {
-            var valor_dado = Math.floor(Math.random() * 6) + 1;
+             valor_dado = Math.floor(Math.random() * 6) + 1;
             valor_dado = Math.floor(Math.random() * 6) + 1;
             valor_dado = Math.floor(Math.random() * 6) + 1;
             // var dado_field = document.getElementById("dado_valor2");
@@ -1568,33 +1664,33 @@ contador_texto+=1
           //  document.getElementById("dado_valor2").value = valor_dado;
             document.getElementById("dado_valor3").value = valor_dado;
 
-            var eventify = function (arr, callback) {
-                arr.push = function (e) {
-                    Array.prototype.push.call(arr, e);
-                    callback(arr);
-                };
-            };
-            var testArr = [1, 2];
+            // var eventify = function (arr, callback) {
+            //     arr.push = function (e) {
+            //         Array.prototype.push.call(arr, e);
+            //         callback(arr);
+            //     };
+            // };
+            // var testArr = [1, 2];
 
 
-            eventify(testArr, function (updatedArr) {
-                //alert(updatedArr.length);
-                id_textarea.value = updatedArr.length + "\n" + id_textarea.value;
+            // eventify(testArr, function (updatedArr) {
+            //     alert(updatedArr.length);
+            //     id_textarea.value = updatedArr.length + "\n" + id_textarea.value;
 
-            });
-            testArr.push(3);
+            // });
+            // testArr.push(3);
 
-            testArr.push(4);
-            testArr.push(5);
-            testArr.push(6);
-            sessionStorage.setItem("Test-arr", JSON.stringify(testArr))
+            // testArr.push(4);
+            // testArr.push(5);
+            // testArr.push(6);
+            // sessionStorage.setItem("Test-arr", JSON.stringify(testArr))
 
         }
         var contador_dado_tirada=1
         jQuery("#boton_dado").click(function () {
         //var start_1= new Event(event)
             config_detail_i2_l_2.getElementsByTagName("div")[2].innerHTML=
-            "<div class='d-flex flex-column border bg-black w-auto  mt-1 m-1 p-1'>"+
+            "<div class='contador-panel d-flex flex-column border bg-black w-auto  mt-1 m-1 p-1'>"+
                 // "Contador:"+
                     // "<p class='w-auto rounded-2 border m-1 p-0 ps-2'> Contador: " +
 
@@ -1628,7 +1724,66 @@ contador_texto+=1
             contador_dado_tirada+=1;
         });
 
+        jQuery("#boton_dado").click(dado_click)
 
+        var cuenta_seis=0
+        async function dado_click() {
+            let cuenta_1=colores_seleccionados.length; 
+            if(this.name==cuenta_1){
+                this.name=0
+            };
+            tira_dadoold();
+
+            
+
+            switch(valor_dado) {
+                case 6:
+             //   alert(6)
+                try {
+                    if(cuenta_seis==2){dado_valor3.className=' rounded-5   w-100 text-center bg-gradient bg-'+colores_seleccionados[this.name];cuenta_seis=0}else{dado_valor3.className=' rounded-5   w-100 text-center bg-gradient bg-'+colores_seleccionados[this.name];cuenta_seis+=1}
+                    
+                } catch (error) {
+                    
+                }
+
+                   // alert(6)
+                    
+
+
+               // this.name=parseInt(this.name) -1
+                 break;
+                case 5:
+              //  alert(5)
+                id_textarea.value= "1- " + colores_seleccionados[this.name] + "\n" + id_textarea.value
+
+                for (let i = 1; i < 5; i++) {
+                    id_textarea.value=
+                    document.getElementById(colores_seleccionados[this.name] +"_"+i).getAttribute("casa") +
+                    "\n"+
+                    id_textarea.value
+                }
+
+
+                this.name=parseInt(this.name) +1;
+                dado_valor3.className=' rounded-5   w-100 text-center bg-gradient bg-'+colores_seleccionados[this.name-1];
+                 //  id_textarea.value= "2- " + colores_seleccionados[this.name] + "\n" + id_textarea.value
+
+
+
+
+                    break;
+
+                default:
+                  //  alert("else")
+                this.name=parseInt(this.name) +1;
+                dado_valor3.className=' rounded-5   w-100 text-center bg-gradient bg-'+colores_seleccionados[this.name-1];
+
+                    // code block
+            }
+
+           
+          
+        }
         function makeImage(text2, id_pass2, font_pass2) {
             // e.preventDefault();
             updateCanvas(text2, id_pass2, font_pass2);
@@ -1645,11 +1800,11 @@ contador_texto+=1
                 fichas_detail.innerHTML+=
                 "<div id='config_central_i_l_2_" +
                  element[1][1] +
-                 "' class='d-flex flex-column h-100 w-25 flex-grow-1  border rounded-3 m-0 border-2 p-1   overflow-auto m-0 bg-" +
+                 "' class='d-flex flex-column  w-25 flex-grow-1  border rounded-3 m-0 border-2 p-1   overflow-auto m-0 bg-" +
                  element[1][1] +
                  "'>"+
                  
-                        "<h6 name='ficha_div_"+element[1][1]+"' onclick='alert(document.getElementById(this.name).innerHTML);show_hide(this.name);'>" +
+                        "<h6 name='ficha_div_"+element[1][1]+"' onclick='show_hide(this.getAttribute(&#39;name&#39;));'>" +
                             conta_1 +
                             " - " +
                         element[0][1] +
@@ -1674,11 +1829,11 @@ contador_texto+=1
 
                         // valor_text + "_" + i + "\n" +
                          "<div class='w-auto h-auto rounded-3 d-flex'>"+
-                            "<div class='border rounded-5  bg-"+
+                            "<div onclick='if(this.parentElement.parentElement.childNodes[1].style.display==&#39;none&#39;){this.parentElement.parentElement.childNodes[1].style.display=&#39;&#39;}else{this.parentElement.parentElement.childNodes[1].style.display=&#39;none ! important&#39;};' class='fichin border rounded-5  bg-"+
                             valor_text +
                             "'>"+ i + "</div>"+
                         "</div>" +
-                         "<div class='bg-white m-1 rounded h-100 flex-grow-1'>*</div>"+
+                         "<div class='ficha-panel bg-white d-flex flex-column text-black m-1 rounded h-100 flex-grow-1 overflow-auto gap-2'>*</div>"+
 
                     "</div>"
                 
@@ -1956,7 +2111,7 @@ function run_03(){
 //window.localStorage.setItem('test', '123')
 //window.dispatchEvent( new Event('storage') ) // <----- 
    
-boton_auto.click()
+//boton_auto.click()
    </script>
                      <!-- <script src="./newscripts.js" defer></script> -->
 

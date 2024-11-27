@@ -17,7 +17,15 @@
 
     <script src="./scripts.js" defer></script>
     <link rel="stylesheet" href="./styles.css">
-
+<style>
+    h4{
+        margin-bottom: 0px !important;
+    }
+    .master-panel{
+        position: relative;
+        margin-top: 2px !important;
+    }
+</style>
 
 </head>
 
@@ -70,7 +78,7 @@
 
 
                 <div style="position: relative;margin-top: 2px;" ctgr="Master_panel" id="panel_lateral" old_top="0" old_left="0" old_width="0" old_height="0"
-                    class="border border-2  w-25 flex-grow-1 d-flex flex-column  p-0 gap-1 overflow-y-auto">
+                    class="master-panel  border border-2  w-25 flex-grow-1 d-flex flex-column  p-0 gap-1 overflow-y-auto">
                     <div style="zoom: .8;" ctgr="Master_panel_toolbar"
                         class="border-bottom d-flex justify-content-between p-0 m-0">
                         <div ctgr="Master_panel_toolbar" class="border-0 d-flex justify-content-evenly pt-1 ps-1 gap-2">
@@ -94,9 +102,89 @@
                         class="border-0 d-flex flex-column gap-2 h-auto flex-grow-1 overflow-auto pt-0 p-1">
 
                         <div id="panel_central_i_2"
-                            class="border border-danger border-1 rounded-3  p-2 d-flex flex-column h-50  overflow-auto bg-danger bg-gradient">
-                            <!-- <h3 name="config_detail2" onclick="show_hide2('config_central_i2')">Config2</h3>
-                                    <div  class="border border-5 p-1 h-100 overflow-auto " id="config_central_i2">2</div> -->
+                            class="border border-danger border-1 rounded-3  p-1 d-flex flex-column  flex-shrink-1 flex-grow-1 gap-0   bg-danger bg-gradient">
+                            <h4 name="config_detail2 m-0 p-0 mb-0" onclick="show_hide2('config_central_i2')" class="border-bottom">Table</h4>
+                            <!-- <div class="border-bottom">
+                                <div class=" ">
+                                    <i onclick="recibe_Datos(event)" style="font-size: 15px;" class="material-icons">folder</i>
+                                    <i  style="font-size: 15px;" class="material-icons">folder</i>
+                                    <i onclick="carga_tabla_storage()" class="material-icons text-secondary" style="font-size:15px;">account_circle</i>
+                                    <i onclick="crea_tabla()" class="material-icons text-warning" style="font-size:15px;">home</i>
+                                    <i onclick="config_central_3.innerHTML=''" class="material-icons"
+                                        style="font-size:15px">delete</i>
+                                    <i onclick="busca_datos()" class="material-icons" style="font-size:15px">search</i>
+                                </div>
+                                <div class="border"></div>
+                            </div> -->
+                            <div  class="border-0 rounded p-1 h-auto flex-grow-1 overflow-auto d-flex flex-column bg-black " id="config_central_i2">
+
+                                <div style="font-size: 10px;"  class="border d-flex flex-column p-0 m-0 ms-0 gap-0 w-100">
+                                    <div class="border-bottom d-flex justify-content-between p-0 m-0 gap-1 flex-grow-1 w-100">
+                                            <label class="btn btn-sm bg-warning  w-50 fs-3" >Campo</label>
+                                            <!-- <div class="btn btn-sm bg-warning w-50 me-5">Valor</div> -->
+                                            <div class="d-flex justify-content-end w-25 gap-1 ">
+                                                <button onclick="add_campo(input_campo.value);load_campos();" class="btn border bg-success">push</button>
+                                                <button onclick="load_campos()" class="btn border bg-success">load</button>
+                                                <button onclick="load_campos_storage()" class="btn border bg-danger">Run</button>
+
+                                            </div>
+
+
+                                    </div>
+                                    <div class="border-bottom d-flex justify-content-start  p-0 m-0 gap-0  w-100 ">
+                                        <input id="input_campo" type="text" class="btn rounded-0 border border-black btn-sm m-0 p-0 ps-2 h-auto bg-white text-black text-start w-100" value="Campo"/>
+                                        <!-- <input type="text" class="btn btn-sm m-0 p-0 ps-2 h-auto bg-white text-start  w-50" value="Valor"/> -->
+                                        <div class="d-flex justify-content-end ">
+                                            <!-- <button>push</button>
+                                            <button>load</button> -->
+                                        </div>
+
+                                    </div>
+                                    <div class="border-bottom d-flex flex-column bg-black">
+                                        <div class="h2">
+                                            Lista Campos
+                                        </div>
+                                        <div class="fs-3" id="lista_de_campos"></div>
+
+                                    </div>
+                                    <div style="font-size: 10px;"  class="border-0 d-flex p-1 m-0 ms-2 gap-2">
+                                        <i class="material-icons text-white p-1" >create</i>
+                                        <!-- <button  onclick="run_table(prompt('lineas',1),prompt('columnas',campos_lista.length))" class="btn btn-sm m-0 p-1 bg-warning bg-gradient">Crea HTML Table</button> -->
+                                        <button  onclick="run_table(1,campos_lista.length)" class="btn btn-sm m-0 p-1 bg-warning bg-gradient">Crea HTML Table</button>
+
+                                    </div>   
+                                </div>
+
+                                <div>
+   
+                                    <div style="font-size: 10px;"  class="border-0 d-flex p-1 m-0 ms-2 gap-2">
+                                    <i class="material-icons text-white p-1" >cloud_download</i>
+                                    <button onclick="crea_tabla()" class="btn btn-sm m-0 p-1 bg-warning bg-gradient">Crea Storage Table</button>
+                                    </div>
+
+                                    <div style="font-size: 10px;"  class="border-0 d-flex p-1 m-0 ms-2 gap-2">
+                                         <i class="material-icons p-1">add_circle</i>
+                                         <button onclick="recibe_Datos(event)" class="btn btn-sm m-0 p-1 bg-warning bg-gradient">Inserta Datos</button>
+                                         <!-- <div class="border"></div> -->
+                                    </div>
+                                    <div style="font-size: 10px;"  class="border-0 d-flex p-1 m-0 ms-2 gap-2">
+                                        <i class="material-icons text-secondary p-1" >storage</i>
+                                        <button onclick="carga_tabla_storage()" class="btn btn-sm m-0 p-1 bg-warning bg-gradient">Carga Storage Tabla</button>
+                                   </div>
+
+                                    <div style="font-size: 10px;"  class="border-0 d-flex p-1 m-0 ms-2 gap-2">
+                                        <i class="material-icons text-primary p-1" >delete</i>
+                                        <button onclick="" class="btn btn-sm m-0 p-1 bg-warning bg-gradient">Delete</button>
+                                    </div>
+                                    <div style="font-size: 10px;"  class="border-0 d-flex p-1 m-0 ms-2 gap-2">
+                                        <i class="material-icons text-primary p-1" >search</i>
+                                        <button onclick="busca_datos()" class="btn btn-sm m-0 p-1 bg-warning bg-gradient">Busca Datos</button>
+                                    </div>         
+                               
+                                </div>    
+                                   
+
+                            </div>
                         </div>
 
                         <div id="panel_central_i_1" style=""
@@ -172,7 +260,8 @@
                                 <h6 class="w-100  h-auto m-0 p-0" name="config_detail3"
                                     onclick="show_hide2('config_central_3')">Session</h6>
                                 <div class="border-0 p-0 d-flex gap-2">
-                                    <i style="font-size: 15px;" class="material-icons">folder</i>
+                                    <i onclick="recibe_Datos(event)" style="font-size: 15px;" class="material-icons">folder</i>
+                                    <i  style="font-size: 15px;" class="material-icons">folder</i>
                                     <i onclick="carga_tabla_storage()" class="material-icons text-secondary" style="font-size:15px;">account_circle</i>
                                     <i onclick="crea_tabla()" class="material-icons text-warning" style="font-size:15px;">home</i>
                                     <i onclick="config_central_3.innerHTML=''" class="material-icons"
@@ -191,20 +280,20 @@
                         </div>
                     </div>
                 </div>
-                <div ctgr="Master_panel" id="panel_central"
-                    class="border  border-1  d-flex flex-column w-50 flex-grow-1 overflow-auto p-0 m-0  ">
+                <div style="position: relative;margin-top: 2px !important;" ctgr="Master_panel" id="panel_central"
+                    class="master-panel border  border-2  d-flex flex-column w-50 flex-grow-1 overflow-auto p-1 m-0  ">
                     <table id="storeList" style="zoom: .8;"
-                        class="table table-light table-striped rounded-2 border border-1 m-0 h-auto overflow-auto">
+                        class="table table-light table-striped rounded-2 border border-2 m-0 h-auto overflow-auto">
                         <thead class="h-25 bg-warning m-1">
 
-                            <tr>
+                            <!-- <tr>
                                 <td>Id<input type="text" value="3"></td>
                                 <td>Name<input type="text" value="3"></td>
                                 <td>Description<input type="text" value="3"></td>
                                 <td>Others<input type="text" value="3"></td>
                                 <td>About<input type="text" value="3"></td>
                                 <td class="td-spcl">td</td>
-                            </tr>
+                            </tr> -->
                         </thead>
                         <tbody class="h-auto overflow-auto flex-grow-1">
 
@@ -252,7 +341,7 @@
                     </table>
                 </div>
                 <div  style="position: relative;margin-top: 2px;margin-right: 2px;"  ctgr="Master_panel" id="panel_lateral_i"
-                    class="border border-outset border-2 w-25 flex-grow-1 d-flex flex-column gap-1 p-1 ">
+                    class="master-panel border border-outset border-2 w-25 flex-grow-1 d-flex flex-column gap-1 p-1 ">
                     <div ctgr="Master_panel_toolbar" style="zoom: .8;"
                         class="border-bottom d-flex justify-content-between p-1 pt-0 m-0">
                         <div ctgr="Master_panel_toolbar" class="border-0 d-flex justify-content-evenly gap-2 w-75">
@@ -393,7 +482,51 @@
         </div>
     </div>
     <script>
-        const campos_lista = ["Id", "Name", "Description", "Others", "About"]//,"Extra_1","Extra_2","About2","Extra_3","Extra_4"]
+        var selectedRow = null;
+        const campos_lista = []//"Id", "Name", "Description", "Others", "About"]//,"Extra_1","Extra_2","About2","Extra_3","Extra_4"]
+        
+        function add_campo(campo_texto){
+            campos_lista.push(campo_texto)
+           // alert(campo_texto)
+        }
+        
+        function load_campos(){
+        lista_de_campos.innerHTML=""
+            campos_lista.forEach(element => {
+                i=0
+                
+                   lista_de_campos.innerHTML+=
+                   "<div class='d-flex w-100'>"+
+                        "<div class='w-25'>"+
+                                element +
+                        "</div>"+
+                        "<div class='100'>"+
+                                "<input class='input-forma' value='1'>"+
+                        "</div>"+
+                    "</div>"
+            });
+         
+
+
+        }
+        
+        function load_campos_storage(){
+           // alert(Array.from(JSON.parse(sessionStorage.getItem("tabla1")))[1][1][1])
+
+            var numero_campos=Array.from(JSON.parse(sessionStorage.getItem("tabla1")))[1][1].length -1
+
+         //   alert(numero_campos)
+          //  alert(Array.from(JSON.parse(sessionStorage.getItem("tabla1")))[1][1])
+
+            const campos_storage=Array.from(JSON.parse(sessionStorage.getItem("tabla1")))[1][1]
+
+            for (let i = 0; i < numero_campos; i++) {
+               
+                campos_lista.push(campos_storage[i][0])
+            }
+
+        }
+
         function run_table(lineas, columnas) {
             // Create a new <table> element
             const newTable = document.getElementsByTagName("table")[0];
@@ -428,7 +561,7 @@
                         newColumna.innerHTML = campos_lista[j] //+ (j+1)
                         //  newColumna.className="bg-warning w-100 d-flex flex-column bg-gradient text-black text-center"
 
-                        newColumna.innerHTML += "<input type='text' value='3'/>"
+                        // newColumna.innerHTML += "<input type='text' value='3'/>"
                     }
                     else {
                         newColumna.innerHTML = (i + 1) + " - " + (j + 1)
@@ -438,6 +571,8 @@
 
 
                     newLinea.appendChild(newColumna)
+
+                    
                 }
                 if (i == 0) {
                     //  newTable.appendChild(newLinea2)
@@ -484,6 +619,132 @@
   sessionStorage.setItem("tabla1",JSON.stringify(tabla_texto))
 
 }
+        function recibe_Datos(e){
+var datos_forma=lee_datos_forma();
+
+  if (selectedRow == null) {
+    inserta_datos_forma(datos_forma);
+  //  crea_tabla();
+  } else {
+    updateRecord(datos_forma);
+    crea_tabla()
+  }
+  selectedRow = null;
+
+}
+        function lee_datos_forma(){
+            var datos_forma={}
+            try{
+           
+                p=0
+                campos_lista.forEach(element => {
+                //   datos_forma[element]=storeList.getElementsByTagName("input")[p].value;
+                datos_forma[element]=document.getElementsByClassName("input-forma")[p].value;
+
+                p+=1
+            });
+            console.log("lee_datos_forma",datos_forma)
+            sessionStorage.setItem("lee_datos_forma",JSON.stringify(Array.from((datos_forma))))
+
+            return datos_forma
+
+            }
+
+            catch{
+                alert("es")
+            }
+ 
+}
+        function inserta_datos_forma(data){
+try {
+                console.log("data",data)
+                var cell
+                var table = document
+                    .getElementById("storeList")
+                    .getElementsByTagName("tbody")[0];
+                var newRow = table.insertRow(table.length);
+                    // newRow.className="border d-flex  "
+                p=0
+                campos_lista.forEach(element => {
+                // alert(data[element])
+                    data[data[element]]=document.getElementsByClassName("input-forma")[p].value;
+                    //newRow.cells[p].innerHTML =data[data[element]];
+    
+                    cell = newRow.insertCell(p);
+                    cell.innerHTML =  data[element];
+                    console.log(data)
+                    //cell.className="w-100 text-center border border-2"
+                    //alert(element)
+                p+=1
+                });
+                cell = newRow.insertCell(p);
+                cell.innerHTML = '<div class="d-flex gap-1 me-2"><button class="btn btn-sm" onClick="onEdit(this)">Edit</button> <button class="btn btn-sm"  onClick = "onDelete(this)">Delete</button></div>';// data[element];
+      
+} catch (error) {
+    alert(error)
+}          //cell.className=" w-100 flex-grow-1 d-flex gap-1 text-center border border-2"
+}
+
+function onEdit(td) {
+  selectedRow = td.parentElement.parentElement.parentElement;
+
+  p=0
+  campos_lista.forEach(element => {
+  //  formData[element]=storeList.getElementsByTagName("input")[p].value;
+   // selectedRow.cells[p].innerHTML =formData[element];
+    document.getElementsByClassName("input-forma")[p].value=selectedRow.cells[p].innerHTML
+    //alert(element)
+p+=1
+  });
+  // document.getElementById("productCode").value = selectedRow.cells[0].innerHTML;
+  // document.getElementById("product").value = selectedRow.cells[1].innerHTML;
+  // document.getElementById("qty").value = selectedRow.cells[2].innerHTML;
+  // document.getElementById("perPrice").value = selectedRow.cells[3].innerHTML;
+  // storeList.getElementsByTagName("input")[0].value = selectedRow.cells[0].innerHTML;
+  // storeList.getElementsByTagName("input")[1].value = selectedRow.cells[1].innerHTML;
+  // storeList.getElementsByTagName("input")[2].value = selectedRow.cells[2].innerHTML;
+  // storeList.getElementsByTagName("input")[3].value= selectedRow.cells[3].innerHTML;
+
+
+  
+}
+//updating the data
+function updateRecord(formData) {
+
+  p=0
+  campos_lista.forEach(element => {
+    formData[element]=document.getElementsByClassName("input-forma")[p].value;
+    selectedRow.cells[p].innerHTML =formData[element];
+
+  p+=1
+  });
+
+  //crea_tabla()
+
+}
+//!deleting the data (delete method)
+function onDelete(td) {
+  if (confirm("Are you sure about deleting😒 the data ?")) {
+    row = td.parentElement.parentElement.parentElement;
+    document.getElementById("storeList").deleteRow(row.rowIndex);
+   resetForm();
+  }
+}
+//!reseting the values in form
+function resetForm() {
+
+  p=0
+  campos_lista.forEach(element => {
+        
+    document.getElementsByClassName("input-forma")[p].value="";
+
+  p+=1
+  });
+
+  selectedRow = null;
+  crea_tabla()
+}
+
         //    $(".table").resizable();
         //    $(".table").draggable();
         $("#div_general").resizable();

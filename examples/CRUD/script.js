@@ -140,7 +140,7 @@ function resetForm() {
   crea_tabla()
 }
 function carga_tabla_storage(){
-  alert(JSON.parse(sessionStorage.getItem("tabla1")).length)
+  //alert(JSON.parse(sessionStorage.getItem("tabla1")).length)
   y=0
   Array.from(JSON.parse(sessionStorage.getItem("tabla1"))).forEach(element => {
     console.log(element)

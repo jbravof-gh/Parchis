@@ -6,7 +6,7 @@ busca_datos()
 }
 
 function busca_datos(){
-alert(typeof(sessionStorage.getItem("test")))
+//alert(typeof(sessionStorage.getItem("test")))
 let keys = Object.keys(sessionStorage);
 for(let key of keys) {
   console.log(`${key}: ${sessionStorage.getItem(key)}`);
@@ -25,35 +25,46 @@ for (const [key, value] of Object.entries(sessionStorage)) {
 
 function carga_tabla_storage(){
    // alert(JSON.parse(sessionStorage.getItem("tabla1")).length)
-    y=0
-    Array.from(JSON.parse(sessionStorage.getItem("tabla1"))).forEach(element => {
-      console.log(element)
-      console.log(element[1][2][1])
-     // inserta_datos_forma(Array.from(element[1][0][1]))
-      var table = document
-      .getElementById("storeList")
-      .getElementsByTagName("tbody")[0];
-    //  table.innerHTML=""
-
-    var newRow = table.insertRow(table.length);
-    p=0
-    campos_lista.forEach(element2 => {
-     // alert(data[element])
-      //data[data[element]]=storeList.getElementsByTagName("input")[p].value;
-      //newRow.cells[p].innerHTML =data[data[element]];
+try {
+      y=0
+      Array.from(JSON.parse(sessionStorage.getItem("tabla1"))).forEach(element => {
+        console.log(element)
+        //console.log(element[1][2][1])
+       // inserta_datos_forma(Array.from(element[1][0][1]))
+        var table = document
+        .getElementById("storeList")
+        .getElementsByTagName("tbody")[0];
+      //  table.innerHTML=""
   
-      cell = newRow.insertCell(p);
-      cell.innerHTML = element[1][p][1]// data[element];
-      //cell.className="w-100 text-center border border-2"
-      //alert(element)
-    p+=1
+      var newRow = table.insertRow(table.length);
+      
+            try {
+              p=0
+                    campos_lista.forEach(element2 => {
+                    // alert(data[element])
+                      //data[data[element]]=storeList.getElementsByTagName("input")[p].value;
+                      //newRow.cells[p].innerHTML =data[data[element]];
+                  
+                      cell = newRow.insertCell(p);
+                      cell.innerHTML = element[1][p][1]// data[element];
+                      //cell.className="w-100 text-center border border-2"
+                      //alert(element)
+                    p+=1
+                  
+                    });
+                    cell = newRow.insertCell(p);
+                    cell.innerHTML = '<div class="d-flex gap-1 me-2"><button class="btn btn-sm" onClick="onEdit(this)">Edit</button> <button class="btn btn-sm"  onClick = "onDelete(this)">Delete</button></div>';// data[element];
+                    
+              
+            } catch (error) {
+              alert("1-"+error + "- " + p)
+            }
   
-    });
-    cell = newRow.insertCell(p);
-    cell.innerHTML = '<div class="d-flex gap-1 me-2"><button class="btn btn-sm" onClick="onEdit(this)">Edit</button> <button class="btn btn-sm"  onClick = "onDelete(this)">Delete</button></div>';// data[element];
-    
-    y+=1
-  })
+      y+=1
+    })
+} catch (error) {
+  alert("2-"+error)
+}
   }
 
 function rellena_de_array(){
