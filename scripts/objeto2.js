@@ -94,6 +94,7 @@ myObj[anotherObj] = "This key is object anotherObj";
 myObj[""] = "This key is an empty string";
 
 console.log("myObj", myObj);
+sessionStorage.setItem("myObj",JSON.stringify(myObj))
 // {
 //   type: 'Dot syntax for a key named type',
 //   'date created': 'This key has a space',
@@ -129,12 +130,28 @@ Parchis_Partida.adjunta
 
 //**********************************************
 
-var objeto_3={
+var  objeto_3={
   "Name":"Nombre",
   "Posicion":[["top",""],["left",""],["right",""]],
   config:{}
 }
+const myObj = {};
+const str = "myString";
+const rand = Math.random();
+const anotherObj = {};
 
+// Create additional properties on myObj
+myObj.type = "Dot syntax for a key named type";
+myObj["date created"] = "This key has a space";
+myObj[str] = "This key is in variable str";
+myObj[rand] = "A random number is the key here";
+myObj["objeto_3"] = objeto_3;
+myObj[""] = "This key is an empty string";
+
+console.log("myObj", myObj);
 sessionStorage.setItem("objeto_3",JSON.stringify(objeto_3))
+sessionStorage.setItem("myObj",JSON.stringify(myObj))
+
+
 
 
