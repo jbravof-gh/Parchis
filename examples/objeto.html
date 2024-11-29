@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,14 +18,217 @@
     <script src="./scripts/fichas.js"></script>
     <link href="./styles/fichas.css" rel="stylesheet">
     -->
-    <script src="../scripts/objeto2.js"></script>
+    <!-- <script src="../scripts/objeto2.js"></script> -->
+    <script>
+        function run_02() {
+            const objeto_selected = JSON.parse(sessionStorage.getItem(input_data_name.value))
+
+            input_objeto_date.value = objeto_selected.dateCreated
+            input_objeto_name.value = objeto_selected.Nombre
+            input_objeto_tipo.value = objeto_selected.Tipo
+
+
+            data_select_jugadores.innerHTML = ""
+            objeto_selected.Jugadores.Jugador.forEach(element => {
+                data_select_jugadores.innerHTML += "<option>" + element + "</option>"
+            });
+            test_01();
+        }
+
+    
+    </script>
+    <script src="../scripts/objeto3.js" defer></script>
+ 
+
+
+<style>
+    body{
+        background-color: black;
+        color: white;
+    }
+    .master{
+        position: absolute;
+        width: auto;
+        height: auto;
+    }
+    .panel{
+        background-color: #ffc107;
+        border-radius: 20px;
+    }
+    .panel label{
+        background-color: rgb(13 110 253) !important;
+        color: black !important;
+        /* border-radius: 10px !important; */
+
+    }
+    .panel button{
+        background-color: rgb(220 53 69);
+        color: aliceblue !important;
+
+    }
+</style>
 
 </head>
-<body>
-    <button onclick="crear_objeto2()">crear_objeto2</button>
-    <button onclick="alert_01()">Alert</button>
-    <button onclick="crear_objeto()">Crear</button>
 
-    <button onclick="run01()">Crear</button>
+<body style="height: 100vh;">
+
+
+    <div id="master"  class="master border-0 d-flex p-1 gap-1 ">
+        
+        <div class="border  flex-grow-1  p-2 overflow-y-auto">
+            <h3 class="h3 border-bottom ">Maintenance</h3>
+            <div class="border-0 m-2 p-2">
+                <h3 class="h3 border-bottom">Data</h3>
+                <div class="panel d-flex">
+
+                    <div class="d-flex flex-column gap-1 p-1 ps-3 w-75">
+                        <div class="d-flex p-0 gap-2">
+                            <label class="border btn btn-sm w-25">Tipo</label>
+                            <input class="w-75" id="input_data_tipo" type="text" value="Partida">
+
+                        </div>
+                        <div class="d-flex  p-0 gap-2">
+                            <label class="border btn btn-sm w-25">Nombre</label>
+                            <input class="w-75" id="input_data_name" type="text" value="Partida-1">
+
+                        </div>
+                        <div class="d-flex p-0 gap-2">
+                            <label class="border btn btn-sm w-25">Date</label>
+                            <input class="w-75" id="input_data_date" type="date" value="">
+
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                    <button onclick="
+                    // objeto_selected=JSON.parse(sessionStorage.getItem('obj_partida'));
+                    // input_data_name.value=objeto_selected.Nombre;
+                    // input_data_date.value=objeto_selected.dateCreated;
+                    // input_data_tipo.value=objeto_selected.Tipo;
+                   
+                    crear_partida();
+
+
+                    " class="btn btn-sm border bg-success m-2 rounded-2">
+                    Create</button>
+                    <button onclick="
+                    objeto_selected=JSON.parse(sessionStorage.getItem(input_data_name.value));
+                    input_data_name.value=objeto_selected.Nombre;
+                    input_data_date.value=objeto_selected.dateCreated;
+                    input_data_tipo.value=objeto_selected.Tipo;
+                   
+                    //crear_partida();
+
+
+                    " class="btn btn-sm border bg-success m-2 rounded-2">
+                    Refresh</button>
+                    <button onclick="
+                    objeto_selected=JSON.parse(sessionStorage.getItem('obj_partida'));
+                    objeto_selected.Nombre=input_data_name.value;
+                    objeto_selected.dateCreated=input_data_date.value;
+                    objeto_selected.Tipo=input_data_tipo.value;
+
+                    sessionStorage.setItem('obj_partida',JSON.stringify(objeto_selected));
+
+                    " class="btn btn-sm border bg-success m-2 rounded-2">
+                    Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-0  m-2 p-2">
+                <h3 class="h3 border-bottom">Jugadores</h3>
+                <div class="panel d-flex gap-1 ">
+                    <div class="border-0 m-0 p-2 w-75">
+                        <h4 class="border-bottom">Jugador</h4>
+                        <div class="d-flex justify-content-evenly p-2">
+                            <label class="border btn btn-sm">Nombre</label>
+                            <input class="w-50" id="input_name" type="text">
+                            <button onclick="
+                            const objeto_selected=JSON.parse(sessionStorage.getItem(input_data_name.value));
+
+                            objeto_selected.Jugadores.Jugador.push(input_name.value);
+                            sessionStorage.setItem(input_data_name.value,JSON.stringify(objeto_selected));
+                            Maintenance_select_jegadores.innerHTML+='<option>'+input_name.value+'</option>';
+                            " class="border btn btn-sm">Add</button>
+                        </div>
+                    </div> 
+                    <div class="border-0 m-0 p-0 w-25">
+                        <!-- <h4 class="border-bottom">Lista</h4> -->
+
+                        <select class="w-100 border h-100" size="4" id="Maintenance_select_jegadores"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-0 m-2 p-2">
+                <h3 class="h3 border-bottom">Configuracion</h3>
+                <div class="panel d-flex">
+                    <div class="border-0 m-2 p-2 w-75">
+                        <h4 class="border-bottom">Jugador</h4>
+                        <div class="d-flex justify-content-evenly p-2">
+                            <label class="border btn btn-sm">Nombre</label>
+                            <input class="w-50" id="input_data_conf" type="text">
+                            <button onclick="
+                            objeto_selected=JSON.parse(sessionStorage.getItem(input_data_name.value));
+
+                            objeto_selected.Jugadores.Jugador.push(input_name.value);
+                            sessionStorage.setItem('obj_partida',JSON.stringify(objeto_selected));
+                            Maintenance_select_jegadores.innerHTML+='<option>'+input_name.value+'</option>';
+                            " class="border btn btn-sm">Add</button>
+                        </div>
+                    </div>
+                    <div class="border-0 m-2 p-0 w-25">
+                        <!-- <h4 class="border-bottom">Lista</h4> -->
+
+                        <select class="w-100 border h-100" size="4" id="Maintenance_conf_select_jegadores"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="    border">
+            <h3 class="h3 border-bottom">Objeto</h3><button onclick="run_02()">run</button>
+
+            <div class="panel d-flex flex-column gap-1 p-1 ps-1 w-100 bg-success bg-gradient rounded-2">
+                <div class="d-flex p-0 gap-2 text-white">
+                    <label class="border btn btn-sm w-25 text-white">Tipo</label>
+                    <input disabled class="w-75" id="input_objeto_tipo" type="text" value="">
+
+                </div>
+                <div class="d-flex  p-0 gap-2">
+                    <label class="border btn btn-sm w-25 text-white">Nombre</label>
+                    <input disabled class="w-75" id="input_objeto_name" type="text" value="">
+
+                </div>
+                <div class="d-flex p-0 gap-2">
+                    <label class="border btn btn-sm w-25 text-white">Date</label>
+                    <input disabled class="w-75" id="input_objeto_date" type="date" value="">
+
+                </div>
+                <div class="d-flex p-0 gap-2 w-100">
+                    <label class="border btn btn-sm w-25 pt-3 text-white">Jugadores</label>
+                    <select disabled class="w-75" size="3" id="data_select_jugadores"></select>
+
+                </div>
+                <div class="d-flex p-0 gap-2 w-100 h-auto">
+                    <label class="border btn btn-sm w-25 pt-3 text-white">Log</label>
+                    <textarea class="w-75 " id="textarea_id"></textarea>
+
+                </div>
+
+            </div>
+            <!-- <div>Tipo:<label id="label_tipo"></label></div>
+
+            <div>Name:<label id="label_name"></label></div>
+            <div>Fecha:<label id="label_date"></label></div> -->
+
+        </div>
+    </div>
+
+
+
+
+
+
 </body>
+
 </html>
