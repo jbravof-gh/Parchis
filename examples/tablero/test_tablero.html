@@ -43,7 +43,7 @@
                         <!-- <button class="btn btn-sm btn-danger bg-gradient p-0 pe-2 ps-2 m-2 " onclick="add_player();"> 
                             <i class="material-icons" style="font-size:30px;color:rgb(3, 2, 2)">add</i>
                         </button> -->
-                        <i  onclick="rellena_select('jugadores');this.className='material-icons mt-1 me-3 text-white';"    class="material-icons mt-1 me-3 text-primary "style="font-size:40px">cloud_download</i>
+                        <i id="i_rellena_jugadores" onclick="rellena_select('jugadores');this.className='material-icons mt-1 me-3 text-white';"    class="material-icons mt-1 me-3 text-primary "style="font-size:40px">cloud_download</i>
 
                         <i  onclick="add_player();" class="material-icons mt-1 text-success "style="font-size:40px">add_circle_outline</i>
 
@@ -301,9 +301,11 @@
                     <!-- <button class="btn border btn-success">Go</button> -->
                     <div style="border: inset 4px !important;" class=" flex-grow-1 d-flex gap-2 ps-2 pe-2 bg-black mt-2 m-1 ms-2 me-0 border border-0 rounded-4">
                         <!-- <button onclick="if(this.innerHTML=='◁'){this.innerHTML='▷';this.style='background-color:white;color:black !important'; }else{this.innerHTML='◁';this.style='';};show_hide('panel_lateral');" class="btn bt-sm  btn-black text-white rounded-5 border border-black me-2 mt-1 mb-1 p-1 pt-1 pb-1 ps-2 pe-2">◁</button> -->
-                        <button onclick="crear_tablero()" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Board</button>
-                        <button onclick="carga_celdas()" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Cells</button>
-                        <button id="boton_auto" onclick="rellena_select('jugadores');rellena_fichas();crear_tablero();carga_celdas(); boton_toggle_1.click();boton_toggle_2.click();" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Auto</button>
+                        <button id="button_board" onclick="crear_tablero()" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Board</button>
+                        <button id="button_cells" onclick="carga_celdas()" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Cells</button>
+                        <!-- <button id="boton_auto" onclick="rellena_select('jugadores');rellena_fichas();crear_tablero();carga_celdas(); boton_toggle_1.click();boton_toggle_2.click();" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Auto</button> -->
+                        <button id="boton_auto" onclick="i_rellena_jugadores.click();i_rellena_fichas.click();button_board.click();button_cells.click(); boton_toggle_1.click();boton_toggle_2.click();" class="btn btn-sm border border-outset border-0 border-black rounded-3 text-white ">Auto</button>
+
                         <!-- <i class="material-icons" style="font-size:48px;color:red">add</i> -->
                         
                         <!-- <button onclick="crear_partida_parchis()" class="btn btn-sm btn-success bg-gradient border text-white p-0 pe-2 ps-2 m-1">Start SS</button> -->
@@ -399,11 +401,11 @@
                                 <div  class="border border-5 p-1 h-100 overflow-auto " id="config_central_i2">2</div> -->
                         </div>
                         
-                        <div id="panel_central_i_1"  style="" class="border border-warning border-5 rounded-3 p-0 d-flex flex-grow-1 h-25  flex-column bg-black bg-gradient gap-0" >
-                            <div style="zoom: .8;" ctgr="Master_panel_toolbar"  class="border border-bottom rounded bg-black d-flex justify-content-between ps-2 p-1 m-0 gap-2 border-white w-100 h-auto overflow-x-auto ">
+                        <div id="panel_central_i_1"  style="" class="border border-warning border-5 rounded-3 p-0 d-flex h-25 flex-grow-1  flex-column bg-black bg-gradient gap-0" >
+                            <div style="zoom: .8;" ctgr="Master_panel_toolbar"  class="border border-bottom rounded bg-black d-flex justify-content-between ps-2 p-1 m-0 gap-2 border-white w-100  overflow-x-auto  ">
                                 <h4  onclick="show_hide2('fichas_detail')"  class="text-white ps-2 ms-2 me-2 mt-2">Fichas</h4>
                                 <!-- <button onclick="rellena_fichas()"   class="btn btn-sm bg-success bg-gradient border text-white p-0 pe-2 ps-2 m-2">Carga</button> -->
-                                <i onclick="rellena_fichas();this.className='material-icons mt-1 me-3 text-white'" class="material-icons mt-1 me-3 text-primary " style="font-size:40px">cloud_download</i>
+                                <i id="i_rellena_fichas" onclick="rellena_fichas();this.className='material-icons mt-1 me-3 text-white'" class="material-icons mt-1 me-3 text-primary " style="font-size:40px">cloud_download</i>
                                 <div ctgr="Master_panel_toolbar"  class="border-0 d-flex justify-content-evenly gap-2 m-0 p-1">
                                     <!-- <button onclick="show_hide3('config_central_i_l_1',1)" class="btn btn-sm    bg-gradient text-white border rounded-5 p-0 m-0  border-black ">
                                         <i class="material-icons" style="font-size:20px;color:red">add</i>
@@ -427,7 +429,7 @@
                 
                                 </div>
                             </div>
-                            <div id="fichas_detail" class="d-flex flex-wrap h-75 overflow-auto    bg-black bg-gradient gap-2 p-1 mt-1 flex-grow-1">
+                            <div id="fichas_detail" class="d-flex flex-wrap  overflow-auto    bg-black bg-gradient gap-2 p-1 mt-1 h-75 flex-grow-1">
                                 <!-- <div class="d-flex border rounded-3 m-0 border-2 p-1  w-50 overflow-auto m-0" id="config_central_i_l_1">
                                     <div class="border bg-success bg-gradient h-100 w-100"
                                         >1</div>
@@ -1263,7 +1265,16 @@
                     // contador_texto+=1
 
                 // alert("celda_"+ (parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) +parseInt(dado_valor.value)))
+               if((parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) + parseInt(dado_valor3.value))>68){
+               // alert((parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) + parseInt(dado_valor3.value))-68)
+                celda_seleccionada = "celda_" + ((parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) + parseInt(dado_valor3.value))-68)
+
+               }else{
                 celda_seleccionada = "celda_" + (parseInt(document.getElementById(this.getAttribute("posicion")).innerHTML) + parseInt(dado_valor3.value))
+
+               }
+               
+
 
             //*********    const  parchis_from_storage2=Array.from(JSON.parse(sessionStorage.getItem("Parchis_Partida")).Fichas)
               
@@ -1311,16 +1322,19 @@
             id_textarea.value
             document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].innerHTML=
             
-                    "<div class='bg-primary m-1 rounded'>"+
-                    document.getElementById("config_detail_i2_l_2").getElementsByClassName("contador-panel")[0].innerHTML + "<hr>" +
+                    "<div class='bg-primary p-2 m-1 rounded'>"+
+                    document.getElementById("config_detail_i2_l_2").getElementsByClassName("contador-panel")[0].innerHTML + 
                     this.outerHTML  +
-                    "celda: " + document.getElementById(celda_seleccionada).innerHTML + "<hr>" +
+                    // "celda: " + document.getElementById(celda_seleccionada).innerHTML + "<hr>" +
                     "</div>" +
             document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].innerHTML
 
                     document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].id="" 
-                    document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].outerHTML="<div style='width:100px ! important;height:100px ! important;overflow:auto;' class='fichina border p-2 w-50'>Ficha : <br>"+document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].outerHTML+"<div style='position:relative;top:-35px;left:10px;'>"+  this.id.split("_")[1] + "</div></div>" 
-                   // document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("div")[0].innerHTML="ttt" 
+                  //  document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].outerHTML="<div style='width:100px ! important;height:100px ! important;overflow:auto;' class='fichina border p-2 w-100'>Ficha : <br>"+document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].outerHTML+"<div style='position:relative;top:-35px;left:10px;'>"+  this.id.split("_")[1] + "</div></div>" 
+                    document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].outerHTML="<div  class='fichina border d-flex gap-2 p-2 w-100'><div>Ficha :</div> "+document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("canvas")[0].outerHTML+"<div style='position:relative;left:-28px;'>"+  this.id.split("_")[1] + "</div><div>"+                    "celda: </div><div>" + document.getElementById(celda_seleccionada).innerHTML + "</div>" 
+"</div>" 
+
+                    // document.getElementById("ficha_div_"+this.id.split("_")[0]).childNodes[(this.id.split("_")[1]-1)].childNodes[1].getElementsByTagName("div")[0].innerHTML="ttt" 
 
 
         
@@ -1816,7 +1830,7 @@ var valor_dado
                 fichas_detail.innerHTML+=
                 "<div id='config_central_i_l_2_" +
                  element[1][1] +
-                 "' class='d-flex flex-column  w-25 flex-grow-1  border rounded-3 m-0 border-2 p-1   overflow-auto m-0 bg-" +
+                 "' class='d-flex flex-column  w-25 flex-grow-1   border rounded-3 m-0 border-2 p-1    m-0 bg-" +
                  element[1][1] +
                  "'>"+
                  
@@ -1847,22 +1861,22 @@ var valor_dado
                 texto_suma+=
                 
 
-                    "<div class='d-flex h-100 flex-column border border-white rounded p-1'>" +
+                    "<div class='d-flex flex-grow-1 overflow-auto flex-column border border-white rounded p-1'>" +
 
                         // valor_text + "_" + i + "\n" +
-                         "<div class='w-auto h-auto rounded-3 d-flex'>"+
+                         "<div class='w-auto   rounded-3 d-flex'>"+
                             "<div onclick='if(this.parentElement.parentElement.childNodes[1].style.display==&#39;&#39;){this.parentElement.parentElement.childNodes[1].style=&#39;display:none !important&#39;;}else{this.parentElement.parentElement.childNodes[1].style=&#39;&#39;};' class='fichin border rounded-5  bg-"+
                             valor_text +
                             "'>"+ i + "</div>"+
                         "</div>" +
-                         "<div class='ficha-panel bg-white d-flex flex-column text-black m-1 rounded h-100 flex-grow-1 overflow-auto gap-2'>*</div>"+
+                         "<div class='ficha-panel bg-white d-flex flex-column text-black m-1 rounded h-50 flex-grow-1 overflow-auto gap-1'></div>"+
 
                     "</div>"
                 
             }
             texto_suma=
             
-            "<div id='ficha_div_"+valor_text+"' class='d-flex flex-column border rounded-2 border-white bg-black bg-gradient p-2 gap-2 h-100 overflow-auto me-1'>" +
+            "<div id='ficha_div_"+valor_text+"' class='d-flex flex-column border rounded-2 border-white bg-black bg-gradient p-2 gap-2  overflow-auto me-1'>" +
             
             texto_suma +
 
